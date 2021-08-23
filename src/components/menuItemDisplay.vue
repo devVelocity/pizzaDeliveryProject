@@ -75,26 +75,28 @@
             <br style="margin-bottom: 100px">
             <br style="margin-bottom: 100px">
         </div>
-        <div class="itemBuyWindow">
-            <h3>Buy Now</h3>
-            <h2>{{ '£' + details[4] }}</h2>
-            <h4>Available In-Store or Delivery</h4>
-            <a class="orangeHyperLink">See Stores / Delivery</a>
-            <br>
-            <span><h4>Qty:</h4><select class="dropdown-select" v-model="quantity">
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-            </select></span>
-            <br>
-            <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
+        <div class="itemBuyWrapper">
+            <div class="itemBuyWindow">
+                <h3>Buy Now</h3>
+                <h2>{{ '£' + details[4] }}</h2>
+                <h4>Available In-Store or Delivery</h4>
+                <a class="orangeHyperLink">See Stores / Delivery</a>
+                <br>
+                <span><h4>Qty:</h4><select class="dropdown-select" v-model="quantity">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select></span>
+                <br>
+                <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
+            </div>
         </div>
     </div>
 </template>

@@ -2,8 +2,9 @@
   <div id="page-background" style="margin-top: 5px">
     <div id="centralContainer">
         <div id="shop-basket-container">
-            <h1>Shopping Basket</h1>
-            <h3 class="itemsDisplay">{{ basketItems }} Items</h3>
+            <h1 :class="{ noItems : basketItems === 0}">Shopping Basket</h1>
+            <h3 v-if="basketItems != 0" class="itemsDisplay">{{ basketItems }} Items</h3>
+            <h2 v-if="basketItems === 0" class="noItems2">You dont have any items in your basket. <router-link class="light-button" to="/menu">Add some items</router-link></h2>
         </div>
         <div id="shoppingContainer">
             <div id="itemColumn">
@@ -17,7 +18,7 @@
                     <div class="section-2"></div>
                 </div>
             </div>
-            <div id="stickyColumn">
+            <div v-if="basketItems != 0" id="stickyColumn">
                 <div id="stickyItem">
 
                 </div>

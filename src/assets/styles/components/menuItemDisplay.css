@@ -3,10 +3,10 @@
     height: auto;
     min-height: calc(100vh - 100px);
     display: flex;
+    width: calc(100vw - 100px);
     margin-left: 50px;
     gap: 30px;
     padding-top: 50px;
-    align-items: flex-start;
 }
 
 #itemContainer{
@@ -35,13 +35,20 @@
     object-fit: cover;
 }
 
+.itemBuyWrapper{
+    width: 70%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+}
+
 .itemBuyWindow{
     width: 70%;
     background: var(--buyWindowBackground);
     border-radius: 10px;
     padding: 30px;
     height: auto;
-    min-height: auto;
+    min-height: 300px;
     position: sticky;
     top: 180px;
     margin-top: 0px;
