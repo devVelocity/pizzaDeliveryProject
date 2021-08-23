@@ -166,3 +166,21 @@
         margin-left: 10px;      
     }
 }
+
+#shop-basket-container h2{
+    font-weight: 300;
+}
+
+#shop-basket-container h2 a{
+    margin-left: 20px;
+}
+
+.noItems{
+    position: fixed;
+}
+
+.noItems2{
+    position: fixed;
+    top: 250px;
+}
+

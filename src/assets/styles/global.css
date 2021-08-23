@@ -4,6 +4,7 @@
   --orange1: rgb(241, 85, 37);
   --orange1dark: rgb(212, 67, 27);
   --orange1dark2:rgb(167, 56, 26);
+  --orange1dark3:rgb(128, 42, 18);
   --orange1darkSat:rgb(221, 101, 68);
   --orange1v2: rgb(241, 102, 37);
   --blue1: #3D53A1;
@@ -21,7 +22,7 @@
   --grayOpacity: rgba(25,25,25,0.1);
   --black: rgb(0,0,0);
   --gradientP1: var(--orange1);
-  --gradientP2: linear-gradient(90deg, var(--orange1) 35%, var(--gradStop2) 100%);
+  --gradientP2: linear-gradient(90deg, var(--gradientP1) 35%, var(--gradStop2) 100%);
   --gradStop2: rgb(255, 142, 37);
 
 
@@ -56,8 +57,9 @@ body.dark{
   --menuFilterGrid: var(--gray1);
   --MFGBackground: var(--gray);
   --MFGActivateText: white;
-  --MFGActivateBackground: var(--orange1);
-  --MFGActivateBorder: var(--orange1dark2);
+  --MFGActivateBackground: var(--gray2);
+  --MFGActivateBorder: var(--gray2);
+  --MFGActiveStreak: white;
 
   --MFGActiveText2: white;
   --MFGDeactiveBorder: var(--graydark);
@@ -95,7 +97,10 @@ body.dark{
   --mobileBorderLineColour: white;
   --mobileNavBefore: var(--graydark1);
 
-
+  --lightButtonBG: var(--orange1dark);
+  --lightButtonText: var(--white);
+  --lightButtonHoverBG: var(--orange1dark3);
+  --lightButtonHoverText: white;
 
 
 }
@@ -330,4 +335,36 @@ body.light .dropdown.active::after{
   cursor: pointer;
 }
 
+
+h1,h2,h3,h4,h5,h6,p{
+  color: white;
+  color: var(--textLight);
+  font-family: "Manrope";
+}
+
+.light-button{
+  background: rgb(241, 85, 37);
+  background: var(--lightButtonBG);
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 40px;
+  color: white;
+  color: var(--lightButtonText);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.light-button:hover{
+  background: rgb(241, 85, 37);
+  background: var(--lightButtonHoverBG);
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 40px;
+  color: white;
+  color: var(--lightButtonHoverText);
+  text-decoration: none;
+  font-weight: 500;
+}
 
