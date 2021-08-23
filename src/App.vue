@@ -1,4 +1,5 @@
 <template>
+  <!-- <teleport to="#navWrapper"> -->
   <div id="nav">
     <router-link to="/">
       <svg id="navLogo" viewBox="0 0 924 423" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +78,6 @@
       <h3 :class="{basketPulsing : this.basketPulse}" v-if="basketItems > 9" id="priceDisplay">9+</h3>
     </router-link> -->
   </div>
-  <span class="navigation-bar-relative-spacing"></span>
   <transition name="bounce">
     <div v-if="isMobileNavOpen" id="mobileNav">
       <div class="buttonContainer">
@@ -101,6 +101,8 @@
         </div>
       </div>
   </transition>
+  <!-- </teleport> -->
+   <span class="navigation-bar-relative-spacing"></span>
   <router-view/>
 </template>
 

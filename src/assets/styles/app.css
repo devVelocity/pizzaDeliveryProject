@@ -179,7 +179,7 @@ body{
 
 @keyframes mobileNavIn{
   from{
-    transform: translate3d(200%,0,0);
+    transform: translate3d(220%,0,0);
   }
   to{
     transform: translate3d(0,0,0);  
@@ -191,14 +191,11 @@ body{
     transform: translate3d(0,0,0);
   }
   to{
-    transform: translate3d(200%,0,0);  
+    transform: translate3d(220%,0,0);  
   } 
 }
 
 @supports (animation:mobileNavIn){
-  #mobileNav{
-    transform: translateZ(-100%,0,0);
-  }
   #mobileNav.bounce-enter-active{
     will-change: transform;
     animation: mobileNavIn;

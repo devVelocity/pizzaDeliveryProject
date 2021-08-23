@@ -20,7 +20,21 @@
             </div>
             <div v-if="basketItems != 0" id="stickyColumn">
                 <div id="stickyItem">
-
+                    <h2>Discount Codes</h2>
+                    <input v-model="discountCodes">
+                    <h4 class="codeAppliedButton" v-if="codeApplied != 0" :class="{codeApplied : codeApplied === 1}, {codeDenied : codeApplied === 2}">Hello</h4>
+                    <hr>
+                    <h2>Total</h2>
+                    <div class="total-wrapper">
+                        <span>
+                            <h4>Subtotal</h4>
+                            <h5>00.00</h5>
+                        </span>
+                        <span>
+                            <h4>Subtotal</h4>
+                            <h5>00.00</h5>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,6 +52,7 @@ export default {
             parsedArray: null,
             basketArray: null,
             includedItems: [],
+            codeApplied: 0,
         }
     },
     methods:{
