@@ -1,0 +1,146 @@
+:root{
+    --orange1: #f15025;
+    --orange1dark: rgb(212, 67, 27);
+    --orange1dark2:rgb(190, 59, 23);
+    --blue1: #3D53A1;
+    --blue2: #4E72ED;
+    --bluedark: #08114A;
+    --white1: rgb(255,255,255);
+    --white2: rgb(230,232,230);
+    --white3: rgb(206,208,206);
+    --alert: #4E72ED;
+    --gray: rgb(25,25,25);
+    --gray2: rgb(50,50,50);
+    --gray3: rgb(170,170,170);
+    --grayOpacity: rgba(25,25,25,0.1);
+    --black: rgb(0,0,0);
+    --pagebackground: var(--white2);
+    --navTextColour: var(--white1);
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-style1{
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 100;
+    color: white;
+    color: var(--white1);
+    background: rgb(25,25,25);
+    background: var(--gray);
+    padding: 1em;
+    font-size: clamp(16px,3vw,20px);
+    border-radius: 50px;
+    /* transition: 0.1s ease-in-out;
+    transition-property: background,color; */
+}
+.button-style1:hover{
+    /* will-change: background,color; */
+    background: white;
+    background: var(--white1);
+    color: black;
+    color: var(--black);
+    cursor:pointer
+}
+
+.button-style2{
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 100;
+  background: rgb(25,25,25);
+  background: var(--gray);
+  padding: 1em;
+  font-size: clamp(16px,3vw,20px);
+  border-radius: 50px;
+  /* transition: 0.1s ease-in-out;
+  transition-property: background,color; */
+  /* outline: 2px solid var(--gray); */
+}
+.button-style2:hover{
+  /* will-change: background,color; */
+  background: rgb(212, 67, 27);
+  background: var(--gray);
+  color: white;
+  color: var(--white1);
+  cursor:pointer
+}
+
+#page-background{
+  margin-top: -5px;
+  background: rgb(230,232,230);
+  background: var(--pagebackground);
+  height: auto;
+  min-height: calc(100vh - 100px);
+}
+
+
+.content-dividers{
+  height: auto;
+  width:100%;
+  min-height: 100px;
+  background: rgb(25,25,25);
+  background: var(--gray);
+  background-image: url(../images/svg-elements/pizza-slice-white.svg);
+  background-size: 50px 50px;
+}
+
+.orangeHyperLink{
+  text-decoration: none;
+  color: var(--orange1);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.orangeHyperLink::after{
+  content: ' ';
+  position: absolute;
+  width: 0%;
+  display: inline-block;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: var(--orange1);
+  transform: translateY(-100%);
+  transition: 0.15s ease-in-out;
+  transition-property: opacity, width;
+  opacity: 0;
+}
+
+.orangeHyperLink:hover{
+  cursor: pointer;
+}
+
+.orangeHyperLink:hover::after{
+  will-change: width;
+  width: 100%; 
+  opacity: 1;
+}
+
+.orangeHyperLink-linkless{
+  text-decoration: none;
+  color: var(--orange1);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.orangeHyperLink-linkless:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+

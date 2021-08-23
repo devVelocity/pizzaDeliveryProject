@@ -1,0 +1,109 @@
+#orange-background{
+    background-color: var(--gradientP1);
+    background: var(--gradientP2);
+    width: 100%;
+    height: calc(100% - 100px);
+    position: absolute;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -5px;
+}
+h1{
+    font-size: clamp(20px,40vw,200px);
+    margin-top: 50px;
+    margin-bottom: 30px;
+    color: var(--white1);
+    text-align: center;
+    margin-left: 5px; margin-right: 5px;
+}
+h4{
+    font-size: clamp(20px,40vw,30px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--white1);
+    text-align: center;
+    margin-left: 5px; margin-right: 5px;
+}
+h5{
+    font-size: clamp(12px,40vw,20px);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: var(--white1);
+    text-align: center;
+    font-weight: 100;
+    margin-left: 5px; margin-right: 5px;
+}
+
+@keyframes rightIn{
+    from{
+        transform: translate(100%);
+        opacity: 0;
+    }
+    to{
+      transform: translate(0%);
+      opacity: 1;
+    }
+}
+
+@keyframes leftIn{
+    from{
+        transform: translate(-100%);
+        opacity: 0;
+    }
+    to{
+      transform: translate(0%);
+      opacity: 1;
+    }
+}
+
+@keyframes upIn{
+    from{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to{
+      transform: translateY(0%);
+      opacity: 1;
+    }
+}
+
+h1{
+    animation: rightIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+h4{
+    opacity: 0;
+    animation: leftIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+
+h5{
+    opacity: 0;
+    animation: rightIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+a{
+    opacity: 0;
+    animation: upIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}

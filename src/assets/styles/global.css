@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root{
+  --orange1: rgb(241, 85, 37);
+  --orange1dark: rgb(212, 67, 27);
+  --orange1dark2:rgb(167, 56, 26);
+  --orange1darkSat:rgb(221, 101, 68);
+  --orange1v2: rgb(241, 102, 37);
+  --blue1: #3D53A1;
+  --blue2: #4E72ED;
+  --bluedark: #08114A;
+  --white1: rgb(255,255,255);
+  --white2: rgb(230,232,230);
+  --white3: rgb(206,208,206);
+  --white4: rgb(199, 199, 199);
+  --graydark1: rgb(11 ,11  ,11 );
+  --graydark: rgb(15,15,15);
+  --gray: rgb(25,25,25);
+  --gray2: rgb(50,50,50);
+  --gray3: rgb(170,170,170);
+  --grayOpacity: rgba(25,25,25,0.1);
+  --black: rgb(0,0,0);
+  --gradientP1: var(--orange1);
+  --gradientP2: linear-gradient(90deg, var(--orange1) 35%, var(--gradStop2) 100%);
+  --gradStop2: rgb(255, 142, 37);
+
+
+}
+
+
+body.dark{
+  margin: 0;
+  padding: 0;
+
+  --pagebackground: var(--graydark);
+  --navSVGColour: white;
+  --navHighlightColour: white;
+  --navTextColour: white;
+  --navTextLineBefore: white;
+  --navTextLineAfter: white;
+  --navTextColour: var(--white1);
+  --basketAmountStyle: var(--gray);
+  --basketAmountColour: var(--white);
+  --borderlinecolour: var(--gray2);
+  --alert: var(--orange1dark);
+
+  --button1colour: var(--gray);
+  --button1hover: white;
+  --button1text: white;
+  --button1texthover: black;
+
+  --textDark: black;
+  --textLight: white;
+
+
+  --menuFilterGrid: var(--gray1);
+  --MFGBackground: var(--gray);
+  --MFGActivateText: white;
+  --MFGActivateBackground: var(--orange1);
+  --MFGActivateBorder: var(--orange1dark2);
+
+  --MFGActiveText2: white;
+  --MFGDeactiveBorder: var(--graydark);
+  
+  --MFGDeactiveBorder2: var(--gray);
+  --MFGActiveBackground2: var(--orange1dark);
+  --MFGActiveBorder2: var(--orange1dark2);
+
+  --MFGHoverBG: rgb(50,50,50);
+  --MFGHoverBGText: white;
+
+  --basketItemBG: var(--orange1dark);
+  --basketItemText: white;
+
+  --basketPayWindowBG: var(--gray);
+  
+  --buyWindowOutline: var(--gray);
+  --buyWindowBackground: var(--gray);
+  --buyButtonBG: var(--orange1dark);
+  --buyButtonHoverBG: var(--orange1dark2);
+  --buyButtonText: white;
+  --buyButtonHoverText: white;
+  --itemBuyPriceText: rgb(212, 33, 33);
+  --buyWindowQuantityBackground: var(--gray2);
+  --buyWindowQuantityText: white;
+
+  --h1bg: var(--gray);
+
+  --orangeHyperlink: var(--orange1);
+
+  --homeHeaderText: white;
+
+  --mobileNavBackground: var(--gradientP2);
+  --mobileNavButtons: white;
+  --mobileBorderLineColour: white;
+  --mobileNavBefore: var(--graydark1);
+
+
+
+
+}
+
+
+
+#app {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-style1{
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 100;
+    color: white;
+    color: var(--button1text);
+    background: var(--button1colour);
+    padding: 1em;
+    font-size: clamp(16px,3vw,20px);
+    border-radius: 50px;
+    /* transition: 0.1s ease-in-out;
+    transition-property: background,color,transform; */
+    font-family: "Manrope", sans-serif;
+    font-weight: 500;
+}
+.button-style1:hover{
+    /* will-change: background,color; */
+    background: white;
+    background: var(--button1hover);
+    color: black;
+    color: var(--button1texthover);
+    cursor:pointer;
+    /* transform: scale(1.2); */
+}
+
+.button-style2{
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 100;
+  background: rgb(25,25,25);
+  background: var(--gray);
+  padding: 1em;
+  font-size: clamp(16px,3vw,20px);
+  border-radius: 50px;
+  /* transition: 0.1s ease-in-out;
+  transition-property: background,color; */
+  /* outline: 2px solid var(--gray); */
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+}
+.button-style2:hover{
+  /* will-change: background,color; */
+  background: rgb(212, 67, 27);
+  background: var(--gray);
+  color: white;
+  color: var(--white1);
+  cursor:pointer
+}
+
+.button-style3{
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 100;
+  background: rgba(0,0,0,0.4);
+  border: 3px solid white;
+  padding: 1em;
+  font-size: clamp(16px,3vw,20px);
+  border-radius: 50px;
+  /* will-change: background,color,transform;
+  transition: 0.08s ease-in-out;
+  transition-property: background,color,transform; */
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+}
+.button-style3:hover{
+  background: white;
+  color: black;
+  color: var(--black);
+  cursor:pointer;
+}
+
+#page-background{
+  margin-top: -5px;
+  background: rgb(230,232,230);
+  background: var(--pagebackground);
+  height: auto;
+  min-height: calc(100vh - 100px);
+}
+
+
+.content-dividers{
+  height: auto;
+  width:100%;
+  min-height: 100px;
+  background: rgb(25,25,25);
+  background: var(--gray);
+  background-image: url(../images/svg-elements/pizza-slice-white.svg);
+  background-size: 50px 50px;
+}
+
+.orangeHyperLink{
+  text-decoration: none;
+  color: rgb(241, 85, 37);
+  color: var(--orangeHyperlink);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.orangeHyperLink::after{
+  content: ' ';
+  position: absolute;
+  width: 0%;
+  display: inline-block;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background: rgb(241, 85, 37);
+  background: var(--orangeHyperlink);
+  transform: translateY(-100%);
+  transition: 0.15s ease-in-out;
+  transition-property: opacity, width;
+  opacity: 0;
+}
+
+.orangeHyperLink:hover{
+  cursor: pointer;
+}
+
+.orangeHyperLink:hover::after{
+  will-change: width;
+  width: 100%; 
+  opacity: 1;
+}
+
+.orangeHyperLink-linkless{
+  text-decoration: none;
+  color: rgb(241, 85, 37);
+  color: var(--orangeHyperlink);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.orangeHyperLink-linkless:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+.dropdown{
+  width: 90%;
+  display: inline-block;
+  border-top: 3px solid rgb(180,180,180);
+  border-bottom: 3px solid rgb(180,180,180);
+  border-top: 3px solid var(--borderlinecolour);
+  border-bottom: 3px solid var(--borderlinecolour);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  transition: 0.3s border ease-in-out;
+  position: relative;
+}
+
+.dropdown.active{
+  border-bottom: 3px solid transparent;
+}
+
+body.light .dropdown::after{
+  content: ' ';
+  position: absolute;
+  background-image: url(../images/svg-elements/downarrowlight.svg);
+  background-size: 20px 30px;
+  height: 30px; width: 20px;
+  right: 5px; top: 15px;
+  transform: rotate(0deg);
+  pointer-events: none;
+}
+
+body.dark .dropdown::after{
+  content: ' ';
+  position: absolute;
+  background-image: url(../images/svg-elements/downarrow.svg);
+  background-size: 20px 30px;
+  height: 30px; width: 20px;
+  right: 5px; top: 15px;
+  transform: rotate(0deg);
+  pointer-events: none;
+}
+
+body.dark .dropdown.active::after{
+  content: ' ';
+  position: absolute;
+  background-image: url(../images/svg-elements/downarrow.svg);
+  background-size: 20px 30px;
+  height: 30px; width: 20px;
+  right: 5px; top: 15px;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+body.light .dropdown.active::after{
+  content: ' ';
+  position: absolute;
+  background-image: url(../images/svg-elements/downarrowlight.svg);
+  background-size: 20px 30px;
+  height: 30px; width: 20px;
+  right: 5px; top: 15px;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.dropdown h3{
+  width: 100%;
+  z-index: 2;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  color: white;
+  color: var(--textLight);
+}
+
+.dropdown h3:hover{
+  cursor: pointer;
+}
+
+

@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+html{
+  scroll-behavior: smooth;
+  font-family: 'Manrope', sans-serif;
+}
+
+.navigation-bar-relative-spacing{
+    display:inline-block;
+    width: 100%;
+    height: 100px;
+  }
+  
+body{
+  transition: 0.5s background ease-in-out;
+  background: var(--pagebackground);
+  font-family: 'Manrope', sans-serif;
+}
+
+#app{
+  font-family: 'Manrope', sans-serif;
+}
+
+
+#navLogo{
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 20vh;
+  height: 20vh;
+  max-width: 200px;
+  max-height: 80px;
+}
+
+#navPizza{
+  width: 10vh;
+  height: 20vh;
+  max-width: 200px;
+  max-height: 80px;
+  display: none;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#nav {
+  position: fixed;
+  width: 100vw;
+  height: 100px;
+  background: rgb(241, 80, 37);
+  background: var(--gradientP1);
+  background: var(--gradientP2);
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+}
+
+#nav .nav-link{
+  color: white;
+  color: var(--navTextColour);
+  text-decoration: none;
+  padding: 0.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: clamp(15px,3vw, 17px);
+  font-weight: 500;
+  border-radius: 15px;
+  /* background: var(--grayOpacity); */
+  font-family: "Manrope", sans-serif;
+}
+
+
+#nav .nav-link::after{
+  content: ' ';
+  width: 0;
+  height: 2.5px;
+  background: white;;
+  background: var(--navTextLineBefore);
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
+  transition: 0.25s ease-in-out;
+  transition-property: opacity, width;
+  opacity: 0;
+}
+
+#nav .nav-link:hover::after{
+  content: ' ';
+  width: 100%;
+  height: 2.5px;
+  background: white;;
+  background: var(--navTextLineAfter);
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+#app{
+  width: 100%;
+  height: 100%;
+}
+
+#nav::after{
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background: rgb(241, 80, 37);
+  background: var(--gradientP1);
+  background: var(--gradientP2);
+  left: 0; bottom: -10px;
+}
+
+#nav .basketLink span{
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background: var(--basketAmountStyle);
+  border-radius: 40px;
+  margin-left: 5px;
+  font-size: clamp(10px,3vw,12px);
+  transform: translateY(-1.5px);
+  display: inline-block;
+}
+
+
+
+#nav a.router-link-exact-active {
+  color: var(--navTextColour)
+}
+
+
+#mobileNavToggle{
+  position: absolute;
+  top: 10px;right: 20px;
+  opacity: 0; pointer-events: none;
+  z-index: 9;
+  width: 50px;
+  height: 80px;
+}
+
+
+#mobileNav{
+  position: fixed;
+  background: rgb(25,25,25);
+  background: var(--mobileNavBackground);
+  width: 100%;
+  min-height: calc(100% - 100px);
+  height: auto;
+  top: 0; left: 0px;
+  z-index: 8;
+  transition: 2s transform ease-in-out;
+  border: 0;
+  outline: 0;
+  margin-top: 100px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#mobileNav::before{
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: -100vw;
+  width: 100%;
+  height: 100%;
+  background: rgb(15,15,15);
+  background: var(--mobileNavBefore);
+
+}
+
+
+
+@keyframes mobileNavIn{
+  from{
+    transform: translate3d(200%,0,0);
+  }
+  to{
+    transform: translate3d(0,0,0);  
+  }
+}
+
+@keyframes mobileNavOut{
+  from{
+    transform: translate3d(0,0,0);
+  }
+  to{
+    transform: translate3d(200%,0,0);  
+  } 
+}
+
+@supports (animation:mobileNavIn){
+  #mobileNav{
+    transform: translateZ(-100%,0,0);
+  }
+  #mobileNav.bounce-enter-active{
+    will-change: transform;
+    animation: mobileNavIn;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  #mobileNav.bounce-leave-active{
+    will-change: transform;
+    animation: mobileNavOut;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@supports not (animation:mobileNavIn){
+  #mobileNav{
+    margin-left: 100%;
+    transition: 0.3s margin ease-in-out;
+  }
+  #mobileNav.bounce-enter-active{
+    will-change: margin;
+    margin-left: 0%;
+  }
+  
+  #mobileNav.bounce-leave-active{
+    will-change: margin;
+    margin-left: 100%;
+  }
+}
+
+
+#mobileNavOpen, #mobileNavClose{
+  position: absolute;
+  left: 0; top: 0;
+}
+
+#mobileNav .buttonContainer{
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 100px);
+  gap: 25px;
+  margin-top: 30px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
+}
+
+#mobileNav .buttonContainer::-webkit-scrollbar{
+  display:none;
+}
+
+#mobileNav .buttonContainer{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#mobileNav .mNavButtons{
+  width: calc(100% - 100px);
+  margin-left: 20px; margin-right: 20px;
+  margin-top: 10px; margin-bottom: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  color: var(--mobileNavButtons);
+  padding: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  font-size: clamp(24px,3vw,40px);
+  /* clip-path: polygon(0 0, 100% 0%, 92% 100%, 0% 100%); */
+  font-weight: 600;
+  position: relative;
+  font-family: "Manrope", sans-serif;
+  padding-left: 40px;
+  border-top: 1px solid white;
+  border-top: 1px solid var(--mobileBorderLineColour);
+  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--mobileBorderLineColour);
+  
+}
+
+#mobileNav .buttonContainer .mNavButtons h2{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#mobileNav .buttonContainer .mNavButtons.containsBasket .basketItem{
+  margin-left: 10px;
+  background: crimson;
+  background: var(--basketAmountStyle);
+  color: white; 
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 40px;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  position: relative;
+  width: auto;
+}
+
+
+
+#basketToggle{
+  position: absolute;
+  top: 15px;right: 20px;
+  z-index: 9;
+  width: auto;
+  min-width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+#basketToggle svg{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#basketToggle path, #basketToggle circle{
+  stroke: var(--gray);
+}
+
+#basketToggle circle{
+  fill: var(--gray);
+}
+
+#basketToggle #priceDisplay{
+  z-index: 5;
+  position: relative;
+  top: 0;
+  right: 0;
+  width: auto;;
+  color: rgb(25,25,25);
+  background: var(--basketAmountStyle);
+  text-align: right;
+  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 40px;
+  color: white;
+  color: var(--basketAmountColour);
+  text-decoration: none;
+  font-size: clamp(10px,3vw,12px);
+  transform: translateX(-10px);
+}
+
+@keyframes basketPulsing{
+  0%{
+    transform: translateX(-10px) scale(1);
+  }50%{
+    transform: translateX(-10px) scale(1.2);
+  }100%{
+    transform: translateX(-10px) scale(1);
+  }
+}
+
+#basketToggle .basketPulsing{
+  animation: basketPulsing;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@media screen and (max-width: 1215px){
+  #navLogo{
+    display: none;
+  }
+  #navPizza{
+    display: block;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+  #nav .nav-link{
+    opacity: 0;
+    pointer-events: none;
+  }
+  #mobileNavToggle{
+    opacity: 1;
+    pointer-events: all;
+    right: 30px;
+  }
+  #mobileNav{
+    opacity: 1;
+    pointer-events: all;
+  }
+  #basketToggle{
+    opacity: 0; pointer-events: none;
+  }
+}
+
+#nav #The, #nav #Company, #nav #Pizza{
+  fill: white;
+  fill: var(--navSVGColour)
+}
+
+#mobileNavToggle rect{
+  fill: white;
+  fill: var(--navSVGColour)
+}
+
+@keyframes animIn{
+  from{
+      transform: translate3d(0,150vh,0);
+  }
+  to{
+      transform: translate3d(0,70vh,0);
+  }
+}
+
+@keyframes animOut{
+  from{
+      transform: translate3d(0,70vh,0);
+  }
+  to{
+      transform: translate3d(0,150vh,0);
+  }
+}
+
+#buyAlertContainer{
+  position: fixed;
+  transform: translate3d(0,70vh,0);
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 7;
+  pointer-events: none;
+}
+
+#buyAlertContainer .innerContainer{
+  background: var(--alert);
+  position: relative;
+  min-width: 300px;
+  width: 40%;
+  max-width: 425px;
+  height: auto;
+  min-height: 120px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 7;
+  padding-bottom: 10px;
+  -webkit-box-shadow: 0px 0px 35px 5px rgba(0,0,0,0.7); 
+  box-shadow: 0px 0px 35px 5px rgba(0,0,0,0.7);
+}
+
+#buyAlertContainer .innerContainer h2, a{
+  color: white;
+  margin: 5px;
+}
+
+
+#buyAlertContainer h2{
+  font-family: "Manrope";
+  font-weight: 600;
+}
+
+#buyAlertContainer .innerContainer a{
+  text-decoration: none;
+  background: var(--orange1dark2);
+  padding: 10px;
+  border-radius: 40px;
+  font-family: "Manrope";
+  font-weight: 400;
+  pointer-events: all;
+}
+
+#buyAlertContainer .innerContainer a:hover{
+  background: white;
+  color: black;
+}
+
+#buyAlertContainer .innerContainer a:hover{
+  cursor: pointer;
+}
+
+#buyAlertContainer .progressBar{
+  position: relative;
+  width: 60%;
+  outline: 1px solid white;
+  height: 3px;
+  margin-top: 10px;
+  border-radius: 60px;
+}
+
+@keyframes barAcrossProgress{
+  from{
+      width: 0%;
+  }to{
+      width: 100%;
+  }
+}
+
+#buyAlertContainer .progressBar span{
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  width: 0%;
+  background: white;
+  will-change: width;
+}
+
+#buyAlertContainer.bounce-enter-active{
+  animation: animIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#buyAlertContainer.bounce-leave-active{
+  animation: animOut;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#buyAlertContainer .barActive{
+  animation: barAcrossProgress;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-duration: 4000ms;
+}
+
+#basketToggle #CartOutline, #basketToggle #CartMesh{
+  stroke: white;
+  stroke: var(--navSVGColour);
+}
+
+#basketToggle #Wheel1 circle, #basketToggle #Wheel2 circle{
+  fill: white;
+  fill: var(--navSVGColour)
+}
+
+
+
+
+
+
+

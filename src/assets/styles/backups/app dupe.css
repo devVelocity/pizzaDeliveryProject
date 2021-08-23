@@ -1,0 +1,247 @@
+html{
+  scroll-behavior: smooth;
+}
+
+.navigation-bar-relative-spacing{
+    display:inline-block;
+    width: 100%;
+    height: 100px;
+  }
+  
+body{
+  transition: 0.5s background ease-in-out;
+  background: var(--pagebackground)
+}
+
+#navLogo{
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 20vh;
+  height: 20vh;
+  max-width: 200px;
+  max-height: 80px;
+}
+
+#navPizza{
+  width: 10vh;
+  height: 20vh;
+  max-width: 200px;
+  max-height: 80px;
+  display: none;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#nav {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background: var(--orange1dark);
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+}
+
+#nav .nav-link{
+  color: var(--white1);
+  text-decoration: none;
+  padding: 0.7em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: clamp(15px,3vw, 17px);
+  font-weight: 500;
+  border-radius: 15px;
+  /* background: var(--grayOpacity); */
+}
+
+
+#nav .nav-link::after{
+  content: ' ';
+  width: 0;
+  height: 2.5px;
+  background: white;
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
+  transition: 0.25s ease-in-out;
+  transition-property: opacity, width;
+  opacity: 0;
+}
+
+#nav .nav-link:hover::after{
+  content: ' ';
+  width: 100%;
+  height: 2.5px;
+  background: white;
+  position: relative;
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+#app{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+#nav a.router-link-exact-active {
+  color: var(--white1);
+}
+
+#mobileNavToggle{
+  position: absolute;
+  top: 10px;right: 20px;
+  opacity: 0; pointer-events: none;
+  z-index: 9;
+  width: 50px;
+  height: 80px;
+}
+
+
+#mobileNav{
+  position: fixed;
+  background: rgb(155, 144, 142);
+  background: var(--white3);
+  width: 100%;
+  min-height: calc(100% - 100px);
+  height: auto;
+  top: 0; left: 0;
+  z-index: 8;
+  transition: 2s transform ease-in-out;
+  border: 0;
+  outline: 0;
+  margin-top: 100px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+@keyframes mobileNavIn{
+  from{
+    transform: translate3d(100%,0,0);
+  }
+  to{
+    transform: translate3d(0,0,0);  
+  }
+}
+
+@keyframes mobileNavOut{
+  from{
+    transform: translate3d(0,0,0);
+  }
+  to{
+    transform: translate3d(100%,0,0);  
+  } 
+}
+
+@supports (animation:mobileNavIn){
+  #mobileNav{
+    transform: translateZ(-100%,0,0);
+  }
+  #mobileNav.bounce-enter-active{
+    will-change: transform;
+    animation: mobileNavIn;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+  
+  #mobileNav.bounce-leave-active{
+    will-change: transform;
+    animation: mobileNavOut;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@supports not (animation:mobileNavIn){
+  #mobileNav{
+    margin-left: 100%;
+    transition: 0.3s margin ease-in-out;
+  }
+  #mobileNav.bounce-enter-active{
+    will-change: margin;
+    margin-left: 0%;
+  }
+  
+  #mobileNav.bounce-leave-active{
+    will-change: margin;
+    margin-left: 100%;
+  }
+}
+
+
+#mobileNavOpen, #mobileNavClose{
+  position: absolute;
+  left: 0; top: 0;
+}
+
+#mobileNav .buttonContainer{
+  width: calc(100% - 150px);
+  height: auto;
+  display: flex;
+  margin-left: 15px;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+
+#mobileNav .mNavButtons{
+  background: rgb(25,25,25);
+  background: var(--gray);
+  width: 92%;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  color: var(--navTextColour);
+  padding: 20px;
+  font-size: clamp(16px,3vw,24px);
+  clip-path: polygon(0 0, 100% 0%, 92% 100%, 0% 100%);
+  font-weight: 600;
+}
+
+
+@media screen and (max-width: 450px){
+  #mobileNav .buttonContainer{
+    width: calc(100% - 50px);
+  }
+}
+
+@media screen and (max-width: 1215px){
+  #navLogo{
+    display: none;
+  }
+  #navPizza{
+    display: block;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+  #nav .nav-link{
+    opacity: 0;
+    pointer-events: none;
+  }
+  #mobileNavToggle{
+    opacity: 1;
+    pointer-events: all;
+  }
+  #mobileNav{
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+
+
+

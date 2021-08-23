@@ -1,0 +1,199 @@
+[
+    {"name":"Margherita Pizza",
+        "itemId":1,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    },
+    {"name":"Pepperoni Pizza",
+        "itemId":2,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    },
+    {"name":"BBQ Chicken Pizza",
+        "itemId":3,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    },
+    {"name":"Meat Lovers Pizza",
+        "itemId":4,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    },
+    {"name":"Sausage Pizza",
+        "itemId":5,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    },
+    {"name":"Mushroom Pizza",
+        "itemId":6,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    },
+    {"name":"Bacon Pizza",
+        "itemId":7,
+        "details":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "shortDetails":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "currentAllergen":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "price":"7.89",
+        "available":true,
+        "ingredients":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "nutritionalInfo": [{
+            "energy":"0000",
+            "energyRI":"00",
+            "energy2":"000",
+            "energy2RI":"00",
+            "fat":"00",
+            "fatRI":"00",
+            "saturatedFat":"0",
+            "saturatedFatRI":"00",
+            "sugars":"0.0",
+            "sugarsRI":"00",
+            "salt":"0.0",
+            "saltRI":"0.0"
+        }],
+        "type":"pizza"
+    }
+
+]

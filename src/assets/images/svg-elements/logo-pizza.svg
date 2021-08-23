@@ -1,0 +1,28 @@
+<svg width="428" height="423" viewBox="0 0 428 423" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Pizza">
+<path id="Pizza-Shape" d="M302.952 269.473C313.203 291.544 291.318 314.846 268.648 305.998L36.0243 215.213C18.5377 208.389 13.1787 186.244 25.6103 172.18L150.465 30.9237C163.358 16.3369 186.982 19.7751 195.183 37.4318L302.952 269.473Z" fill="url(#paint0_linear)"/>
+<g id="Pepperoni3">
+<circle cx="124.5" cy="200.5" r="24.5" fill="#B31717"/>
+<circle cx="124.5" cy="200.5" r="24.5" fill="#B31717"/>
+<circle cx="124.5" cy="200.5" r="24.5" fill="#B31717"/>
+</g>
+<g id="Pepperoni2">
+<circle cx="189.5" cy="132.5" r="24.5" fill="#B31717"/>
+<circle cx="189.5" cy="132.5" r="24.5" fill="#B31717"/>
+<circle cx="189.5" cy="132.5" r="24.5" fill="#B31717"/>
+</g>
+<g id="Pepperoni1">
+<circle cx="225.5" cy="235.5" r="24.5" fill="#B31717"/>
+<circle cx="225.5" cy="235.5" r="24.5" fill="#B31717"/>
+<circle cx="225.5" cy="235.5" r="24.5" fill="#B31717"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="339.024" y1="321.659" x2="88.8989" y2="100.577" gradientUnits="userSpaceOnUse">
+<stop stop-color="#C4C4C4"/>
+<stop offset="0.0001" stop-color="#EAAA4B" stop-opacity="0.984375"/>
+<stop offset="0.864583" stop-color="#CC9849"/>
+<stop offset="1" stop-color="#582A00"/>
+</linearGradient>
+</defs>
+</svg>
