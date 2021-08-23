@@ -174,7 +174,7 @@ export default{
           arrayToPush.push({itemKey: key, itemQuantity: parseInt(quantity)})
         }
       });
-      console.log(arrayToPush)
+      // console.log(arrayToPush)
       return arrayToPush;
     },
     basketItemsPing(){

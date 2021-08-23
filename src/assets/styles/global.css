@@ -102,6 +102,21 @@ body.dark{
   --lightButtonHoverBG: var(--orange1dark3);
   --lightButtonHoverText: white;
 
+  --buyWindowHR: var(--gray2);
+
+  --inputBackground: var(--gray2);
+  --inputText: white;
+  
+  --discountAppliedBG: rgb(0,0,0);
+  --discountAppliedBG2: rgb(16, 116, 46);
+  --discountAppliedBGText: white;
+  --discountAppliedClose: crimson;
+
+  --additionalNumbersBackground: var(--gray2);
+  --additionalNumbersText: white;
+  --wordLimitBorder: var(--gray);
+  --wordLimitBarInterior: var(--orange1darkSat);
+
 
 }
 
@@ -190,6 +205,25 @@ body.dark{
   color: var(--black);
   cursor:pointer;
 }
+
+.button-style4{
+  background: var(--orange1dark);
+  text-decoration: none;
+  color: white;
+  font-family: "Manrope";
+  padding: 10px;
+  padding-left: 20px; padding-right: 20px;
+  margin: 10px;
+  display: inline-block;
+  border-radius: 40px;
+  text-align: center;
+}
+
+.button-style4:hover{
+  background: var(--orange1dark2);
+
+}
+
 
 #page-background{
   margin-top: -5px;

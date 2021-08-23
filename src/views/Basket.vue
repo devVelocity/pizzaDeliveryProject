@@ -20,21 +20,38 @@
             </div>
             <div v-if="basketItems != 0" id="stickyColumn">
                 <div id="stickyItem">
+                    <hr>
                     <h2>Discount Codes</h2>
-                    <input v-model="discountCodes">
-                    <h4 class="codeAppliedButton" v-if="codeApplied != 0" :class="{codeApplied : codeApplied === 1}, {codeDenied : codeApplied === 2}">Hello</h4>
+                    <input v-if="codeApplied != 0" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                    <span v-if="codeApplied != 0, codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                    <transiton type="fade">
+                         <h4 v-if="codeApplied === 2">Code not valid / not recognised</h4>
+                    </transiton>
                     <hr>
                     <h2>Total</h2>
                     <div class="total-wrapper">
                         <span>
-                            <h4>Subtotal</h4>
+                            <h4>Subtotal (incl. VAT)</h4>
                             <h5>00.00</h5>
                         </span>
-                        <span>
-                            <h4>Subtotal</h4>
+                        <span v-if="codeApplied != 0, codeApplied != 2">
+                            <h4>Discounts</h4>
+                            <h5>00.00</h5>
+                        </span>
+                        <span v-if="codeApplied != 0, codeApplied != 2">
+                            <h4>Final Subtotal (incl. VAT)</h4>
                             <h5>00.00</h5>
                         </span>
                     </div>
+                    <hr>
+                    <h2>Additional Information:</h2>
+                    <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
+                    <div id="word-limit-wrap">
+                        <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
+                        <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
+                    </div>
+                    <hr>
+                    <router-link to="/checkout" class="button-style4">Checkout</router-link>
                 </div>
             </div>
         </div>
@@ -53,13 +70,23 @@ export default {
             basketArray: null,
             includedItems: [],
             codeApplied: 0,
+            additionalNotes: "",
+            codeAppliedName: "",
+
+            wordLimitBarPerc: 0,
+            wordCount: 0,
+            modelledAtr: null,
+            maxWords: 200,
+            discountCodes: null,
+
+
         }
     },
     methods:{
         pingBasket(){
             var self = this;
             var pinged = self.$root.basketItemsPing()
-            console.log(pinged)
+            // console.log(pinged)
             self.basketItems = pinged;
         },
         getParsedArray(){
@@ -80,21 +107,31 @@ export default {
                 var itemKey = parseInt(self.basketArray[arrayItems].itemKey.split("-")[1]);
                 var filteredFind = self.parsedArray.filter(function(e){return e.itemId === itemKey})
                 self.includedItems.push(filteredFind[0]);
-                console.log(self.includedItems[0]);
+                // console.log(self.includedItems[0]);
             
             }
         },
+        textAreaChanged(e){
+            var self = this;
+            var getWords = self.modelledAtr;
+            var spaces = 0;
+            for(var letter in getWords){
+                spaces += 1;
+            }
+            self.wordCount = spaces;
+            self.wordLimitBarPerc = ((self.wordCount / self.maxWords) * 100);
+            
+        },
+        tryDiscountCode(){
+
+        },
         getQuantity(argumentId){
             var self = this;
-            console.log(argumentId)
             for(var arrayItems in self.includedItems){
                var getQuantity = sessionStorage.getItem("itemId-" + argumentId);
                return getQuantity;
             }
         },
-        removeItem(argumentId){
-
-        }
         // basketCheck(parametersToGet){
         //     var self = this;
         //     //First Part
@@ -132,7 +169,7 @@ export default {
         self.getParsedArray();
         self.basketArray = this.$root.componentGrabBasketItems();
         self.basketCheckArray();
-    }
+    },
 }
 </script>
 
