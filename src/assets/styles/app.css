@@ -401,25 +401,24 @@ body{
 
 @keyframes animIn{
   from{
-      transform: translate3d(0,150vh,0);
+      transform: translateY(0,150,0)
   }
   to{
-      transform: translate3d(0,70vh,0);
+      transform: translateY(0,80vh,0)
   }
 }
 
 @keyframes animOut{
   from{
-      transform: translate3d(0,70vh,0);
+      transform: translateY(0,80vh,0);
   }
   to{
-      transform: translate3d(0,150vh,0);
+      transform: translateY(0,150vh,0);
   }
 }
 
 #buyAlertContainer{
   position: fixed;
-  transform: translate3d(0,70vh,0);
   width: 100%;
   height: auto;
   min-height: 100px;
@@ -428,6 +427,8 @@ body{
   justify-content: center;
   z-index: 7;
   pointer-events: none;
+  animation-fill-mode: forwards;
+  transform: translateY(80vh);
 }
 
 #buyAlertContainer .innerContainer{
@@ -505,19 +506,6 @@ body{
   will-change: width;
 }
 
-#buyAlertContainer.bounce-enter-active{
-  animation: animIn;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-#buyAlertContainer.bounce-leave-active{
-  animation: animOut;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
 
 #buyAlertContainer .barActive{
   animation: barAcrossProgress;
