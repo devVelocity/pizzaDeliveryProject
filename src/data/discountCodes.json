@@ -1,0 +1,13 @@
+[
+    {
+        "name":"code1",
+        "discountPerc": "50%",
+        "discountAmount": null
+    },
+    {
+        "name":"code2",
+        "discountPerc": "100%",
+        "discountAmount": null
+    }
+
+]

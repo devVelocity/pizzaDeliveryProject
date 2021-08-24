@@ -88,21 +88,19 @@
       </div>
     </div>
   </transition> 
-  <transition name="bounce">
-      <div v-if="buyAlert" id="buyAlertContainer">
-        <div class="innerContainer">
-          <h2>Item added to Basket</h2>
-          <br>
-          <div class="progressBar">
-            <span :class="{ barActive : buyAlert}"></span>
-          </div>
-          <br style="margin-bottom: 10px">   
-          <router-link @click="buyAlert = false" to="/basket">View Basket</router-link>    
-        </div>
+  <div v-if="buyAlert" id="buyAlertContainer">
+    <div class="innerContainer">
+      <h2>Item added to Basket</h2>
+      <br>
+      <div class="progressBar">
+        <span :class="{ barActive : buyAlert}"></span>
       </div>
-  </transition>
+      <br style="margin-bottom: 10px">   
+      <router-link @click="buyAlert = false" to="/basket">View Basket</router-link>    
+    </div>
+  </div>
   <!-- </teleport> -->
-   <span class="navigation-bar-relative-spacing"></span>
+  <span class="navigation-bar-relative-spacing"></span>
   <router-view/>
 </template>
 
