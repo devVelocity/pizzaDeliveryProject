@@ -17,49 +17,99 @@
                     </div>
                     <div class="section-2"></div>
                 </div>
-                <div id="stickyItem">
-                    <div class="stickyItemFlex2">
-
-
-                    </div>
-                    <div class="stickyItemFlex1">
-                        <hr>
-                        <h2>Discount Codes</h2>
-                        <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
-                        <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
-                        <transiton name="bounce">
-                            <h4 v-if="codeApplied === 2">Code already used / not recognised</h4>
-                        </transiton>
-                        <hr>
-                        <h2>Total</h2>
-                        <div class="total-wrapper">
-                            <span>
-                                <h4>Subtotal (incl. VAT)</h4>
-                                <h5>£{{totalPrice.toFixed(2)}}</h5>
-                            </span>
-                            <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
-                            <span>
-                                <h4>Discounts</h4>
-                                <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
-                                <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
-                           </span>
-                            <span>
-                                <h4>Final Subtotal</h4>
-                                <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
-                                <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
-                            </span>
+            </div>
+            <div v-if="confirmOrderDetails" class="stickyContainer">
+                <form @submit.prevent="formStage1()" id="form1">
+                    <div class="stickyItem">
+                        <div class="stickyItemFlex2">
+                            <hr>
+                            <h2>Details</h2>
                         </div>
-                        <hr>
-                        <h2>Additional Information:</h2>
-                        <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
-                        <div id="word-limit-wrap">
-                            <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
-                            <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
+                        <div class="stickyItemFlex1">
+                            <hr>
+                            <h2>Discount Codes</h2>
+                            <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                            <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                            <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
+                            <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
+                            <hr>
+                            <h2>Total</h2>
+                            <div class="total-wrapper">
+                                <span>
+                                    <h4>Subtotal (incl. VAT)</h4>
+                                    <h5>£{{totalPrice.toFixed(2)}}</h5>
+                                </span>
+                                <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
+                                <span>
+                                    <h4>Discounts</h4>
+                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
+                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                            </span>
+                                <span>
+                                    <h4>Final Subtotal</h4>
+                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
+                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                                </span>
+                            </div>
+                            <hr>
+                            <h2>Additional Information:</h2>
+                            <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
+                            <div id="word-limit-wrap">
+                                <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
+                                <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
+                            </div>
+                            <hr>
+                            <button type="submit" class="button-style4" form="form1">Confirm and Pay</button>
                         </div>
-                        <hr>
-                        <router-link @click.native="checkoutBasket()" to="/checkout" class="button-style4">Checkout</router-link>
                     </div>
-                </div>
+                </form>
+            </div>
+            <div v-if="confirmOrderPayment" class="stickyContainer">
+                <form @submit.prevent="checkoutCommenced()" id="form1">
+                    <div class="stickyItem">
+                        <div class="stickyItemFlex2">
+                            <hr>
+                            <h2>Details</h2>
+                        </div>
+                        <div class="stickyItemFlex1">
+                            <hr>
+                            <h2>Discount Codes</h2>
+                            <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                            <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                            <transition name="fade">
+                                <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
+                            </transition>
+                            <hr>
+                            <h2>Total</h2>
+                            <div class="total-wrapper">
+                                <span>
+                                    <h4>Subtotal (incl. VAT)</h4>
+                                    <h5>£{{totalPrice.toFixed(2)}}</h5>
+                                </span>
+                                <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
+                                <span>
+                                    <h4>Discounts</h4>
+                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
+                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                            </span>
+                                <span>
+                                    <h4>Final Subtotal</h4>
+                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
+                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                                </span>
+                            </div>
+                            <hr>
+                            <h2>Additional Information:</h2>
+                            <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
+                            <div id="word-limit-wrap">
+                                <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
+                                <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
+                            </div>
+                            <hr>
+                            <button type="submit" class="button-style4" form="form1">Checkout</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -92,6 +142,9 @@ export default {
             totalPrice: null,
             totalDiscounts: null,
             totalPriceDiscounts: null,
+
+            confirmOrderDetails: true,
+            confirmOrderPayment: false,
 
 
         }
@@ -158,15 +211,15 @@ export default {
             self.parsedDiscountArray = JSON.parse(JSON.stringify(discountCodesJson))
             for(const item in self.parsedDiscountArray){
                 if(self.parsedDiscountArray[item].name === argumentId){
-                    console.log("match");
+                    // console.log("match");
                     var getSubtotal = self.totalPrice.toFixed(2);
                     if(self.parsedDiscountArray[item].discountPerc === null){
                         if(self.parsedDiscountArray[item].discountAmount === null){
-                            console.log("No Discount")
+                            // console.log("No Discount")
                         }else{
-                            console.log(self.parsedDiscountArray[item].discountAmount)
+                            // console.log(self.parsedDiscountArray[item].discountAmount)
                             var getFloat = parseFloat(self.parsedDiscountArray[item].discountAmount);
-                            console.log(getFloat)
+                            // console.log(getFloat)
                             var newTotal = getSubtotal - getFloat;
                             var difference = getSubtotal - newTotal;
                             console.log(getFloat, newTotal, difference)
@@ -185,10 +238,11 @@ export default {
         },
         tryDiscountCode(){
             var self = this;
+            var found = false;
             var enteredCode = self.discountCodes;
             self.parsedDiscountArray = JSON.parse(JSON.stringify(discountCodesJson));
             for(const item in self.parsedDiscountArray){
-                console.log(self.parsedDiscountArray[item]);
+                // console.log(self.parsedDiscountArray[item]);
                 if(self.parsedDiscountArray[item].name == enteredCode){
                     if(localStorage.getItem("code-" + enteredCode)){
                         if(localStorage.getItem("code-" + enteredCode) === "true"){
@@ -196,18 +250,25 @@ export default {
                             self.discountCodes = ""
                             setTimeout(this.resetCodeApplied, 3000)
                         }else{  
-                            console.log("code not used");
+                            // console.log("code not used");
                             self.codeAppliedName = enteredCode;
                             self.codeApplied = 1;
+                            found = true;
                             this.workoutDiscount(enteredCode);
                         }
                     }else{
                         self.codeAppliedName = enteredCode;
                         self.codeApplied = 1;
-                        console.log("code not used");
+                        found = true;
+                        // console.log("code not used");
                         this.workoutDiscount(enteredCode);
                     }
                 }
+            }
+            if(!found){
+                self.codeApplied = 2;
+                self.discountCodes = ""
+                setTimeout(this.resetCodeApplied, 3000)
             }
         },
         removeDiscountCodes(){
@@ -216,13 +277,14 @@ export default {
             self.codeApplied = 0;
             self.codeAppliedName = "";
         },
-        checkoutBasket(){
-            console.log("Checkout");
+        checkoutCommenced(){
+            // console.log("Checkout");
             //Lock Discount Code
             var self = this;
             if(self.codeAppliedName != ""){
                 localStorage.setItem("code-" + self.codeAppliedName, "true")
             }
+            this.$router.push('checkout')
             
         },
         getQuantity(argumentId){
@@ -238,7 +300,7 @@ export default {
             for(const item in self.parsedItemsArray){
                 for(const sessionItem in sessionStorage){
                     if(sessionItem === "itemId-" + self.parsedItemsArray[item].itemId){
-                        console.log("match");
+                        // console.log("match");
                         self.totalPrice = self.totalPrice + parseFloat(self.parsedItemsArray[item].price)
                     }
                 }

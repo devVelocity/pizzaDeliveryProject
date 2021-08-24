@@ -401,19 +401,19 @@ body{
 
 @keyframes animIn{
   from{
-      transform: translateY(0,150,0)
+      transform: translateY(150vh)
   }
   to{
-      transform: translateY(0,80vh,0)
+      transform: translateY(80vh)
   }
 }
 
 @keyframes animOut{
   from{
-      transform: translateY(0,80vh,0);
+      transform: translateY(80vh);
   }
   to{
-      transform: translateY(0,150vh,0);
+      transform: translateY(150vh);
   }
 }
 
@@ -428,7 +428,26 @@ body{
   z-index: 7;
   pointer-events: none;
   animation-fill-mode: forwards;
+  opacity: 0;
+  transition: 1s ease-in-out;
+  transition-property: transform, opacity;
+  transform: translateY(150vh);
+}
+
+#buyAlertContainer.fadeIn{
+  transition: 1s ease-in-out;
+  transition-property: transform, opacity;
+  transform: translateY(150vh);
   transform: translateY(80vh);
+  opacity: 1;
+}
+
+#buyAlertContainer.fadeOut{
+  transition: 1s ease-in-out;
+  transition-property: transform, opacity;
+  transform: translateY(150vh);
+  opacity: 0;
+  transform: translateY(150vh)
 }
 
 #buyAlertContainer .innerContainer{
