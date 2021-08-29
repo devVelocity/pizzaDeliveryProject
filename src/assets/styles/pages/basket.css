@@ -53,7 +53,16 @@
     margin-bottom: 200px;
     margin-top: 50px;
     align-items: stretch;
+    gap: 20px;
+}
 
+#shoppingContainer button{
+    outline: 0;
+    border: 0;
+}
+
+#shoppingContainer button:hover{
+    cursor: pointer;
 }
 
 #shoppingContainer #itemColumn{
@@ -67,13 +76,19 @@
     position: relative;
 }
 
-#itemColumn #stickyItem{
+.stickyContainer{
+    width: 120%;
+    height: auto;
+    position: relative;
+}
+
+#shoppingContainer .stickyItem{
     background: rgb(15,15,15);
     background: var(--basketPayWindowBG);
     height: auto;
     min-height: 300px;
     max-width: 100%;
-    position: relative;
+    width: auto;
     border-radius: 10px;
     margin-bottom: 40px;    
     padding: 5px;
@@ -82,28 +97,37 @@
     border-bottom-right-radius: 40px;
     padding-bottom: 40px;
     display: flex;
+    margin-top: 20px;
     flex-direction: row;
     max-height: calc(100vh - 200px);
     max-width: 1180px;
     column-gap: 20px;
+    position: sticky;
+    top: 150px;
 }
 
-#stickyItem div{
+.stickyItem div{
     width: 100%;
     height: auto;
 }
 
-#stickyItem .stickyItemFlex1{
+.stickyItem .stickyItemFlex1{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-#stickyItem .stickyItemFlex2{
+.stickyItem .stickyItemFlex2{
     width: 100%;
     display: flex;
     flex-direction: column;
     min-height: 300px;
+}
+
+#form1{
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -178,23 +202,23 @@
 
 
 
-#stickyItem h2{
+.stickyItem h2{
     font-weight: 600;
 }
 
-#stickyItem hr{
+.stickyItem hr{
     margin-top: 5px;
     height: 1px;
     border: 0;
     background: var(--buyWindowHR);
 }
 
-#stickyItem h2{
+.stickyItem h2{
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
-#stickyItem .button-style4{
+.stickyItem .button-style4{
     width: auto;
     margin-left: 0; margin-right: 0px;
     font-size: clamp(20px,3vw,25px);
@@ -203,11 +227,12 @@
     margin-bottom: 0px;
 }
 
-#stickyItem input{
+.stickyItem input{
     background: rgb(50,50,50);
     background: var(--gray2);
     border: 0;
-    height: 25px;
+    height: auto;
+    min-height: 25px;
     border-radius: 10px;
     padding: 5px;
     color: white;
@@ -217,7 +242,21 @@
     font-size: clamp(14px,3vw,15px)
 }
 
-#stickyItem .additionalNotes{
+.stickyItem select{
+    background: rgb(50,50,50);
+    background: var(--gray2);
+    border: 0;
+    height: auto;
+    min-height: 25px;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    color: var(--inputText);
+    font-family: "Manrope";
+    font-weight: 100;
+}
+
+.stickyItem .additionalNotes{
     height: auto;
     min-height: 100px;
     resize: none;
@@ -233,7 +272,7 @@
     font-size: clamp(14px,3vw,15px)
 }
 
-#stickyItem #word-limit-wrap{
+.stickyItem #word-limit-wrap{
     background: rgb(50,50,50);
     background: var(--additionalNumbersBackground);
     margin-top: 10px;
@@ -246,13 +285,13 @@
     width: auto;
 }
 
-#stickyItem #word-limit-wrap h2{
+.stickyItem #word-limit-wrap h2{
     font-size: clamp(12px,3vw,14px);
     margin-top: 2px;
     margin-bottom: 2px;
 }
 
-#stickyItem #word-limit-wrap #word-limit-bar-notes{
+.stickyItem #word-limit-wrap #word-limit-bar-notes{
     height: 25px;
     width: 100%;
     margin-left: 15px;
@@ -263,7 +302,7 @@
     overflow: hidden;
 }
 
-#stickyItem #word-limit-bar-notes #word-limit-bar-move{
+.stickyItem #word-limit-bar-notes #word-limit-bar-move{
     position: absolute;
     top: 0; left: 0;
     width: 0%;
@@ -273,11 +312,12 @@
     border-radius: 40px;
 }
 
-#stickyItem .hover{
+.stickyItem .hover{
     background: black;
     background: var(--discountAppliedBG);
     padding-left: 5px;
     padding-right: 5px;
+    padding-bottom: 5px;
     border-radius: 100%;
     color: var(--discountAppliedBG);
     width: 20px; height: auto;
@@ -285,20 +325,20 @@
     cursor: pointer;
 }
 
-#stickyItem .discountAppliedSpan:hover > .hover{
+.stickyItem .discountAppliedSpan:hover > .hover{
     color: white;
     color: var(--discountAppliedBGText);
 }
 
-#stickyItem .discountAppliedSpan:hover{
+.stickyItem .discountAppliedSpan:hover{
     cursor: pointer;
 }
 
-#stickyItem .discountAppliedSpan:hover{
+.stickyItem .discountAppliedSpan:hover{
     background: var(--discountAppliedClose);
 }
 
-#stickyItem .discountAppliedSpan{
+.stickyItem .discountAppliedSpan{
     display: flex;
     gap: 10px;
     background: rgb(20,195,79);
@@ -310,7 +350,7 @@
     align-items: center;
 }
 
-#stickyItem .discountAppliedSpan h3, #stickyItem .discountAppliedSpan h4{
+.stickyItem .discountAppliedSpan h3, .stickyItem .discountAppliedSpan h4{
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -331,6 +371,68 @@
     margin-bottom: 5px;
 }
 
+.stickyItemFlex1 .h4codeRecognised{
+    transition: 1s ease-in-out;
+    transition-property: opacity, height;
+    opacity: 1;
+    margin-top: 10px;
+    margin-left: 2px;
+    margin-bottom: 3px;
+    font-weight: 100;
+    position: relative;
+}
+
+.stickyItemFlex1 .h4codeRecognised::before{
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -5px;
+    height: 1px;
+    background: white;
+    background: var(--textLight);
+    opacity: 0.5;
+}
+
+.stickyItemFlex1 .h4codeRecognised.error{
+    transition: 1s ease-in-out;
+    transition-property: opacity, height;
+    opacity: 1;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+    font-weight: 100;
+    color: rgb(255,50,50);
+    position: relative;
+}
+
+.stickyItemFlex1 .h4codeRecognised.error::after{
+    content: 'X';
+    position: absolute;
+    right: 0;
+    font-weight: 600;
+}
+
+.stickyItemFlex1 .h4codeRecognised.error::before{
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -5px;
+    height: 1px;
+    background: rgb(255,50,50);
+    opacity: 1;    
+}
+
+.stickyItemFlex1 .h4codeRecognised.fade-enter-active{
+    opacity: 1;
+}
+
+.stickyItemFlex1 .h4codeRecognised.fade-leave-active{
+    opacity: 0;
+}
+
+
 
 @media screen and (max-width: 1200px){
     #shoppingContainer{
@@ -341,20 +443,19 @@
         height: auto;
         min-height: 70vh;
     }
-    #shoppingContainer #stickyColumn{
-        width: calc(100% - 40px);
-        height: auto;
-        min-height: 30vh;
-        max-width: none;
-    }
-    #itemColumn #stickyItem{
+    #itemColumn .stickyItem{
         flex-direction: column;
     }
     #centralContainer{
         width: calc(100% - 20px);
         margin-left: 10px;      
     }
+    .stickyContainer{
+        width: calc(100% - 40px);
+        margin-left: 20px;
+    }
 }
+
 
 #shop-basket-container h2{
     font-weight: 300;
@@ -371,5 +472,29 @@
 .noItems2{
     position: fixed;
     top: 250px;
+}
+
+@media screen and (max-width: 740px){
+    #shoppingContainer .stickyItem{
+        flex-direction: column;
+        position: relative;
+        max-height: auto;
+        top: 0px;
+        max-height: none;
+    }
+    .stickyItemFlex1{
+        width: 100%;
+        height: auto;
+    }
+    .stickyItemFlex2{
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+    }
+}
+
+.terms{
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 

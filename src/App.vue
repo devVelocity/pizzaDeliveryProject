@@ -88,7 +88,7 @@
       </div>
     </div>
   </transition> 
-  <div v-if="buyAlert" id="buyAlertContainer">
+  <div id="buyAlertContainer"  :class="{fadeIn: buyAlert},{fadeOut: !buyAlert}">
     <div class="innerContainer">
       <h2>Item added to Basket</h2>
       <br>
@@ -150,16 +150,17 @@ export default{
         self.basketPulse = false;
       },6000)
     },
+    buyAlertReset(){
+      var self = this;
+      self.buyAlert = false;
+      self.processingAlert = false;
+      console.log("BA2")
+    },
     itemBoughtAlert(){
       var self  = this;
-      if(self.processingAlert === false){
-        self.buyAlert = true;  
-        self.processingAlert = true;
-        setTimeout(() => {
-          self.buyAlert = false;
-          self.processingAlert = false;
-        },6000)
-      }
+      self.buyAlert = false;
+      self.buyAlert = true;
+      setTimeout(function(){self.buyAlertReset()},5000)
     },
     componentGrabBasketItems(){
       var self = this;
