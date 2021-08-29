@@ -116,6 +116,7 @@ export default{
       basketOccupied: false,
       processingAlert: false,
       darkMode: false,
+      maxAmountItems: 10,
     }
   },
   methods:{

@@ -6,26 +6,25 @@
             <!-- require('../assets/images/content-images/menu-pizzas/itemId-' + details[2] + '.jpg') -->
             <img class="pizza-image" v-bind:src="tryImage" :alt="details[0]">
             <p>{{ details[1] }}</p>
-            <div class="itemBuyWindow buyWindowFlex">
-                <h3>Buy Now</h3>
-                <h2>{{ '£' + details[4] }}</h2>
-                <h4>Available In-Store or Delivery</h4>
-                <a class="orangeHyperLink">See Stores / Delivery</a>
-                <br>
-                <span><h4>Qty:</h4> <select class="dropdown-select" v-model="quantity">
-                    <option selected>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select></span>
-                <br>
-                <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
+            <div class="itemBuyWindow buyWindowFlex" :class="{ shrink : getQuantity(this.itemId) > maxItems}">
+                <div>
+                    <span v-if="getQuantity(this.itemId) < maxItems">
+                        <h4>Available In-Store or Delivery</h4>
+                        <a class="orangeHyperLink">See Stores / Delivery</a>
+                        <br>
+                    </span>
+                    <span v-if="getQuantity(this.itemId) < maxItems">
+                        <span><h4>Qty:</h4> <select class="dropdown-select" v-model="quantity">
+                            <option v-for="item in parseInt(maxItems)" selected="1"> {{item}} </option>
+                        </select></span>
+                        <br>
+                        <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
+                    </span>
+                    <span v-if="getQuantity(this.itemId) > maxItems">
+                        <h3>Sorry! You have reached the maximum quantity for this item </h3>
+                        <router-link class="buy-button maxed" to="/basket">See Basket</router-link>
+                    </span>
+                </div>
             </div>
             <br id="spacing-margin">
             <h1>Ingredients</h1>
@@ -76,26 +75,25 @@
             <br style="margin-bottom: 100px">
         </div>
         <div class="itemBuyWrapper">
-            <div class="itemBuyWindow">
-                <h3>Buy Now</h3>
-                <h2>{{ '£' + details[4] }}</h2>
-                <h4>Available In-Store or Delivery</h4>
-                <a class="orangeHyperLink">See Stores / Delivery</a>
-                <br>
-                <span><h4>Qty:</h4><select class="dropdown-select" v-model="quantity">
-                    <option selected>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select></span>
-                <br>
-                <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
+            <div class="itemBuyWindow" :class="{ shrink : getQuantity(this.itemId) > maxItems}">
+                <div>
+                    <span v-if="getQuantity(this.itemId) < maxItems">
+                        <h4>Available In-Store or Delivery</h4>
+                        <a class="orangeHyperLink">See Stores / Delivery</a>
+                        <br>
+                    </span>
+                    <span v-if="getQuantity(this.itemId) < maxItems">
+                        <span><h4>Qty:</h4> <select class="dropdown-select" v-model="quantity">
+                            <option v-for="item in parseInt(maxItems)" selected="1"> {{item}} </option>
+                        </select></span>
+                        <br>
+                        <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
+                    </span>
+                    <span v-if="getQuantity(this.itemId) > maxItems">
+                        <h4>Sorry! You have reached the maximum quantity for this item </h4>
+                        <router-link class="buy-button maxed" to="/basket">See Basket</router-link>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -117,6 +115,12 @@ export default {
             }
             self.$root.getBasket();
             self.$root.itemBoughtAlert();
+        },
+
+        getQuantity(argumentId){
+            if(sessionStorage.getItem("itemId-" + argumentId)){
+                return sessionStorage.getItem("itemId-" + argumentId)
+            }
         }
     },
     data(){
@@ -128,6 +132,8 @@ export default {
             nutritionalDropdownDown: false,
             allergenDropdown: false,
             imageSrc: null,
+            maxItems: null,
+            itemId: this.details[2]
         }
     },
     computed:{
@@ -138,6 +144,10 @@ export default {
                 return defaultImage
             }
         }
+    },
+    mounted(){
+        this.maxItems = this.$root.maxAmountItems;
+        this.itemId = this.details[2]
     }
 }
 </script>
