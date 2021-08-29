@@ -23,12 +23,37 @@
                     <div class="stickyItem">
                         <div class="stickyItemFlex2">
                             <hr>
-                            <h2>Details</h2>
-                        </div>
+                            <h2>Your Details</h2>
+                            <input v-model="fullName" placeholder="Full Name">
+                            <hr>
+                            <input v-model="contactNumber" placeholder="Contact Number">
+                            <hr>
+                            <input v-model="emailAddress" placeholder="Email Address">
+                            <hr>
+                            
+                            <input v-model="Address" placeholder="Address">
+                            <hr>
+                            <input v-model="postCode" placeholder="Postcode">
+                            <hr>
+                            <hr>
+                            <h2>Delivery Details</h2>
+                            <textarea :maxlength="maxWords2" @keyup="textAreaChangedTwo(e)" class="additionalNotes" v-model="deliveryDetails" placeholder="Do not give details about your order, only delivery instructions"></textarea>
+                            <div id="word-limit-wrap">
+                                <h2 class="additionalh2">{{wordCount2}} / {{maxWords2}} Characters</h2>
+                                <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc2 + '%'}"></span></div>
+                            </div>
+                            <hr>
+                            <h2>Payment Method</h2>
+                            <select>
+                                <option>Cash</option>
+                                <option>Card</option>
+                                <option>Paypal</option>
+                            </select>
+                       </div>
                         <div class="stickyItemFlex1">
                             <hr>
                             <h2>Discount Codes</h2>
-                            <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                            <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
                             <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                             <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
                             <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
@@ -59,6 +84,8 @@
                                 <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
                             </div>
                             <hr>
+                            <hr>
+                            <h4 class="terms">By continuing,  you agree to the <span><a class="orangeHyperLink">Terms and Conditions</a></span></h4>
                             <button type="submit" class="button-style4" form="form1">Confirm and Pay</button>
                         </div>
                     </div>
@@ -133,9 +160,17 @@ export default {
             codeAppliedName: "",
 
             wordLimitBarPerc: 0,
+            wordLimitBarPerc2: 0,
+
             wordCount: 0,
             modelledAtr: null,
             maxWords: 200,
+
+            wordCount2: 0,
+            maxWords2: 200,
+            modelledAtr2: null,
+            deliveryDetails: "",
+
             discountCodes: null,
             parsedItemsArray: null,
             parsedDiscountArray: null,
@@ -187,6 +222,17 @@ export default {
             }
             self.wordCount = spaces;
             self.wordLimitBarPerc = ((self.wordCount / self.maxWords) * 100);
+            
+        },
+        textAreaChangedTwo(e){
+            var self = this;
+            var getWords = self.deliveryDetails;
+            var spaces = 0;
+            for(var letter in getWords){
+                spaces += 1;
+            }
+            self.wordCount2 = spaces;
+            self.wordLimitBarPerc2 = ((self.wordCount2 / self.maxWords2) * 100);
             
         },
         tryDiscountCodeLocalStorage(argumentId){
@@ -268,7 +314,7 @@ export default {
             if(!found){
                 self.codeApplied = 2;
                 self.discountCodes = ""
-                setTimeout(this.resetCodeApplied, 3000)
+                setTimeout(this.resetCodeApplied, 2000)
             }
         },
         removeDiscountCodes(){

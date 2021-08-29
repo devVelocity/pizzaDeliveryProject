@@ -231,7 +231,8 @@
     background: rgb(50,50,50);
     background: var(--gray2);
     border: 0;
-    height: 25px;
+    height: auto;
+    min-height: 25px;
     border-radius: 10px;
     padding: 5px;
     color: white;
@@ -239,6 +240,20 @@
     font-family: "Manrope";
     font-weight: 100;
     font-size: clamp(14px,3vw,15px)
+}
+
+.stickyItem select{
+    background: rgb(50,50,50);
+    background: var(--gray2);
+    border: 0;
+    height: auto;
+    min-height: 25px;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    color: var(--inputText);
+    font-family: "Manrope";
+    font-weight: 100;
 }
 
 .stickyItem .additionalNotes{
@@ -418,6 +433,7 @@
 }
 
 
+
 @media screen and (max-width: 1200px){
     #shoppingContainer{
         flex-direction: column;   
@@ -426,12 +442,6 @@
         width: calc(100% - 40px);
         height: auto;
         min-height: 70vh;
-    }
-    #shoppingContainer #stickyColumn{
-        width: calc(100% - 40px);
-        height: auto;
-        min-height: 30vh;
-        max-width: none;
     }
     #itemColumn .stickyItem{
         flex-direction: column;
@@ -445,6 +455,7 @@
         margin-left: 20px;
     }
 }
+
 
 #shop-basket-container h2{
     font-weight: 300;
@@ -461,5 +472,29 @@
 .noItems2{
     position: fixed;
     top: 250px;
+}
+
+@media screen and (max-width: 740px){
+    #shoppingContainer .stickyItem{
+        flex-direction: column;
+        position: relative;
+        max-height: auto;
+        top: 0px;
+        max-height: none;
+    }
+    .stickyItemFlex1{
+        width: 100%;
+        height: auto;
+    }
+    .stickyItemFlex2{
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+    }
+}
+
+.terms{
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
