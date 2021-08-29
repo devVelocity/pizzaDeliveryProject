@@ -6,23 +6,27 @@
             <!-- require('../assets/images/content-images/menu-pizzas/itemId-' + details[2] + '.jpg') -->
             <img class="pizza-image" v-bind:src="tryImage" :alt="details[0]">
             <p>{{ details[1] }}</p>
-            <div class="itemBuyWindow buyWindowFlex" :class="{ shrink : getQuantity(this.itemId) > maxItems}">
+            <div class="itemBuyWindow buyWindowFlex" :class="{ shrink : getQuantity(this.itemId) >= maxItems}">
                 <div>
-                    <span v-if="getQuantity(this.itemId) < maxItems">
+                    <span v-if="getQuantity(this.itemId) < maxItems || getQuantity(this.itemId) === undefined">
+                        <h3>Buy Now</h3>
+                        <h2>{{detailsPrice}}</h2>
                         <h4>Available In-Store or Delivery</h4>
                         <a class="orangeHyperLink">See Stores / Delivery</a>
                         <br>
-                    </span>
-                    <span v-if="getQuantity(this.itemId) < maxItems">
                         <span><h4>Qty:</h4> <select class="dropdown-select" v-model="quantity">
-                            <option v-for="item in parseInt(maxItems)" selected="1"> {{item}} </option>
+                            <option v-if="getQuantity(this.itemId) === undefined" v-for="item in parseInt(maxItems)" selected="1"> {{item}} </option>
+                            <option v-if="getQuantity(this.itemId) != undefined" v-for="item in parseInt(maxItems) - parseInt(getQuantity(this.itemId))" selected="1"> {{item}} </option>
                         </select></span>
                         <br>
                         <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
                     </span>
-                    <span v-if="getQuantity(this.itemId) > maxItems">
-                        <h3>Sorry! You have reached the maximum quantity for this item </h3>
+                    <span v-if="getQuantity(this.itemId) >= maxItems">
+                        <h4>Sorry! You have reached the maximum quantity for this item </h4>
+                        <hr style="margin-bottom: 2px; margin-top: 2px; color: transparent">
                         <router-link class="buy-button maxed" to="/basket">See Basket</router-link>
+                        <hr style="margin-bottom: 2px; margin-top: 2px; color: transparent">
+                        <router-link class="buy-button maxed" to="/menu">Back to Menu</router-link>
                     </span>
                 </div>
             </div>
@@ -75,23 +79,27 @@
             <br style="margin-bottom: 100px">
         </div>
         <div class="itemBuyWrapper">
-            <div class="itemBuyWindow" :class="{ shrink : getQuantity(this.itemId) > maxItems}">
+            <div class="itemBuyWindow" :class="{ shrink : getQuantity(this.itemId) >= maxItems}">
                 <div>
-                    <span v-if="getQuantity(this.itemId) < maxItems">
+                    <span v-if="getQuantity(this.itemId) < maxItems || getQuantity(this.itemId) === undefined">
+                        <h3>Buy Now</h3>
+                        <h2>{{detailsPrice}}</h2>
                         <h4>Available In-Store or Delivery</h4>
                         <a class="orangeHyperLink">See Stores / Delivery</a>
                         <br>
-                    </span>
-                    <span v-if="getQuantity(this.itemId) < maxItems">
                         <span><h4>Qty:</h4> <select class="dropdown-select" v-model="quantity">
-                            <option v-for="item in parseInt(maxItems)" selected="1"> {{item}} </option>
+                            <option v-if="getQuantity(this.itemId) === undefined" v-for="item in parseInt(maxItems)" selected="1"> {{item}} </option>
+                            <option v-if="getQuantity(this.itemId) != undefined" v-for="item in parseInt(maxItems) - parseInt(getQuantity(this.itemId))" selected="1"> {{item}} </option>
                         </select></span>
                         <br>
                         <router-link v-on:click="itemBought" class="buy-button" to="/menu">Add to Basket</router-link>
                     </span>
-                    <span v-if="getQuantity(this.itemId) > maxItems">
+                    <span v-if="getQuantity(this.itemId) >= maxItems">
                         <h4>Sorry! You have reached the maximum quantity for this item </h4>
+                        <hr style="margin-bottom: 2px; margin-top: 2px; color: transparent">
                         <router-link class="buy-button maxed" to="/basket">See Basket</router-link>
+                        <hr style="margin-bottom: 2px; margin-top: 2px; color: transparent">
+                        <router-link class="buy-button maxed" to="/menu">Back to Menu</router-link>
                     </span>
                 </div>
             </div>

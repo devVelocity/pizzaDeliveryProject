@@ -273,7 +273,8 @@
     gap: 10px;
     align-items: center;
     padding-top: 35px;
-    justify-content: center;
+    justify-content:center;
+    align-items: stretch;
     position: relative;
 }
 
@@ -378,6 +379,7 @@
     .menu-grid{
         flex-direction: column;
         margin-right: 0px;
+        align-items: center;
     }
     .menu-item{
         width: calc(100% - 80px);

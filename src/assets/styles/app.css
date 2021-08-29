@@ -404,13 +404,13 @@ body{
       transform: translateY(150vh)
   }
   to{
-      transform: translateY(80vh)
+      transform: translateY(95vh)
   }
 }
 
 @keyframes animOut{
   from{
-      transform: translateY(80vh);
+      transform: translateY(95vh);
   }
   to{
       transform: translateY(150vh);
@@ -438,7 +438,7 @@ body{
   transition: 1s ease-in-out;
   transition-property: transform, opacity;
   transform: translateY(150vh);
-  transform: translateY(80vh);
+  transform: translateY(83vh);
   opacity: 1;
 }
 

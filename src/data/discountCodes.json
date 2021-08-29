@@ -6,8 +6,8 @@
     },
     {
         "name":"code2",
-        "discountPerc": "100%",
-        "discountAmount": null
+        "discountPerc": null,
+        "discountAmount": 14
     }
 
 ]
