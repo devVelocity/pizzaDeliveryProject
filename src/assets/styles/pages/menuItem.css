@@ -1,7 +1,17 @@
 #menuItemContainer{
-    width: 100%;
+    width: calc(100% - 40px);
+    margin-left: 20px;
     height: auto;
     min-height: calc(100vh - 100px);
+}
+
+
+@media screen and (min-width: 1000px){
+    #menuItemContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 

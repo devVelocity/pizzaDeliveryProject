@@ -19,16 +19,17 @@
                         <!-- Quantity: {{getQuantity(item.itemId)}} -->
                         <h2>
                             Quantity: 
-                            <span>
+                            <span class="quantityContainer">
                                 <select @change="changeQuantity(item.itemId, this.options[this.selectedIndex].text)">
-                                    <option v-for="amount in parseInt(getQuantity(item.itemId))" :selected="amount == getQuantity(item.itemId)">{{ amount }}</option>
+                                    <option v-if="getQuantity(item.itemId) >= maxItems" v-for="amount in parseInt(getQuantity(item.itemId))" :selected="amount == getQuantity(item.itemId)">{{ amount }}</option>
+                                    <option v-if="getQuantity(item.itemId) < maxItems" v-for="amount in parseInt(maxItems) - parseInt(getQuantity(item.itemId))" :selected="amount == getQuantity(item.itemId)">{{ amount }}</option>
                                 </select>
                             </span>
                         </h2>
                     </div>
                     <div class="flex-sideways" id="priceTotal">
                         <h2>Individual: <strong>£{{item.price}}</strong></h2>
-                        <h2>Total: <strong>£{{item.price * parseInt(getQuantity(item.itemId))}}</strong></h2>
+                        <h2>Total: <strong>£{{(item.price * parseInt(getQuantity(item.itemId))).toFixed(2)}}</strong></h2>
                     </div>
                     <div class="section-2"></div>
                 </div>
@@ -37,42 +38,42 @@
                 <form @submit.prevent="" id="form1">
                     <div class="stickyItem">
                         <div class="stickyItemFlex2">
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Your Details</h2>
                             <input v-model="fullName" placeholder="Full Name">
-                            <hr>
+                            <hr class="spacing-hr">
                             <input v-model="contactNumber" placeholder="Contact Number">
-                            <hr>
+                            <hr class="spacing-hr">
                             <input v-model="emailAddress" placeholder="Email Address">
-                            <hr>
+                            <hr class="spacing-hr">
                             
                             <input v-model="Address" placeholder="Address">
-                            <hr>
+                            <hr class="spacing-hr">
                             <input v-model="postCode" placeholder="Postcode">
-                            <hr>
-                            <hr>
+                            <hr class="spacing-hr">
+                            <hr class="spacing-hr">
                             <h2>Delivery Details</h2>
                             <textarea :maxlength="maxWords2" @keyup="textAreaChangedTwo(e)" class="additionalNotes" v-model="deliveryDetails" placeholder="Do not give details about your order, only delivery instructions"></textarea>
                             <div id="word-limit-wrap">
                                 <h2 class="additionalh2">{{wordCount2}} / {{maxWords2}} Characters</h2>
                                 <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc2 + '%'}"></span></div>
                             </div>
-                            <hr style="margin-bottom: 13px">
+                            <hr class="spacing-hr" style="margin-bottom: 13px">
                             <h2>Payment Method</h2>
-                            <select>
+                            <select v-model="paymentMethod">
                                 <option>Cash</option>
                                 <option>Card</option>
                                 <option>Paypal</option>
                             </select>
                        </div>
                         <div class="stickyItemFlex1">
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Discount Codes</h2>
                             <input v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
                             <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                             <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
                             <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Total</h2>
                             <div class="total-wrapper">
                                 <span>
@@ -91,15 +92,15 @@
                                     <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£{{ totalPrice.toFixed(2) }}</h5>
                                 </span>
                             </div>
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Additional Information:</h2>
                             <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
                             <div id="word-limit-wrap">
                                 <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
                                 <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
                             </div>
-                            <hr>
-                            <hr>
+                            <hr class="spacing-hr">
+                            <hr class="spacing-hr">
                             <h4 class="terms">By continuing,  you agree to the <span><a class="orangeHyperLink">Terms and Conditions</a></span></h4>
                             <button type="submit" class="button-style4" form="form1">Confirm and Pay</button>
                         </div>
@@ -110,7 +111,7 @@
                 <form @submit.prevent="checkoutCommenced()" id="form1">
                     <div class="stickyItem">
                         <div class="stickyItemFlex2">
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Details</h2>
                         </div>
                         <div class="stickyItemFlex1">
@@ -121,7 +122,7 @@
                             <transition name="fade">
                                 <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
                             </transition>
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Total</h2>
                             <div class="total-wrapper">
                                 <span>
@@ -140,14 +141,14 @@
                                     <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">{{ totalPrice }}</h5>
                                 </span>
                             </div>
-                            <hr>
+                            <hr class="spacing-hr">
                             <h2>Additional Information:</h2>
                             <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
                             <div id="word-limit-wrap">
                                 <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
                                 <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
                             </div>
-                            <hr>
+                            <hr class="spacing-hr">
                             <button type="submit" class="button-style4" form="form1">Checkout</button>
                         </div>
                     </div>
@@ -199,6 +200,8 @@ export default {
             discountCodePlaceholder: "Type code and press Enter",
             changeQuantityAmount: null,
             maxItems: 20,
+
+            paymentMethod: "Card"
 
 
         }

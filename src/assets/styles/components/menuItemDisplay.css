@@ -1,19 +1,18 @@
 
 #itemWrapper{
     height: auto;
-    min-height: calc(100vh - 100px);
+    min-height: 100%;
     display: flex;
-    width: calc(100vw - 100px);
-    margin-left: 50px;
+    width: auto;
     gap: 30px;
     padding-top: 50px;
+    position: relative;
 }
 
 #itemContainer{
     /* background: var(--white3); */
     padding: 30px;
     border-radius: 40px;
-    position: sticky;
     top: 150px;
     height: auto;
     min-height: 50vh;
@@ -36,14 +35,15 @@
 }
 
 .itemBuyWrapper{
-    width: 70%;
+    width: 100%;
     height: auto;
     min-height: 100%;
     position: relative;
+    max-width: 400px;
 }
 
 .itemBuyWindow{
-    width: 70%;
+    width: auto;
     background: var(--buyWindowBackground);
     border-radius: 10px;
     padding: 30px;
@@ -88,6 +88,7 @@
     font-weight: 400;
     color: white;
     color: var(--textLight);
+    width: 75ch;
 
 }
 
@@ -246,8 +247,13 @@
     min-height: auto;
 }
 
+.itemBuyWindow.buyWindowFlex.shrink h4{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 .itemBuyWindow.buyWindowFlex.shrink a{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .dropdown:first-of-type{

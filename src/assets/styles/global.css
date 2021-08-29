@@ -58,8 +58,8 @@ body.dark{
   --MFGBackground: var(--gray);
   --MFGActivateText: white;
   --MFGActivateBackground: var(--gray2);
-  --MFGActivateBorder: var(--gray2);
-  --MFGActiveStreak: white;
+  --MFGActivateBorder: white;
+  --MFGActiveStreak: var(--gray2);
 
   --MFGActiveText2: white;
   --MFGDeactiveBorder: var(--graydark);
@@ -86,7 +86,7 @@ body.dark{
   --buyWindowQuantityBackground: var(--gray2);
   --buyWindowQuantityText: white;
 
-  --h1bg: var(--gray);
+  --h1bg: var(--gray2);
 
   --orangeHyperlink: var(--orange1);
 
@@ -119,7 +119,10 @@ body.dark{
 
   --basketPriceBackground: var(--graydark);
   --basketPriceText: white;
-  --basketPriceBuyText: white
+  --basketPriceBuyText: white;
+
+  --basketDropdownBackground: var(--gray);
+  --basketDropdownText: white;
 
 
 }
