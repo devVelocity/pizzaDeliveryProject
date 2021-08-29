@@ -11,15 +11,30 @@
                 <div class="item" v-for="item in includedItems">
                     <span class="imageCover"></span>
                     <img :src="tryImage(item.itemId)">
-                    <div class="section-1">
+                    <div class="flex-sideways">
                         <h1>{{item.name}}</h1>
-                        <h1>{{getQuantity(item.itemId)}}</h1>
+                        <a class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
+                    </div>
+                    <div class="section-1">
+                        <!-- Quantity: {{getQuantity(item.itemId)}} -->
+                        <h2>
+                            Quantity: 
+                            <span>
+                                <select @change="changeQuantity(item.itemId, this.options[this.selectedIndex].text)">
+                                    <option v-for="amount in parseInt(getQuantity(item.itemId))" :selected="amount == getQuantity(item.itemId)">{{ amount }}</option>
+                                </select>
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="flex-sideways" id="priceTotal">
+                        <h2>Individual: <strong>£{{item.price}}</strong></h2>
+                        <h2>Total: <strong>£{{item.price * parseInt(getQuantity(item.itemId))}}</strong></h2>
                     </div>
                     <div class="section-2"></div>
                 </div>
             </div>
             <div v-if="confirmOrderDetails" class="stickyContainer">
-                <form @submit.prevent="formStage1()" id="form1">
+                <form @submit.prevent="" id="form1">
                     <div class="stickyItem">
                         <div class="stickyItemFlex2">
                             <hr>
@@ -42,7 +57,7 @@
                                 <h2 class="additionalh2">{{wordCount2}} / {{maxWords2}} Characters</h2>
                                 <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc2 + '%'}"></span></div>
                             </div>
-                            <hr>
+                            <hr style="margin-bottom: 13px">
                             <h2>Payment Method</h2>
                             <select>
                                 <option>Cash</option>
@@ -53,7 +68,7 @@
                         <div class="stickyItemFlex1">
                             <hr>
                             <h2>Discount Codes</h2>
-                            <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
+                            <input v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
                             <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                             <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
                             <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
@@ -73,7 +88,7 @@
                                 <span>
                                     <h4>Final Subtotal</h4>
                                     <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
-                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£{{ totalPrice.toFixed(2) }}</h5>
                                 </span>
                             </div>
                             <hr>
@@ -122,7 +137,7 @@
                                 <span>
                                     <h4>Final Subtotal</h4>
                                     <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
-                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">{{ totalPrice }}</h5>
                                 </span>
                             </div>
                             <hr>
@@ -180,6 +195,10 @@ export default {
 
             confirmOrderDetails: true,
             confirmOrderPayment: false,
+
+            discountCodePlaceholder: "Type code and press Enter",
+            changeQuantityAmount: null,
+            maxItems: 20,
 
 
         }
@@ -250,6 +269,7 @@ export default {
             var self = this;
             self.codeApplied = 0;
             self.codeAppliedName = "";
+            this.discountCodePlaceholder = "Type code and press Enter"
 
         },
         workoutDiscount(argumentId){
@@ -294,6 +314,7 @@ export default {
                         if(localStorage.getItem("code-" + enteredCode) === "true"){
                             self.codeApplied = 2;
                             self.discountCodes = ""
+                            this.discountCodePlaceholder = ""
                             setTimeout(this.resetCodeApplied, 3000)
                         }else{  
                             // console.log("code not used");
@@ -314,6 +335,7 @@ export default {
             if(!found){
                 self.codeApplied = 2;
                 self.discountCodes = ""
+                this.discountCodePlaceholder = ""
                 setTimeout(this.resetCodeApplied, 2000)
             }
         },
@@ -347,7 +369,7 @@ export default {
                 for(const sessionItem in sessionStorage){
                     if(sessionItem === "itemId-" + self.parsedItemsArray[item].itemId){
                         // console.log("match");
-                        self.totalPrice = self.totalPrice + parseFloat(self.parsedItemsArray[item].price)
+                        self.totalPrice = self.totalPrice + (parseFloat(self.parsedItemsArray[item].price * parseInt(sessionStorage.getItem("itemId-" + self.parsedItemsArray[item].itemId))))
                     }
                 }
                 // console.log(self.parsedItemsArray[item]);
@@ -402,6 +424,7 @@ export default {
         self.basketArray = this.$root.componentGrabBasketItems();
         self.basketCheckArray();
         self.getTotal();
+        this.maxItems = this.$root.maxAmountItems
     },
 }
 </script>

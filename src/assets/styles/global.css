@@ -65,8 +65,8 @@ body.dark{
   --MFGDeactiveBorder: var(--graydark);
   
   --MFGDeactiveBorder2: var(--gray);
-  --MFGActiveBackground2: var(--orange1dark);
-  --MFGActiveBorder2: var(--orange1dark2);
+  --MFGActiveBackground2: var(--gray2);
+  --MFGActiveBorder2: white;
 
   --MFGHoverBG: rgb(50,50,50);
   --MFGHoverBGText: white;
@@ -117,6 +117,10 @@ body.dark{
   --wordLimitBorder: var(--gray);
   --wordLimitBarInterior: var(--orange1darkSat);
 
+  --basketPriceBackground: var(--graydark);
+  --basketPriceText: white;
+  --basketPriceBuyText: white
+
 
 }
 
@@ -144,6 +148,12 @@ body.dark{
     font-family: "Manrope", sans-serif;
     font-weight: 500;
 }
+
+.button-style1.dark{
+  background: rgb(50,50,50);
+  background: var(--graydark);
+}
+
 .button-style1:hover{
     /* will-change: background,color; */
     background: white;

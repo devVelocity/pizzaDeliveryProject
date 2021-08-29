@@ -29,6 +29,9 @@
       <div id="pageWrapper2">
         <div class="menu-grid" v-if="allMenuActive">
           <div v-for="item in getParsedArray()" class="menu-item">
+            <div class="inYourBasket" v-if="getQuantity(item.itemId) > 0">
+              <h2>{{getQuantity(item.itemId)}} in your basket</h2>
+            </div>
             <div class="cover-background"></div>
             <img :src="tryImage(item.itemId)" :alt="item.name">
             <h1>{{ item.name }}</h1>
@@ -136,7 +139,14 @@ export default {
       }else{
         console.log('Error running filter')
       }
-    }
+    },
+    getQuantity(argumentId){
+        var self = this;
+        if(sessionStorage.getItem("itemId-" + argumentId)){
+          var getQuantity = sessionStorage.getItem("itemId-" + argumentId);
+          return getQuantity;
+        }
+    },
 
   },
   mounted(){
