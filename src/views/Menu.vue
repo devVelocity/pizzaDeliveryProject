@@ -83,7 +83,7 @@ export default {
     },
     runBoughtCheck(){
       var checkItem = sessionStorage.getItem("boughtItem")
-      console.log(checkItem)
+      // console.log(checkItem)
       if(checkItem === "true"){
         this.buyAlert = true;
         setTimeout(this.runBoughtCheckEnd, (this.boughtBarTimeShown + 500))
@@ -137,7 +137,7 @@ export default {
       }else if(getStorage === 'drink'){
         this.drinkFilter();
       }else{
-        console.log('Error running filter')
+        // console.log('Error running filter')
       }
     },
     getQuantity(argumentId){

@@ -37,7 +37,7 @@ export default {
             let editedMenu = JSON.parse(JSON.stringify(menuDataItems))
             for(let item in editedMenu){
                 if(parseInt(editedMenu[item].itemId) == this.id){
-                    console.log(editedMenu[item].src);
+                    // console.log(editedMenu[item].src);
                     this.currentName = editedMenu[item].name;
                     this.currentDetails = editedMenu[item].details;
                     this.currentItemId = editedMenu[item].itemId;
@@ -48,7 +48,7 @@ export default {
                     this.currentAllergen = editedMenu[item].currentAllergen;
                     this.nutritionalInfo = Object.values(editedMenu[item].nutritionalInfo)
                     this.showMenuItem = true;
-                    console.log(this.nutritionalInfo)
+                    // console.log(this.nutritionalInfo)
     
                 }
             }
