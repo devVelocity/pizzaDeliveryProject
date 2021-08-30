@@ -88,25 +88,17 @@
       </div>
     </div>
   </transition> 
-  <div id="buyAlertContainer"  :class="{fadeIn: buyAlert},{fadeOut: !buyAlert}">
-    <div class="innerContainer">
-      <h2>Item added to Basket</h2>
-      <br>
-      <div class="progressBar">
-        <span :class="{ barActive : buyAlert}"></span>
-      </div>
-      <br style="margin-bottom: 10px">   
-      <router-link @click="buyAlert = false" to="/basket">View Basket</router-link>    
-    </div>
-  </div>
   <!-- </teleport> -->
+  <itemAlert :active="buyAlert"/>
   <span class="navigation-bar-relative-spacing"></span>
   <router-view/>
 </template>
 
 <script>
 import { onMounted } from '@vue/runtime-core'
+import itemAlert from '../src/components/itemBought.vue'
 export default{
+  components:{ itemAlert },
   data(){
     return{
       isMobileNavOpen: false,

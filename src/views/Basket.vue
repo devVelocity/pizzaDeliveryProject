@@ -20,9 +20,9 @@
                         <h2>
                             Quantity: 
                             <span class="quantityContainer">
-                                <select @change="changeQuantity(item.itemId, this.options[this.selectedIndex].text)">
-                                    <option v-if="getQuantity(item.itemId) >= maxItems" v-for="amount in parseInt(getQuantity(item.itemId))" :selected="amount == getQuantity(item.itemId)">{{ amount }}</option>
-                                    <option v-if="getQuantity(item.itemId) < maxItems" v-for="amount in parseInt(maxItems) - parseInt(getQuantity(item.itemId))" :selected="amount == getQuantity(item.itemId)">{{ amount }}</option>
+                                <select @change="changeQuantity($event, item.itemId)">
+                                    <option v-if="getQuantity(item.itemId) >= maxItems" v-for="amount in maxItems" :selected="amount">{{ amount }}</option>
+                                    <option v-if="getQuantity(item.itemId) < maxItems" v-for="amount in maxItems">{{ amount }}</option>
                                 </select>
                             </span>
                         </h2>
@@ -368,14 +368,26 @@ export default {
         getTotal(){
             var self = this;
             self.parsedItemsArray = JSON.parse(JSON.stringify(data))
+            self.totalPrice = null;
             for(const item in self.parsedItemsArray){
-                for(const sessionItem in sessionStorage){
-                    if(sessionItem === "itemId-" + self.parsedItemsArray[item].itemId){
-                        // console.log("match");
-                        self.totalPrice = self.totalPrice + (parseFloat(self.parsedItemsArray[item].price * parseInt(sessionStorage.getItem("itemId-" + self.parsedItemsArray[item].itemId))))
-                    }
+                if(sessionStorage.getItem("itemId-" + self.parsedItemsArray[item].itemId)){
+                    // console.log("match");
+                    self.totalPrice = self.totalPrice + (parseFloat(self.parsedItemsArray[item].price * parseInt(sessionStorage.getItem("itemId-" + self.parsedItemsArray[item].itemId))))
                 }
                 // console.log(self.parsedItemsArray[item]);
+            }
+        },
+        changeQuantity(e,itemIdArgument){
+            console.log(itemIdArgument);
+            console.log(e.target.value);
+            for(const item in sessionStorage){
+                if(item == "itemId-" + itemIdArgument){
+                    console.log("Found");
+                    sessionStorage.setItem("itemId-" + itemIdArgument, e.target.value)
+                    this.$root.getBasket()
+                    this.getTotal()
+                    this.workoutDiscount(this.codeAppliedName);
+                }
             }
         },
         // basketCheck(parametersToGet){
@@ -406,7 +418,7 @@ export default {
         //             console.log(singleData.name)
         //         }
         //     }
-        // }
+        // },
     },
     computed:{
         finalPrice(){
