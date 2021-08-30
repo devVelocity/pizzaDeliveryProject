@@ -30,15 +30,15 @@
     color: transparent;
 }
 
-#warningSVG #circle1{
+.warningSVG #circle1{
     stroke: var(--warningIconColour);
 }
 
-#warningSVG #path{
+.warningSVG #path{
     fill: var(--warningIconColour);
 }
 
-#warningSVG #circle2{
+.warningSVG #circle2{
     fill: var(--warningIconColour);
 }
 
@@ -87,7 +87,7 @@
     color: var(--warningMenuButtonTextHover);
 }
 
-#warningItem #warningSVG{
+#warningItem .warningSVG{
     width: 200px;
     height: 200px;
 }
@@ -102,7 +102,7 @@
     }
 }
 
-#warningSVG{
+.warningSVG{
     animation: scale;
     animation-duration: 2s;
     animation-timing-function: ease-in-out;

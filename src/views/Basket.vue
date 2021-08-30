@@ -1,6 +1,15 @@
 <template>
   <teleport to="body">
-      <promptWarning v-if="warningPromptOpen" :dataInput="warningArguments" :description="'You are about to remove all ' + warningDescriptionItems + ' item(s) from your Basket, Are you sure you would like to Continue?'" @continue="removeItemFromBasketFinal(warningPromptId)" @cancel="warningPromptOpen = false, this.$root.warningPromptOpen = false"/>
+      <promptWarning v-if="warningPromptOpen" 
+      :dataInput="warningArguments" 
+      :description="'You are about to remove all ' + warningDescriptionItems + ' item(s) from your Basket, Are you sure you would like to Continue?'" 
+      title="Warning!"
+      warningType="1"
+      confirmButton="Continue"
+      cancelButton="Cancel"
+      @continue="removeItemFromBasketFinal(warningPromptId)" 
+      @cancel="warningPromptOpen = false, this.$root.warningPromptOpen = false"
+      />
   </teleport>
   <div id="page-background" style="margin-top: 5px">
     <div id="centralContainer">
