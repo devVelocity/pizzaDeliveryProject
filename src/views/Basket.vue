@@ -1,4 +1,5 @@
 <template>
+  <promptWarning :dataInput="warningArguments"/>
   <div id="page-background" style="margin-top: 5px">
     <div id="centralContainer">
         <div id="shop-basket-container">
@@ -163,8 +164,12 @@
 import data from '../data/data.json';
 import discountCodesJson from '../data/discountCodes.json';
 import defaultImage from '../assets/images/content-images/menu-pizzas/default.jpg';
+import promptWarning from '../components/deleteWarning.vue'
 
 export default {
+    components:{
+        promptWarning
+    },
     data(){
         return{
             basketItems: 0,
@@ -201,7 +206,9 @@ export default {
             changeQuantityAmount: null,
             maxItems: 20,
 
-            paymentMethod: "Card"
+            paymentMethod: "Card",
+
+            warningArguments: [],
 
 
         }
@@ -389,6 +396,9 @@ export default {
                     this.workoutDiscount(this.codeAppliedName);
                 }
             }
+        },
+        removeItemFromBasket(itemIdArgument){
+            
         },
         // basketCheck(parametersToGet){
         //     var self = this;
