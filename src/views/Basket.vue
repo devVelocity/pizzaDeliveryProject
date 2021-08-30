@@ -1,5 +1,7 @@
 <template>
-  <promptWarning :dataInput="warningArguments"/>
+  <teleport to="body">
+      <promptWarning v-if="warningPromptOpen" :dataInput="warningArguments" :description="'You are about to remove all ' + warningDescriptionItems + ' item(s) from your Basket, Are you sure you would like to Continue?'" @continue="removeItemFromBasketFinal(warningPromptId)" @cancel="warningPromptOpen = false, this.$root.warningPromptOpen = false"/>
+  </teleport>
   <div id="page-background" style="margin-top: 5px">
     <div id="centralContainer">
         <div id="shop-basket-container">
@@ -14,7 +16,7 @@
                     <img :src="tryImage(item.itemId)">
                     <div class="flex-sideways">
                         <h1>{{item.name}}</h1>
-                        <a class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
+                        <a id="button-1" class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
                     </div>
                     <div class="section-1">
                         <!-- Quantity: {{getQuantity(item.itemId)}} -->
@@ -33,6 +35,7 @@
                         <h2>Total: <strong>£{{(item.price * parseInt(getQuantity(item.itemId))).toFixed(2)}}</strong></h2>
                     </div>
                     <div class="section-2"></div>
+                    <a id="button-2" class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
                 </div>
             </div>
             <div v-if="confirmOrderDetails" class="stickyContainer">
@@ -209,6 +212,10 @@ export default {
             paymentMethod: "Card",
 
             warningArguments: [],
+
+            warningPromptOpen: false,
+            warningDescriptionItems: "",
+            warningPromptId: null,
 
 
         }
@@ -397,8 +404,29 @@ export default {
                 }
             }
         },
-        removeItemFromBasket(itemIdArgument){
-            
+        removeItemFromBasket(itemIdArguement){
+            this.warningPromptOpen = true;
+            this.warningDescriptionItems = this.getQuantity(parseInt(itemIdArguement))
+            console.log(this.warningDescriptionItems);
+            this.warningPromptId = itemIdArguement;
+            this.$root.warningPromptOpen = true;
+        },
+        removeItemFromBasketFinal(itemIdArguement){
+            if(sessionStorage.getItem("itemId-" + itemIdArguement)){
+                sessionStorage.removeItem("itemId-" + itemIdArguement)
+                var self = this;
+                self.parsedArray = null
+                self.basketArray = null
+                self.includedItems = []
+                self.$root.getBasket(true)
+                self.pingBasket();
+                self.getParsedArray();
+                self.basketArray =  self.$root.componentGrabBasketItems();
+                self.basketCheckArray();
+                self.getTotal();
+                self.maxItems = self.$root.maxAmountItems;
+                self.warningPromptOpen = false;
+            }
         },
         // basketCheck(parametersToGet){
         //     var self = this;

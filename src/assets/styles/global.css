@@ -124,6 +124,15 @@ body.dark{
   --basketDropdownBackground: var(--gray);
   --basketDropdownText: white;
 
+  --warningItemBackground: var(--graydark);
+  --warningIconColour: white;
+  --warningMenuText: var(--textLight);
+
+  --warningMenuButtonBackground: var(--orange1dark);
+  --warningMenuButtonBackgroundHover: var(--orange1dark2);
+  --warningMenuButtonText: white;
+  --warningMenuButtonTextHover: white;
+
 
 }
 
@@ -414,4 +423,5 @@ h1,h2,h3,h4,h5,h6,p{
   text-decoration: none;
   font-weight: 500;
 }
+
 

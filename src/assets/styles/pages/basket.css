@@ -211,6 +211,11 @@
 .item h1{
     z-index: 3;
     color: white;
+    font-size: clamp(20px,3vw, 34px);
+}
+
+.item h2{
+    font-size: clamp(16px,3vw, 24px);
 }
 
 .total-wrapper span{
@@ -469,7 +474,7 @@
 
 
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1350px){
     #shoppingContainer{
         flex-direction: column;   
     }
@@ -564,8 +569,9 @@
     color: var(--basketPriceBuyText)
 }
 
-@media screen and (max-width: 740px){
+@media screen and (max-width: 850px){
     #shoppingContainer .stickyItem{
+        display: flex;
         flex-direction: column;
         position: relative;
         max-height: auto;
@@ -583,8 +589,76 @@
     }
 }
 
+#button-2{
+    display: none;
+}
+
+@media screen and (max-width: 600px){
+    #itemColumn .item{
+        justify-content: center;
+        align-items: center;
+    }
+    .flex-sideways{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .flex-sideways h1{
+        width: 90%;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .flex-sideways .button-style1{
+        width: 90%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: auto;
+    }
+    #itemColumn .section-1{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    #itemColumn .section-1 h2{
+        width: 90%;
+        text-align: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    #itemColumn h2{
+        width: 100%;
+    }
+    #button-1{
+        display: none;
+    }
+    #button-2{
+        display: inline-block;
+    }
+    #itemColumn #priceTotal{
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+    #priceTotal h2{
+        width: 90%;
+        text-align: center;
+    }
+    #button-2{
+        width: 90%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .quantityContainer select{
+        margin-left: 0px;
+        width: 50%;
+        text-align: center;
+        margin-left: 10px;
+        transform: translateY(0.5px);
+    }
+}
+
 .terms{
     margin-top: 2px;
     margin-bottom: 2px;
 }
+
 
