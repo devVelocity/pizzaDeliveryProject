@@ -1,7 +1,18 @@
+
+
+#pageWrapperWrapper{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+}
+
 #pageWrapper1{
     display: flex;
     padding-top: 120px;
     gap: 20px;
+    width: auto;
+    max-width: 1500px;
 }
 
 

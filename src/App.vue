@@ -113,7 +113,11 @@ export default{
       processingAlert: false,
       darkMode: false,
       maxAmountItems: 10,
-      warningPromptOpen: false
+      warningPromptOpen: false,
+
+      finalPrice: null,
+      finalItems: [],
+      
     }
   },
   methods:{

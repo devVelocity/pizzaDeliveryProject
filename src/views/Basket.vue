@@ -12,160 +12,162 @@
       />
   </teleport>
   <div id="page-background" style="margin-top: 5px">
-    <div id="centralContainer">
-        <div id="shop-basket-container">
-            <h1 :class="{ noItems : basketItems === 0}">Shopping Basket</h1>
-            <h3 v-if="basketItems != 0" class="itemsDisplay">{{ basketItems }} Items</h3>
-            <h2 v-if="basketItems === 0" class="noItems2">You dont have any items in your basket. <router-link class="light-button" to="/menu">Add some items</router-link></h2>
-        </div>
-        <div v-if="basketItems > 0" id="shoppingContainer">
-            <div id="itemColumn">
-                <div class="item" v-for="item in includedItems">
-                    <span class="imageCover"></span>
-                    <img :src="tryImage(item.itemId)">
-                    <div class="flex-sideways">
-                        <h1>{{item.name}}</h1>
-                        <a id="button-1" class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
+    <div id="centralWrapper">
+        <div id="centralContainer">
+            <div id="shop-basket-container">
+                <h1 :class="{ noItems : basketItems === 0}">Shopping Basket</h1>
+                <h3 v-if="basketItems != 0" class="itemsDisplay">{{ basketItems }} Items</h3>
+                <h2 v-if="basketItems === 0" class="noItems2">You dont have any items in your basket. <router-link class="light-button" to="/menu">Add some items</router-link></h2>
+            </div>
+            <div v-if="basketItems > 0" id="shoppingContainer">
+                <div id="itemColumn">
+                    <div class="item" v-for="item in includedItems">
+                        <span class="imageCover"></span>
+                        <img :src="tryImage(item.itemId)">
+                        <div class="flex-sideways">
+                            <h1>{{item.name}}</h1>
+                            <a id="button-1" class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
+                        </div>
+                        <div class="section-1">
+                            <!-- Quantity: {{getQuantity(item.itemId)}} -->
+                            <h2>
+                                Quantity: 
+                                <span class="quantityContainer">
+                                    <select @change="changeQuantity($event, item.itemId)">
+                                        <option v-if="getQuantity(item.itemId) >= maxItems" v-for="amount in maxItems" :selected="amount">{{ amount }}</option>
+                                        <option v-if="getQuantity(item.itemId) < maxItems" v-for="amount in maxItems">{{ amount }}</option>
+                                    </select>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="flex-sideways" id="priceTotal">
+                            <h2>Individual: <strong>£{{item.price}}</strong></h2>
+                            <h2>Total: <strong>£{{(item.price * parseInt(getQuantity(item.itemId))).toFixed(2)}}</strong></h2>
+                        </div>
+                        <div class="section-2"></div>
+                        <a id="button-2" class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
                     </div>
-                    <div class="section-1">
-                        <!-- Quantity: {{getQuantity(item.itemId)}} -->
-                        <h2>
-                            Quantity: 
-                            <span class="quantityContainer">
-                                <select @change="changeQuantity($event, item.itemId)">
-                                    <option v-if="getQuantity(item.itemId) >= maxItems" v-for="amount in maxItems" :selected="amount">{{ amount }}</option>
-                                    <option v-if="getQuantity(item.itemId) < maxItems" v-for="amount in maxItems">{{ amount }}</option>
-                                </select>
-                            </span>
-                        </h2>
-                    </div>
-                    <div class="flex-sideways" id="priceTotal">
-                        <h2>Individual: <strong>£{{item.price}}</strong></h2>
-                        <h2>Total: <strong>£{{(item.price * parseInt(getQuantity(item.itemId))).toFixed(2)}}</strong></h2>
-                    </div>
-                    <div class="section-2"></div>
-                    <a id="button-2" class="button-style1 dark" @click="removeItemFromBasket(item.itemId)">Remove</a>
                 </div>
-            </div>
-            <div v-if="confirmOrderDetails" class="stickyContainer">
-                <form @submit.prevent="" id="form1">
-                    <div class="stickyItem">
-                        <div class="stickyItemFlex2">
-                            <hr class="spacing-hr">
-                            <h2>Your Details</h2>
-                            <input v-model="fullName" placeholder="Full Name">
-                            <hr class="spacing-hr">
-                            <input v-model="contactNumber" placeholder="Contact Number">
-                            <hr class="spacing-hr">
-                            <input v-model="emailAddress" placeholder="Email Address">
-                            <hr class="spacing-hr">
-                            
-                            <input v-model="Address" placeholder="Address">
-                            <hr class="spacing-hr">
-                            <input v-model="postCode" placeholder="Postcode">
-                            <hr class="spacing-hr">
-                            <hr class="spacing-hr">
-                            <h2>Delivery Details</h2>
-                            <textarea :maxlength="maxWords2" @keyup="textAreaChangedTwo(e)" class="additionalNotes" v-model="deliveryDetails" placeholder="Do not give details about your order, only delivery instructions"></textarea>
-                            <div id="word-limit-wrap">
-                                <h2 class="additionalh2">{{wordCount2}} / {{maxWords2}} Characters</h2>
-                                <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc2 + '%'}"></span></div>
-                            </div>
-                            <hr class="spacing-hr" style="margin-bottom: 13px">
-                            <h2>Payment Method</h2>
-                            <select v-model="paymentMethod">
-                                <option>Cash</option>
-                                <option>Card</option>
-                                <option>Paypal</option>
-                            </select>
-                       </div>
-                        <div class="stickyItemFlex1">
-                            <hr class="spacing-hr">
-                            <h2>Discount Codes</h2>
-                            <input v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
-                            <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
-                            <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
-                            <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
-                            <hr class="spacing-hr">
-                            <h2>Total</h2>
-                            <div class="total-wrapper">
-                                <span>
-                                    <h4>Subtotal (incl. VAT)</h4>
-                                    <h5>£{{totalPrice.toFixed(2)}}</h5>
-                                </span>
-                                <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
-                                <span>
-                                    <h4>Discounts</h4>
-                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
-                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
-                            </span>
-                                <span>
-                                    <h4>Final Subtotal</h4>
-                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
-                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£{{ totalPrice.toFixed(2) }}</h5>
-                                </span>
-                            </div>
-                            <hr class="spacing-hr">
-                            <h2>Additional Information:</h2>
-                            <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
-                            <div id="word-limit-wrap">
-                                <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
-                                <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
-                            </div>
-                            <hr class="spacing-hr">
-                            <hr class="spacing-hr">
-                            <h4 class="terms">By continuing,  you agree to the <span><a class="orangeHyperLink">Terms and Conditions</a></span></h4>
-                            <button type="submit" class="button-style4" form="form1">Confirm and Pay</button>
+                <div v-if="confirmOrderDetails" class="stickyContainer">
+                    <form @submit.prevent="" id="form1">
+                        <div class="stickyItem">
+                            <div class="stickyItemFlex2">
+                                <hr class="spacing-hr">
+                                <h2>Your Details</h2>
+                                <input v-model="fullName" placeholder="Full Name">
+                                <hr class="spacing-hr">
+                                <input v-model="contactNumber" placeholder="Contact Number">
+                                <hr class="spacing-hr">
+                                <input v-model="emailAddress" placeholder="Email Address">
+                                <hr class="spacing-hr">
+                                
+                                <input v-model="Address" placeholder="Address">
+                                <hr class="spacing-hr">
+                                <input v-model="postCode" placeholder="Postcode">
+                                <hr class="spacing-hr">
+                                <hr class="spacing-hr">
+                                <h2>Delivery Details</h2>
+                                <textarea :maxlength="maxWords2" @keyup="textAreaChangedTwo(e)" class="additionalNotes" v-model="deliveryDetails" placeholder="Do not give details about your order, only delivery instructions"></textarea>
+                                <div id="word-limit-wrap">
+                                    <h2 class="additionalh2">{{wordCount2}} / {{maxWords2}} Characters</h2>
+                                    <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc2 + '%'}"></span></div>
+                                </div>
+                                <hr class="spacing-hr" style="margin-bottom: 13px">
+                                <h2>Payment Method</h2>
+                                <select v-model="paymentMethod">
+                                    <option>Cash</option>
+                                    <option>Card</option>
+                                    <option>Paypal</option>
+                                </select>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div v-if="confirmOrderPayment" class="stickyContainer">
-                <form @submit.prevent="checkoutCommenced()" id="form1">
-                    <div class="stickyItem">
-                        <div class="stickyItemFlex2">
-                            <hr class="spacing-hr">
-                            <h2>Details</h2>
-                        </div>
-                        <div class="stickyItemFlex1">
-                            <hr>
-                            <h2>Discount Codes</h2>
-                            <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
-                            <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
-                            <transition name="fade">
-                                <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
-                            </transition>
-                            <hr class="spacing-hr">
-                            <h2>Total</h2>
-                            <div class="total-wrapper">
-                                <span>
-                                    <h4>Subtotal (incl. VAT)</h4>
-                                    <h5>£{{totalPrice.toFixed(2)}}</h5>
+                            <div class="stickyItemFlex1">
+                                <hr class="spacing-hr">
+                                <h2>Discount Codes</h2>
+                                <input v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
+                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                                <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
+                                <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
+                                <hr class="spacing-hr">
+                                <h2>Total</h2>
+                                <div class="total-wrapper">
+                                    <span>
+                                        <h4>Subtotal (incl. VAT)</h4>
+                                        <h5>£{{totalPrice.toFixed(2)}}</h5>
+                                    </span>
+                                    <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
+                                    <span>
+                                        <h4>Discounts</h4>
+                                        <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
+                                        <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
                                 </span>
-                                <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
-                                <span>
-                                    <h4>Discounts</h4>
-                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
-                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
-                            </span>
-                                <span>
-                                    <h4>Final Subtotal</h4>
-                                    <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
-                                    <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">{{ totalPrice }}</h5>
-                                </span>
+                                    <span>
+                                        <h4>Final Subtotal</h4>
+                                        <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
+                                        <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£{{ totalPrice.toFixed(2) }}</h5>
+                                    </span>
+                                </div>
+                                <hr class="spacing-hr">
+                                <h2>Additional Information:</h2>
+                                <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
+                                <div id="word-limit-wrap">
+                                    <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
+                                    <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
+                                </div>
+                                <hr class="spacing-hr">
+                                <hr class="spacing-hr">
+                                <h4 class="terms">By continuing,  you agree to the <span><a class="orangeHyperLink">Terms and Conditions</a></span></h4>
+                                <button @click="checkoutCommenced()" class="button-style4" form="form1">Confirm and Pay</button>
                             </div>
-                            <hr class="spacing-hr">
-                            <h2>Additional Information:</h2>
-                            <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
-                            <div id="word-limit-wrap">
-                                <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
-                                <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
-                            </div>
-                            <hr class="spacing-hr">
-                            <button type="submit" class="button-style4" form="form1">Checkout</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div v-if="confirmOrderPayment" class="stickyContainer">
+                    <form @submit.prevent="checkoutCommenced()" id="form1">
+                        <div class="stickyItem">
+                            <div class="stickyItemFlex2">
+                                <hr class="spacing-hr">
+                                <h2>Details</h2>
+                            </div>
+                            <div class="stickyItemFlex1">
+                                <hr>
+                                <h2>Discount Codes</h2>
+                                <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                                <transition name="fade">
+                                    <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
+                                </transition>
+                                <hr class="spacing-hr">
+                                <h2>Total</h2>
+                                <div class="total-wrapper">
+                                    <span>
+                                        <h4>Subtotal (incl. VAT)</h4>
+                                        <h5>£{{totalPrice.toFixed(2)}}</h5>
+                                    </span>
+                                    <!-- v-if="codeApplied != 0 && codeApplied != 2" -->
+                                    <span>
+                                        <h4>Discounts</h4>
+                                        <h5 v-if="codeApplied != 0 && codeApplied != 2">- £{{totalDiscounts}}</h5>
+                                        <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">£0.00</h5>
+                                </span>
+                                    <span>
+                                        <h4>Final Subtotal</h4>
+                                        <h5 v-if="codeApplied != 0 && codeApplied != 2">£{{ totalPriceDiscounts }}</h5>
+                                        <h5 v-if="codeApplied === 0 || codeApplied === 2 && codeApplied != 1">{{ totalPrice }}</h5>
+                                    </span>
+                                </div>
+                                <hr class="spacing-hr">
+                                <h2>Additional Information:</h2>
+                                <textarea :maxlength="maxWords" @keyup="textAreaChanged(e)" placeholder="Anything specific you would like with your order?" class="additionalNotes" v-model="modelledAtr"></textarea>
+                                <div id="word-limit-wrap">
+                                    <h2 class="additionalh2">{{wordCount}} / {{maxWords}} Characters</h2>
+                                    <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
+                                </div>
+                                <hr class="spacing-hr">
+                                <button @click="checkoutCommenced()" class="button-style4" form="form1">Checkout</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -225,6 +227,8 @@ export default {
             warningPromptOpen: false,
             warningDescriptionItems: "",
             warningPromptId: null,
+
+            finalBasketArray: [],
 
 
         }
@@ -374,11 +378,23 @@ export default {
         checkoutCommenced(){
             // console.log("Checkout");
             //Lock Discount Code
+            this.$root.finalPrice = null;
+            this.$root.finalItems = null;
             var self = this;
             if(self.codeAppliedName != ""){
                 localStorage.setItem("code-" + self.codeAppliedName, "true")
             }
-            this.$router.push('checkout')
+            if(self.codeAppliedName == ""){
+                this.$root.finalPrice = this.totalPrice.toFixed(2)
+            }else{
+                this.$root.finalPrice = this.totalPriceDiscounts
+            }
+            for(const item in this.includedItems){
+                console.log(this.includedItems[item].name)
+            }
+            this.$router.push('/basket/payment');
+            console.log("Final Price " + this.$root.finalPrice)
+            console.log(this.$root.finalItems)
             
         },
         getQuantity(argumentId){
