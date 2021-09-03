@@ -6,7 +6,7 @@
 }
 
 #centralWrapper{
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: flex;
     align-content: center;
@@ -16,13 +16,13 @@
 #centralContainer{
     height: auto;
     min-height: 90vh;
-    width: 90%;
+    width: 94%;
     display: flex;
     margin-bottom: 200px;
     margin-top: 5px;
     flex-direction: column;
-    max-width: 1500px;
     margin-left: 2vw;
+    max-width: 1800px;
 }
 
 
@@ -166,7 +166,7 @@
     overflow: hidden;
     position: relative;
     display: flex;
-    max-width: 1200px;
+    max-width: 1000px;
     flex-direction: column;
 }
 
