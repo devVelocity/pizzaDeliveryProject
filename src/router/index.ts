@@ -6,6 +6,7 @@ import MenuItem from '../views/MenuItem.vue'
 import Basket from '../views/Basket.vue'
 import Payment from '../views/Payment.vue'
 
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',

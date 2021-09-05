@@ -139,7 +139,9 @@ body.dark{
   --footerBackground: var(--gray);
   --footerHR: var(--gray2);
   --footerText: var(--gray3);
-  --hyperlinkDisabled: var(--gray27)
+  --hyperlinkDisabled: var(--gray27);
+  --toolTipBg: rgba(0,0,0,0.3);
+  --toolTipText: white;
 
 
 }
@@ -436,5 +438,42 @@ h1,h2,h3,h4,h5,h6,p{
   text-decoration: none;
   font-weight: 500;
 }
+
+.toolTip{
+  opacity: 0;
+  transition: 0.25s opacity ease-in-out;
+  color: white;
+  background: black;
+  background: var(--toolTipBg);
+  color: var(--toolTipText);
+  transform: translateY(calc(-60% - 2em));
+  text-decoration: none;
+  font-size: clamp(12px,3vw,18px);
+  position: absolute;
+  padding-top: 5px; padding-bottom: 5px;
+  padding-left: 10px; padding-right: 10px;
+  border-radius: 10px;
+}
+
+.toolTip::before{
+  content: ' ';
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid black;
+  border-top: 20px solid var(--toolTipBg);
+  bottom: calc(-50% - 0.1em);
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+
+}
+
+a:hover .toolTip{
+  opacity: 1;
+}
+
 
 

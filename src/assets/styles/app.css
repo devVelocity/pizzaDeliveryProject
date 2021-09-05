@@ -618,6 +618,7 @@ footer h1,h2,h3,h4,h5,h6{
   max-height: 80px;
   filter: grayscale(100%);
   transition: 0.1s filter ease-in-out;
+  transform: translateX(-15px);
 }
 
 #footerLogo:hover{
@@ -628,13 +629,13 @@ footer h1,h2,h3,h4,h5,h6{
 
 .footerFlexWrap{
   display: flex;
-  gap: 20px;
+  gap: 80px;
   align-items: stretch;
   justify-content: space-between;
-  width: calc(100% - 60px);
-  margin-left: 30px;
-  padding-top: 20px;
-  padding-bottom: 50px;
+  width: calc(100% - 125px);
+  margin-left: 62.5px;
+  padding-top: 50px;
+  padding-bottom: 70px;
   height: auto;
   min-height: 300px;
 }
@@ -728,11 +729,15 @@ footer .gradientHR{
 @media screen and (max-width: 800px){
   .footerFlexWrap{
     flex-direction: column;
+    width: calc(100% - 60px);
+    margin-left: 30px;
   }
   .fullWidth .flex-list-items a{
     font-size: clamp(16px,3vw,28px);
   }
 }
+
+
 
 
 
