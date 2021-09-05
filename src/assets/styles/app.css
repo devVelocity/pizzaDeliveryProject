@@ -589,6 +589,14 @@ footer{
   background: var(--pagebackground);
 }
 
+footer h1,h2,h3,h4,h5,h6{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: rgb(170,170,170);
+  color: var(--footerText);
+  font-family: "Manrope", sans-serif;
+}
+
 #footer{
   background: rgb(50,50,50);
   background: var(--footerBackground);
@@ -615,18 +623,18 @@ footer{
   filter: grayscale(0%);
 }
 
-#footerPadding{
-  width: calc(100% - 60px);
-  margin-left: 30px;
-  padding-top: 20px;
-  padding-bottom: 50px;
-}
 
 .footerFlexWrap{
   display: flex;
   gap: 20px;
   align-items: stretch;
   justify-content: space-between;
+  width: calc(100% - 60px);
+  margin-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  height: auto;
+  min-height: 300px;
 }
 
 .footerFlexWrap .wrapItem{
@@ -637,6 +645,29 @@ footer{
   display: flex;
   align-items: center;
   justify-content: left;
+  height: 75px;
+}
+
+.footerFlexWrap .fullWidth{
+  width: 100%;
+  height: auto;
+}
+
+
+.fullWidth .flex-list-items{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.fullWidth .wrapItem h1{
+  font-size: clamp(20px,3vw,34px);
+}
+
+.fullWidth .flex-list-items a{
+  width: 100%;
+  display: inline-block;
+  font-size: clamp(20px,1.5vw,24px);
 }
 
 footer .gradientHR{
@@ -653,13 +684,18 @@ footer .gradientHR{
   left: 0;
 }
 
-footer h1,h2,h3,h4,h5,h6{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  color: rgb(170,170,170);
-  color: var(--footerText);
-  font-family: "Manrope", sans-serif;
+@media screen and (max-width: 800px){
+  .footerFlexWrap{
+    flex-direction: column;
+  }
+  .fullWidth .flex-list-items a{
+    font-size: clamp(16px,3vw,28px);
+  }
 }
+
+
+
+
 
 
 

@@ -103,8 +103,8 @@
         </svg>
     </div>
     <div id="footer">
-      <div id="footerPadding">
-        <div class="footerFlexWrap">
+      <div class="footerFlexWrap">
+        <div class="fullWidth">
           <div class="wrapItem">
             <svg id="footerLogo" viewBox="0 0 924 423" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="logo-full">
@@ -143,14 +143,29 @@
             </svg>
             <hr class="gradientHR">
           </div>
+          <div class="flex-list-items">
+            <a>Terms and Conditions</a>
+            <a>Privacy Policy</a>
+            <a>Trade</a>
+          </div>
+        </div>
+        <div class="fullWidth">
           <div class="wrapItem">
             <h1>Quick Links</h1>
             <hr class="gradientHR">
           </div>
+          <span>
+
+          </span>
+        </div>
+        <div class="fullWidth">
           <div class="wrapItem">
             <h1>Social Media</h1>
             <hr class="gradientHR">
           </div>
+          <span>
+
+          </span>
         </div>
       </div>
    </div>
