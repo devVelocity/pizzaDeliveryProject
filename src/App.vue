@@ -106,7 +106,8 @@
       <div class="footerFlexWrap">
         <div class="fullWidth">
           <div class="wrapItem">
-            <router-link to="/">
+            <router-link to="/" @click.prevent="goToTop()">
+              <h2 class="toolTip">Click to go to Home Page</h2>
               <svg id="footerLogo" viewBox="0 0 924 423" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="logo-full">
               <g id="Text">
@@ -187,7 +188,9 @@ import itemAlert from '../src/components/itemBought.vue'
 import gsap from 'gsap'
 
 export default{
-  components:{ itemAlert },
+  components:{ 
+    itemAlert
+  },
   data(){
     return{
       isMobileNavOpen: false,
@@ -205,6 +208,8 @@ export default{
 
       scrolledDown: false,
       userAgent: false,
+
+      footerInfoShow: false,
       
     }
   },
