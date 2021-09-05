@@ -1,13 +1,11 @@
 <template>
  <div id="orange-background">
-  <transition appear @before-enter="beforeEnter" @enter="enter">
-   <div>
-    <h1>404</h1>
-    <h4>Not Found</h4>
-    <h5>Sorry, that page is not available</h5>
-    <router-link class="button-style1" to="/">Go to Homepage</router-link>
-   </div>
-  </transition>
+  <transition-group tag="div" appear @before-enter="beforeEnter" @enter="enter">
+    <h1 key="1" data-delay="0.5">404</h1>
+    <h4 key="2" data-delay="0.5">Not Found</h4>
+    <h5 key="3" data-delay="1">Sorry, that page is not available</h5>
+    <router-link data-delay="1" key="4" class="button-style1" to="/">Go to Homepage</router-link>
+  </transition-group>
  </div>
 </template>
 
