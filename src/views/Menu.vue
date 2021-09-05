@@ -28,8 +28,13 @@
           </div>
         </div>
         <div id="pageWrapper2">
+          <div class="page-box">
+            <h2>Page: <strong>{{ currentPage }}</strong></h2>
+            <a :disabled="currentPage == 0" :class="{disabled: currentPage == 0}" @click="currentPage -= 1">Previous Page</a>
+            <a :disabled="currentPage == totalPages" :class="{disabled: currentPage == totalPages}" @click="currentPage += 1">Next Page</a>
+          </div>
           <div class="menu-grid" v-if="allMenuActive">
-            <div v-for="item in getParsedArray()" class="menu-item">
+            <div v-for="item in getParsedArray().splice((currentPage * itemsPerPage), ((currentPage * itemsPerPage) + itemsPerPage))" class="menu-item">
               <div class="inYourBasket" v-if="getQuantity(item.itemId) > 0">
                 <h2>{{getQuantity(item.itemId)}} in your basket</h2>
               </div>
@@ -43,7 +48,7 @@
           </div>
           <div class="menu-grid" v-if="!allMenuActive">
             <!-- Pizza Filter -->
-            <template v-for="item in getParsedArray()">
+            <template v-for="item in getParsedArray().splice((currentPage * itemsPerPage), ((currentPage * itemsPerPage) + itemsPerPage))">
               <div class="menu-item" v-if="item.type==this.filterCriteria">
               <div class="cover-background"></div>
               <img :src="tryImage(item.itemId)" :alt="item.name">
@@ -76,6 +81,10 @@ export default {
       isDrinkActive: false,
       filterCriteria: null,
       isMobileFilterOpen: false,
+      itemsPerPage: 4,
+      totalPages: null,
+      currentPage: 0,
+
     }
   },
   methods:{
@@ -92,11 +101,20 @@ export default {
         this.allFilter();
       }
     },
-
     getParsedArray(){
       this.jsonArray = JSON.parse(JSON.stringify(menuDataItems));
       return this.jsonArray
     },
+    getPages(){
+      var counter = 0
+      for(const item in this.jsonArray){
+        counter = counter + 1
+      }
+      this.totalPages = Math.ceil((counter / 5))
+    },
+    getPagesFilter(){
+      
+    }
     tryImage(argumentId){
       try{
         var findImage = require('../assets/images/content-images/menu-pizzas/itemId-' + argumentId + '.jpg')
@@ -154,6 +172,8 @@ export default {
   mounted(){
     this.runBoughtCheck();
     this.runFilterCheck();
+    this.getParsedArray();
+    this.getPages();
     this.$root.getBasket(true)
   },
   computed:{
