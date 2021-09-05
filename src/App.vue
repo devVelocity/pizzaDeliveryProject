@@ -147,6 +147,10 @@
             <h1>Hi</h1>
             <hr class="gradientHR">
           </div>
+          <div class="wrapItem">
+            <h1>Hi</h1>
+            <hr class="gradientHR">
+          </div>
         </div>
       </div>
    </div>
