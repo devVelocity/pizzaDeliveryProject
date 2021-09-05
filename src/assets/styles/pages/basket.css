@@ -28,12 +28,12 @@
     height: auto;
     padding-left: 20px;
     margin-top: 70px;
+    padding-right: 10px;
 }
 
 #shop-basket-container h1{
     font-family: "Manrope";
     font-weight: 700;
-    font-size: clamp(32px,3vw,40px);
     color: white;
     color: var(--textLight);
 }
@@ -510,7 +510,7 @@
 }
 
 #shop-basket-container h1{
-    font-size: clamp(33px,3vw,50px);
+    font-size: clamp(30px,3vw,50px);
 }
 
 #shop-basket-container #text-container-noItem{
