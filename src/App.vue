@@ -210,12 +210,28 @@ export default{
       userAgent: false,
 
       footerInfoShow: false,
+
+      tempMobile: null
       
     }
   },
   methods:{
     handleMobile(){
       this.isMobileNavOpen = !this.isMobileNavOpen
+      this.tempMobile = null
+      if(this.scrolledDown === true){
+        this.tempMobile = this.scrolledDown
+        this.scrolledDown = false
+      }else{
+
+      }
+
+      if(this.isMobileNavOpen === false){
+        if(this.tempMobile = true){
+          this.scrolledDown = true;
+          this.tempMobile = false;
+        }
+      }
     },
     getBasket(params){
       var self = this;
