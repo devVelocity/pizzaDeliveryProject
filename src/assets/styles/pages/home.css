@@ -115,7 +115,6 @@
 .banner-text-container .button-style1{
     z-index: 5;
     margin-top: 20px;
-    pointer-events: none;
 }
 
 
@@ -139,45 +138,6 @@
     opacity: 1;
 }
 
-#banner-animate-in-d0.bannerRunAnimation{
-    will-change: opacity, transform;
-    opacity: 0;
-    animation: bannerFadeIn;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;
-    animation-delay: 0.2s;
-    animation-timing-function: ease-in-out;
-}
-
-#banner-animate-in-d1.bannerRunAnimation{
-    will-change: opacity, transform;
-    opacity: 0;
-    animation: bannerFadeIn;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;
-    animation-delay: 0.2s;
-    animation-timing-function: ease-in-out;
-}
-
-#banner-animate-in-d2.bannerRunAnimation{
-    will-change: opacity, transform;
-    opacity: 0;
-    animation: bannerFadeIn;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;
-    animation-delay: 1s;
-    animation-timing-function: ease-in-out;
-}
-
-#banner-animate-in-d3.bannerRunAnimation{
-    will-change: opacity, transform;
-    opacity: 0;
-    animation: bannerFadeIn;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;
-    animation-delay: 1.5s;
-    animation-timing-function: ease-in-out;
-}
 
 @media screen and (max-width: 600px){
     .banner-logo{
