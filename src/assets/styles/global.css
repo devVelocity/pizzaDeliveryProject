@@ -134,7 +134,9 @@ body.dark{
   --warningMenuButtonText: white;
   --warningMenuButtonTextHover: white;
 
-  --footerBackground: var(--gray)
+  --footerBackground: var(--gray);
+  --footerHR: var(--gray2);
+  --footerText: var(--gray3)
 
 
 }
