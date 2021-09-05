@@ -256,6 +256,7 @@ body.dark{
   background: var(--pagebackground);
   height: auto;
   min-height: calc(100vh - 100px);
+  position: relative;
 }
 
 

@@ -11,7 +11,7 @@
       @cancel="warningPromptOpen = false, this.$root.warningPromptOpen = false"
       />
   </teleport>
-  <div id="page-background" style="margin-top: 5px">
+  <div id="page-background" style="margin-top: -5px">
     <div id="centralWrapper">
         <div id="centralContainer">
             <div id="shop-basket-container">

@@ -1,8 +1,5 @@
 #page-background{
-    position: absolute;
-    width: 100%;
-    min-height: 90vh;
-    height: auto;
+    margin-top: 0px;
 }
 
 #centralWrapper{

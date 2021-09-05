@@ -8,7 +8,7 @@ html{
 .navigation-bar-relative-spacing{
     display:inline-block;
     width: 100%;
-    height: 100px;
+    height: 105px;
   }
   
 body{
@@ -583,6 +583,11 @@ body{
   fill: var(--gray)
 }
 
+footer{
+  padding-top: 150px;
+  background: rgb(15,15,15);
+  background: var(--pagebackground);
+}
 
 #footer{
   background: rgb(50,50,50);
@@ -590,6 +595,10 @@ body{
   width: 100%;
   height: auto;
   min-height: 100px;
+}
+
+footer svg{
+  height: 12px;
 }
 
 
