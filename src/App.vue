@@ -144,11 +144,11 @@
             <hr class="gradientHR">
           </div>
           <div class="wrapItem">
-            <h1>Hi</h1>
+            <h1>Quick Links</h1>
             <hr class="gradientHR">
           </div>
           <div class="wrapItem">
-            <h1>Hi</h1>
+            <h1>Social Media</h1>
             <hr class="gradientHR">
           </div>
         </div>
