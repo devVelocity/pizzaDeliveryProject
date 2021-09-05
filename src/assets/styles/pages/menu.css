@@ -24,6 +24,7 @@
     min-height: calc(100vh - 100px);
     margin-top: 60px;
     position: relative;
+    min-width: 450px;
 }
 
 #pageWrapper2{
