@@ -96,6 +96,9 @@
   <itemAlert :active="buyAlert"/>
   <span class="navigation-bar-relative-spacing"></span>
   <router-view/>
+  <footer>
+
+  </footer>
 </template>
 
 <script>
