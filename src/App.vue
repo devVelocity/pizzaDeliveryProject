@@ -43,7 +43,7 @@
       <router-link aria-label="Home" class="nav-link" to="/">Home</router-link>
       <router-link aria-label="Our Menu" class="nav-link" to="/menu">Our Menu</router-link>
       <router-link aria-label="Basket" class="nav-link basketLink" to="/basket">Basket <span v-if="this.basketItems > 9">9+</span><span v-if="this.basketItems < 9">{{ basketItems }}</span></router-link>
-      <a href="#" id="mobileNavToggle" v-on:click="handleMobile()">
+      <a href="#" id="mobileNavToggle" @click.prevent="handleMobile()">
         <span id="mobileNavOpen" v-if="!isMobileNavOpen">
           <svg aria-label="Mobile Navigation Button Open" width="50" height="80" viewBox="0 0 320 271" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="320" height="45" rx="26" fill="white"/>
@@ -106,7 +106,7 @@
       <div class="footerFlexWrap">
         <div class="fullWidth">
           <div class="wrapItem">
-            <a @click.prevent="goToTop()">
+            <router-link to="/">
               <svg id="footerLogo" viewBox="0 0 924 423" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="logo-full">
               <g id="Text">
@@ -143,12 +143,12 @@
               </defs>
               </svg>
               <hr class="gradientHR">
-            </a>
+            </router-link>
           </div>
           <div class="flex-list-items">
-            <router-link class="hyperlink" to="terms">Terms and Conditions</router-link>
-            <router-link class="hyperlink" to="privacy-policy" >Privacy Policy</router-link>
-            <router-link class="hyperlink" to="trademarks">Trademarks</router-link>
+            <router-link @click="goToTop()" class="hyperlink" to="terms">Terms and Conditions</router-link>
+            <router-link @click="goToTop()" class="hyperlink" to="privacy-policy" >Privacy Policy</router-link>
+            <router-link @click="goToTop()" class="hyperlink" to="trademarks">Trademarks</router-link>
           </div>
         </div>
         <div class="fullWidth">
@@ -156,20 +156,27 @@
             <h1>Quick Links</h1>
             <hr class="gradientHR">
           </div>
-          <span>
-
-          </span>
+          <div class="flex-list-items">
+            <router-link @click="goToTop()" class="hyperlink" to="/">Home</router-link>
+            <router-link @click="goToTop()" class="hyperlink" to="menu">Our Menu</router-link>
+            <router-link @click="goToTop()" class="hyperlink" to="basket">Your Basket</router-link>
+          </div>
         </div>
         <div class="fullWidth">
           <div class="wrapItem">
             <h1>Social Media</h1>
             <hr class="gradientHR">
           </div>
-          <span>
-
-          </span>
+          <div class="flex-list-items">
+             <a :href="'https://www.twitter.com'" class="hyperlink">Twitter</a>
+             <a :href="'https://www.instagram.com'" class="hyperlink">Instagram</a>
+             <a :href="'https://www.facebook.com'" class="hyperlink">Facebook</a>
+             <a :href="'https://www.youtube.com'" class="hyperlink">Youtube</a>
+          </div>
         </div>
       </div>
+
+      <!-- Extra Footer Content can go here -->
    </div>
   </footer>
 </template>
@@ -275,7 +282,9 @@ export default{
     },
     handleScroll(event){
       if(window.pageYOffset > 20 || document.documentElement.scrollTop > 20){
-        this.scrolledDown = true;
+        if(this.isMobileNavOpen != true){
+          this.scrolledDown = true;
+        }
       }else{
         this.scrolledDown = false;
       }
