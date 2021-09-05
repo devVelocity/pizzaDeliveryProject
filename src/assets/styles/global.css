@@ -18,6 +18,8 @@
   --graydark: rgb(15,15,15);
   --gray: rgb(25,25,25);
   --gray2: rgb(50,50,50);
+  --gray25: rgb(100,100,100);
+  --gray27: rgb(130,130,130);
   --gray3: rgb(170,170,170);
   --grayOpacity: rgba(25,25,25,0.1);
   --black: rgb(0,0,0);
@@ -136,7 +138,8 @@ body.dark{
 
   --footerBackground: var(--gray);
   --footerHR: var(--gray2);
-  --footerText: var(--gray3)
+  --footerText: var(--gray3);
+  --hyperlinkDisabled: var(--gray27)
 
 
 }
@@ -338,6 +341,10 @@ body.dark{
 
 .dropdown.active{
   border-bottom: 3px solid transparent;
+}
+
+body{
+  scroll-behavior: smooth;
 }
 
 body.light .dropdown::after{
