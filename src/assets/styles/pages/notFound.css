@@ -15,12 +15,14 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    z-index: 3;
 }
 
 h1{
     font-size: clamp(20px,40vw,200px);
     margin-top: 50px;
     margin-bottom: 30px;
+    color: white;
     color: var(--white1);
     text-align: center;
     margin-left: 5px; margin-right: 5px;
@@ -29,6 +31,7 @@ h4{
     font-size: clamp(20px,40vw,30px);
     margin-top: 10px;
     margin-bottom: 10px;
+    color: white;
     color: var(--white1);
     text-align: center;
     margin-left: 5px; margin-right: 5px;
@@ -37,6 +40,7 @@ h5{
     font-size: clamp(12px,40vw,20px);
     margin-top: 30px;
     margin-bottom: 10px;
+    color: white;
     color: var(--white1);
     text-align: center;
     font-weight: 100;
@@ -60,6 +64,8 @@ h4{
     animation-iteration-count: 1;
     animation-delay: 0s;
     animation-fill-mode: forwards;
+    color: white;
+    color: var(--white1);
 }
 
 h5{
@@ -70,6 +76,8 @@ h5{
     animation-iteration-count: 1;
     animation-delay: 1s;
     animation-fill-mode: forwards;
+    color: white;
+    color: var(--white1);
 }
 
 a{

@@ -1,6 +1,6 @@
 <template>
  <div id="orange-background">
-  <transition>
+  <transition appear @before-enter="beforeEnter" @enter="enter">
    <div>
     <h1>404</h1>
     <h4>Not Found</h4>
@@ -12,9 +12,20 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+
 export default {
     mounted(){
         this.$root.getBasket(true)
+    },
+    setup(){
+        const beforeEnter = (el) => {
+
+        }
+        const enter = (el) => {
+
+        }
+        return {beforeEnter, enter}
     }
 }
 </script>
