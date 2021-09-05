@@ -144,7 +144,7 @@
             <hr class="gradientHR">
           </div>
           <div class="flex-list-items">
-            <a>Terms and Conditions</a>
+            <router-link to="terms">Terms and Conditions</router-link>
             <a>Privacy Policy</a>
             <a>Trade</a>
           </div>
