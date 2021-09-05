@@ -13,6 +13,7 @@
     gap: 20px;
     width: auto;
     max-width: 1500px;
+    width: 100%;
 }
 
 
@@ -32,6 +33,7 @@
     width: 70%;
     height: auto;
     position: relative;
+    flex-direction: column;
 }
 
 #page-background{
@@ -396,5 +398,95 @@
     }
 }
 
+#page-control{
+    display: flex;
+    height: auto;
+    min-height: 100px;
+    width: calc(100% - 100px);
+    margin-left: 50px;
+}
+
+.page-box{
+    width: calc(100% - 100px);
+    height: auto;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-direction: row;
+    margin-left: 50px;
+    background: rgb(25,25,25);
+    background: var(--pagebackground);
+}
 
 
+.page-box h2{
+    width: 50%;
+    font-weight: 300;
+    text-align: center;
+}
+
+.page-box strong{
+    font-weight: 700;
+}
+
+
+.page-box a{
+    background: rgb(15,15,15);
+    background: var(--pageButtonBackground);
+    width: 100%;
+    padding-bottom: 20px; padding-top: 20px;
+    margin: 0;
+    color: white;
+    color: var(--pageButtonText);
+    border-radius: 40px;
+    border: 3px solid gray;
+    border: 3px solid var(--pageButtonBorder);
+    font-size: clamp(14px,3vw, 18px);
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+    margin-left: 10px; margin-right: 10px;
+}
+
+.page-box h2{
+    margin-right: 100px;
+}
+
+.page-box a:hover{
+    background: white;
+    background: var(--pageButtonHoverBG);
+    color: black;
+    color: var(--pageButtonHoverText);
+    border: 3px solid white;
+    border: 3px solid var(--pageButtonHoverBorder);
+    cursor: pointer;
+}
+
+.page-box a.disabled{
+    cursor: none;
+    pointer-events: none;
+    background: rgb(15,15,15);
+    background: var(--pageButtonDisabledBackground);
+    color: rgb(25,25,25);
+    color: var(--pageButtonDisabledText);
+    border: 3px solid rgb(25,25,25);
+    border: 3px solid var(--pageButtonDisabledBorder);
+}
+
+
+@media screen and (max-width: 800px){
+    .page-box{
+        flex-direction: column;
+    }
+    .page-box h2{
+        margin-right: 0px;
+        padding-bottom: 10px;
+    }
+    .page-box a{
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

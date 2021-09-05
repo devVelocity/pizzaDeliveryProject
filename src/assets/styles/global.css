@@ -143,6 +143,16 @@ body.dark{
   --toolTipBg: rgba(0,0,0,0.3);
   --toolTipText: white;
 
+  --pageButtonBackground: var(--pagebackground);
+  --pageButtonBorder: var(--gray2);
+  --pageButtonText: white;
+  --pageButtonHoverBG: white;
+  --pageButtonHoverBorder: white;
+  --pageButtonHoverText: black;
+  --pageButtonDisabledBackground: var(--pagebackground);
+  --pageButtonDisabledBorder: var(--gray);
+  --pageButtonDisabledText: var(--gray);
+
 
 }
 
