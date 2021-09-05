@@ -84,6 +84,7 @@ export default {
       itemsPerPage: 4,
       totalPages: null,
       currentPage: 0,
+      counter: 0,
 
     }
   },
@@ -110,11 +111,30 @@ export default {
       for(const item in this.jsonArray){
         counter = counter + 1
       }
-      this.totalPages = Math.ceil((counter / 5))
+      this.totalPages = Math.ceil((counter / this.itemsPerPage))
+      this.currentPage = 0
     },
-    getPagesFilter(){
+    getPagesFilter(argumentId){
+      var newArray = []
+      var counter = 0
+      this.totalPages = 0
+      for(const item in this.jsonArray){
+        if(this.jsonArray[item].type===String(argumentId)){
+          counter = counter + 1
+        }else{
+          counter = counter
+        }
+      }
+      console.log("aaaa", counter)
+      if(counter > 1){
+        this.totalPages = Math.ceil((counter / this.itemsPerPage))
+      }else{
+        this.totalPages = 0
+      }
+      this.currentPage = 0
+
       
-    }
+    },
     tryImage(argumentId){
       try{
         var findImage = require('../assets/images/content-images/menu-pizzas/itemId-' + argumentId + '.jpg')
@@ -125,10 +145,12 @@ export default {
     },
 
     allFilter(){
+      this.totalPages = 0;
       this.allMenuActive = true;
       this.isPizzaActive = false;
       this.isDrinkActive = false;
       this.filterCriteria = null;
+      this.getPages()
       sessionStorage.setItem('menuFiltered', null)
     },
 
@@ -137,6 +159,7 @@ export default {
       this.isPizzaActive = true;
       this.isDrinkActive = false;
       this.filterCriteria = 'pizza';
+      this.getPagesFilter("pizza")
       sessionStorage.setItem('menuFiltered', 'pizza')
     },
 
@@ -145,6 +168,8 @@ export default {
       this.isPizzaActive = false;
       this.isDrinkActive = true;
       this.filterCriteria = 'drink';
+      this.getPagesFilter("drink");
+      console.log(this.totalPages)
       sessionStorage.setItem('menuFiltered', 'drink')
     },
 
