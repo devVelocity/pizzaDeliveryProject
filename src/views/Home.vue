@@ -17,7 +17,7 @@
           @enter="enter"
           @after-enter="afterEnter"
           >
-            <router-link data-delay="0.7" aria-label="Stores and Delivery" to="/stores-and-delivery" class="button-style1">See our In-Store / Delivery Options</router-link>
+            <router-link data-delay="1" aria-label="Stores and Delivery" to="/stores-and-delivery" class="button-style1">See our In-Store / Delivery Options</router-link>
           </transition>
           <transition
           appear 
@@ -25,7 +25,7 @@
           @enter="enter"
           @after-enter="afterEnter"
           >
-            <router-link data-delay="0.9" aria-label="Our Menu" to="/menu" class="button-style1">See our Menu</router-link>
+            <router-link data-delay="1.5" aria-label="Our Menu" to="/menu" class="button-style1">See our Menu</router-link>
           </transition>
           <br>
         </div>
