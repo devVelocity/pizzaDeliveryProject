@@ -12,32 +12,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -100px;
-    padding-bottom: 96px;
+    margin-top: -105px;
+    padding-bottom: 101px;
 }
 
-#orange-background div{
-    display: grid;
-    z-index: 3;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+.flexLeft{
+    max-width: 700px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20vw;
+    width: 100%;
+}
+
+.flexDivider{
+    display: flex;
+    gap: 100px;
+    width: calc(100% - 250px);
+    height: calc(100% - 100px);
+    padding-top: 100px;
+}
+
+#orange-background .flexRight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%
 }
 
 h1{
-    font-size: clamp(20px,40vw,200px);
-    margin-top: 50px;
-    margin-bottom: 30px;
+    font-size: clamp(40px,17vw,300px);
     color: white;
     color: var(--white1);
     text-align: center;
     margin-left: 5px; margin-right: 5px;
     height: auto;
 }
+
 h4{
-    font-size: clamp(20px,40vw,30px);
+    font-size: clamp(20px,17vw,50px);
     margin-top: 10px;
     margin-bottom: 10px;
     color: white;
@@ -83,4 +96,16 @@ a{
     grid-row: 1;
     grid-column: 2;
     height: auto;
+}
+
+@media screen and (max-width: 900px){
+    .flexLeft{
+        max-width: none;
+    }
+    .flexDivider{
+        flex-direction: column;
+        gap: 50px;
+        width: 100%;
+        height: auto;
+    }
 }

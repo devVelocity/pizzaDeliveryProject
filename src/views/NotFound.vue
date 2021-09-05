@@ -1,11 +1,15 @@
 <template>
  <div id="orange-background">
-  <transition-group tag="div" appear @before-enter="beforeEnter" @enter="enter">
+  <div class="flexDivider">
+   <transition-group class="flexLeft" tag="div" appear @before-enter="beforeEnter" @enter="enter">
     <h1 key="1" data-delay="0.5">404</h1>
-    <h4 key="2" data-delay="0.5">Not Found</h4>
-    <h5 key="3" data-delay="1">Sorry, that page is not available</h5>
-    <router-link data-delay="1" key="4" class="button-style1" to="/">Go to Homepage</router-link>
-  </transition-group>
+   </transition-group>
+   <transition-group class="flexRight" tag="div" appear @before-enter="beforeEnter" @enter="enter">
+    <h4 key="1" data-delay="0.5">Not Found</h4>
+    <h5 key="2" data-delay="1">Sorry, that page is not available</h5>
+    <router-link data-delay="1" key="3" class="button-style1" to="/">Go to Homepage</router-link>
+   </transition-group>
+  </div>
  </div>
 </template>
 
