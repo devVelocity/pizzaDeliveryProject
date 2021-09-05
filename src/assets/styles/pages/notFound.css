@@ -3,7 +3,7 @@
     background: var(--gradientP2);
     width: 100%;
     height: calc(100% - 100px);
-    position: absolute;
+    position: relative;
     z-index: 0;
     display: flex;
     align-items: center;
@@ -108,4 +108,31 @@ a{
         width: 100%;
         height: auto;
     }
+}
+
+svg{
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: none;
+}
+
+svg{
+    fill: rgb(241,80,37);
+    fill: url(#background-gradient)
+}
+
+.custom-shape-divider-top-1629669682 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1629669682 svg{
+    fill: rgb(241,80,37);
+    fill: url(#waves-gradient);
+    height: 100px;
 }

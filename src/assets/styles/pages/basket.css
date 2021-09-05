@@ -1,8 +1,5 @@
 #page-background{
-    position: absolute;
-    width: 100%;
-    min-height: 90vh;
-    height: auto;
+    margin-top: 0px;
 }
 
 #centralWrapper{
@@ -30,13 +27,13 @@
     width: calc(100% - 20px);
     height: auto;
     padding-left: 20px;
+    margin-top: 70px;
+    padding-right: 10px;
 }
 
 #shop-basket-container h1{
-    margin-top: 70px;
     font-family: "Manrope";
     font-weight: 700;
-    font-size: clamp(32px,3vw,40px);
     color: white;
     color: var(--textLight);
 }
@@ -504,19 +501,37 @@
 
 #shop-basket-container h2{
     font-weight: 300;
+    width: auto;
+    font-size: clamp(18px,3vw,22px);
 }
 
 #shop-basket-container h2 a{
     margin-left: 20px;
 }
 
-.noItems{
-    position: fixed;
+#shop-basket-container h1{
+    font-size: clamp(30px,3vw,50px);
 }
 
-.noItems2{
-    position: fixed;
-    top: 250px;
+#shop-basket-container #text-container-noItem{
+    position: relative;
+    width: calc(100% - 100px);
+    display: block;
+    height: auto;
+
+}
+
+.noItems{
+    position: relative
+}
+
+
+#text-container-noItem a{
+    position: relative;
+    color: white;
+    margin-top: 15px;
+    display: inline-block;
+    font-size: clamp(16px,3vw,24px);
 }
 
 #itemColumn .flex-sideways{
@@ -596,6 +611,21 @@
 
 #button-2{
     display: none;
+}
+
+.basketSpacing{
+    height: 100px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    background: var(--pagebackground);
+    z-index: -1;
+    outline: var(--pagebackground);
+    border: var(--pagebackground);
+    color: transparent;
+    margin-top: 0px;
+    margin-bottom: -5px;
+    padding-bottom: 5px;
 }
 
 @media screen and (max-width: 600px){

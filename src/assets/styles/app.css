@@ -8,13 +8,14 @@ html{
 .navigation-bar-relative-spacing{
     display:inline-block;
     width: 100%;
-    height: 100px;
+    height: 105px;
   }
   
 body{
   transition: 0.5s background ease-in-out;
   background: var(--pagebackground);
   font-family: 'Manrope', sans-serif;
+  scroll-behavior: smooth;
 }
 
 #app{
@@ -53,8 +54,18 @@ body{
   top: 0;
   left: 0;
   z-index: 10;
-
+  transition: 0.3s ease-in-out;
+  transition-property: border-bottom;
+  border-bottom: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  padding-bottom: 5px;
 }
+
+#nav.scrolledDown{
+  border-bottom: 3px solid rgb(167, 56, 26);
+  border-bottom: 3px solid var(--navFadeInDivider);
+}
+
 
 #nav .nav-link{
   color: white;
@@ -110,11 +121,14 @@ body{
   content: ' ';
   position: absolute;
   width: 100%;
-  height: 10px;
+  height: 0px;
+  bottom: 0;
   background: rgb(241, 80, 37);
   background: var(--gradientP1);
   background: var(--gradientP2);
-  left: 0; bottom: -10px;
+  transition: 0.5s ease-in-out;
+  transition-property: border,opacity;
+  border-bottom: 0px solid background;
 }
 
 #nav .basketLink span{
@@ -324,6 +338,8 @@ body{
 #basketToggle circle{
   fill: var(--gray);
 }
+
+
 
 #basketToggle #priceDisplay{
   z-index: 5;
@@ -543,6 +559,188 @@ body{
   fill: white;
   fill: var(--navSVGColour)
 }
+
+.custom-shape-divider-top-1630828487 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: transparent;
+}
+
+.custom-shape-divider-top-1630828487 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+  background: rgb(15,15,15);
+  background: var(--pagebackground);
+}
+
+.custom-shape-divider-top-1630828487 .shape-fill {
+  fill: rgb(25,25,25);
+  fill: var(--gray);
+}
+
+footer{
+  padding-top: 150px;
+  background: rgb(15,15,15);
+  background: var(--pagebackground);
+}
+
+footer h1,h2,h3,h4,h5,h6{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: rgb(170,170,170);
+  color: var(--footerText);
+  font-family: "Manrope", sans-serif;
+}
+
+#footer{
+  background: rgb(50,50,50);
+  background: var(--footerBackground);
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+}
+
+#footer #pizza-logo-footer{
+  height: 100px;
+  width: auto;
+}
+
+#footerLogo{
+  width: 20vh;
+  height: 20vh;
+  max-width: 200px;
+  max-height: 80px;
+  filter: grayscale(100%);
+  transition: 0.1s filter ease-in-out;
+}
+
+#footerLogo:hover{
+  filter: grayscale(0%);
+  cursor: pointer;
+}
+
+
+.footerFlexWrap{
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: space-between;
+  width: calc(100% - 60px);
+  margin-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  height: auto;
+  min-height: 300px;
+}
+
+.footerFlexWrap .wrapItem{
+  width: 100%;
+  display: inline-block;
+  height: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 75px;
+}
+
+.footerFlexWrap .fullWidth{
+  width: 100%;
+  height: auto;
+}
+
+
+.fullWidth .flex-list-items{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: baseline;
+}
+
+.fullWidth .wrapItem h1{
+  font-size: clamp(20px,3vw,34px);
+}
+
+.fullWidth .hyperlink{
+  width: auto;
+  display: inline-block;
+  font-size: clamp(20px,1.5vw,24px);
+  color: rgb(170,170,170);
+  color: var(--hyperlinkDisabled);
+  text-decoration: none;
+  position: relative;
+  transition: 0.25s color ease-in-out;
+}
+
+.fullWidth .hyperlink:hover{
+  color: white;
+  color: white;
+}
+
+.hyperlink::after{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 0;
+  background: rgb(241, 80, 37);
+  background: var(--orange1);
+  left: 0;
+  bottom: -3px;
+  border-radius: 40px;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+  transition-property: opacity, width;
+}
+
+.hyperlink:hover::after{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: rgb(241, 80, 37);
+  background: var(--orange1);
+  left: 0;
+  bottom: -3px;
+  border-radius: 40px;
+  opacity: 1;
+}
+
+footer .gradientHR{
+  background: rgb(241, 80, 37);
+  background: var(--gradientP1);
+  background: var(--footerHR);
+  width: 100%;
+  height: 3px;
+  border-radius: 40px;
+  outline: 0;
+  border: 0;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+@media screen and (max-width: 800px){
+  .footerFlexWrap{
+    flex-direction: column;
+  }
+  .fullWidth .flex-list-items a{
+    font-size: clamp(16px,3vw,28px);
+  }
+}
+
+
+
+
+
+
+
+
 
 
 

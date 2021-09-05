@@ -11,13 +11,16 @@
       @cancel="warningPromptOpen = false, this.$root.warningPromptOpen = false"
       />
   </teleport>
-  <div id="page-background" style="margin-top: 5px">
+  <div id="page-background" style="margin-top: -5px">
     <div id="centralWrapper">
         <div id="centralContainer">
             <div id="shop-basket-container">
                 <h1 :class="{ noItems : basketItems === 0}">Shopping Basket</h1>
                 <h3 v-if="basketItems != 0" class="itemsDisplay">{{ basketItems }} Items</h3>
-                <h2 v-if="basketItems === 0" class="noItems2">You dont have any items in your basket. <router-link class="light-button" to="/menu">Add some items</router-link></h2>
+                <span id="text-container-noItem">
+                 <h2 v-if="basketItems === 0" class="noItems2">You dont have any items in your basket. </h2>
+                 <router-link v-if="basketItems === 0" class="light-button" to="/menu">Add some items</router-link>
+                </span>
             </div>
             <div v-if="basketItems > 0" id="shoppingContainer">
                 <div id="itemColumn">
@@ -172,6 +175,7 @@
         </div>
     </div>
 </div>
+<hr class="basketSpacing">
 </template>
 
 <script>
