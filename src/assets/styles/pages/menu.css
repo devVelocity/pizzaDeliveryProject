@@ -24,6 +24,7 @@
     min-height: calc(100vh - 100px);
     margin-top: 60px;
     position: relative;
+    min-width: 450px;
 }
 
 #pageWrapper2{
@@ -378,15 +379,12 @@
     color: black;
 }
 
-@media screen and (max-width: 1500px){
-    .menu-item{
-        width: calc(100% - 80px);
-        max-width: calc(100% - 150px);
-    }   
-}
-
 
 @media screen and (max-width: 1000px){
+    #pageWrapper1{
+        width: calc(100% - 60px);
+        margin-left: 30px;
+    }
     .menu-grid{
         flex-direction: column;
         margin-right: 0px;
@@ -394,7 +392,7 @@
     }
     .menu-item{
         width: calc(100% - 80px);
-        max-width: calc(100% - 150px);
+        max-width: none;
     }
 }
 
