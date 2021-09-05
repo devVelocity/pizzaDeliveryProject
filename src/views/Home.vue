@@ -3,11 +3,31 @@
     <div class="banner-container">
         <div class="banner-logo">
           <div class="banner-text-container">
-          <h1 id="banner-animate-in-d0" v-bind:class="{ bannerRunAnimation: isDesktopDevice}">The Cheese Ultimate is Back!</h1>
+          <transition 
+          appear 
+          @before-enter="beforeEnter" 
+          @enter="enter"
+          @after-enter="afterEnter"
+          >
+            <h1 data-delay="0.5">The Cheese Ultimate is Back!</h1>
+          </transition>
+          <transition
+          appear 
+          @before-enter="beforeEnter" 
+          @enter="enter"
+          @after-enter="afterEnter"
+          >
+            <router-link data-delay="0.7" aria-label="Stores and Delivery" to="/stores-and-delivery" class="button-style1">See our In-Store / Delivery Options</router-link>
+          </transition>
+          <transition
+          appear 
+          @before-enter="beforeEnter" 
+          @enter="enter"
+          @after-enter="afterEnter"
+          >
+            <router-link data-delay="0.9" aria-label="Our Menu" to="/menu" class="button-style1">See our Menu</router-link>
+          </transition>
           <br>
-          <h3 id="banner-animate-in-d1" v-bind:class="{ bannerRunAnimation: isDesktopDevice}">Get the Ultimate Four Cheese Pizza either In-Store or by Delivery</h3>
-          <router-link v-bind:class="{ bannerRunAnimation: isDesktopDevice}" aria-label="Stores and Delivery" to="/stores-and-delivery" id="banner-animate-in-d2" class="button-style1">See our In-Store / Delivery Options</router-link>
-          <router-link v-bind:class="{ bannerRunAnimation: isDesktopDevice}" aria-label="Our Menu" to="/menu" id="banner-animate-in-d3" class="button-style1">See our Menu</router-link>
         </div>
         </div>
         <span class="dark-opacity-cover"></span>
@@ -38,7 +58,26 @@
 
 
 <script>
+  import gsap from 'gsap'
+  import { Vue, setup } from 'vue-class-component'
   export default{
+    setup(){
+      const beforeEnter = (el) => {
+        console.log("Set Initial State")
+        el.style.transform = 'translateY(60px)'
+        el.style.opacity = 0
+      }
+      const enter = (el) => {
+        console.log("enter")
+        gsap.to(el,{
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: el.dataset.delay
+        })
+      }
+      return { beforeEnter, enter }
+    },
     data(){
       return{
         isDesktopDevice: false,
@@ -59,7 +98,7 @@
     },
     mounted(){
       this.$root.getBasket(true)
-    }
+    },
   }
 </script>
 
