@@ -378,15 +378,12 @@
     color: black;
 }
 
-@media screen and (max-width: 1500px){
-    .menu-item{
-        width: calc(100% - 80px);
-        max-width: calc(100% - 150px);
-    }   
-}
-
 
 @media screen and (max-width: 1000px){
+    #pageWrapper1{
+        width: calc(100% - 60px);
+        margin-left: 30px;
+    }
     .menu-grid{
         flex-direction: column;
         margin-right: 0px;
@@ -394,7 +391,7 @@
     }
     .menu-item{
         width: calc(100% - 80px);
-        max-width: calc(100% - 150px);
+        max-width: none;
     }
 }
 
