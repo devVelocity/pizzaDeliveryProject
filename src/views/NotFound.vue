@@ -20,10 +20,21 @@ export default {
     },
     setup(){
         const beforeEnter = (el) => {
-
+            console.log("before enter");
+            el.style.transform = 'translateY(60px)'
+            el.style.opacity = 0
+            el.style.pointerEvents = "none"
         }
         const enter = (el) => {
-
+            console.log("enter")
+            gsap.to(el, {
+                y: 0,
+                opacity: 1,
+                delay: el.dataset.delay,
+                onComplete: () => {
+                    el.style.pointerEvents = "all"
+                }
+            })
         }
         return {beforeEnter, enter}
     }

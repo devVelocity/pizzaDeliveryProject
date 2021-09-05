@@ -52,12 +52,10 @@ h1{
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
-    opacity: 0;
     animation-fill-mode: forwards;
 }
 
 h4{
-    opacity: 0;
     animation: leftIn;
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
@@ -69,7 +67,6 @@ h4{
 }
 
 h5{
-    opacity: 0;
     animation: rightIn;
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
@@ -81,7 +78,6 @@ h5{
 }
 
 a{
-    opacity: 0;
     animation: upIn;
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
