@@ -1,16 +1,40 @@
 <template>
-    <div id="orange-background">
-        <h1>404</h1>
-        <h4>Not Found</h4>
-        <h5>Sorry, that page is not available</h5>
-        <router-link class="button-style1" to="/">Go to Homepage</router-link>
-    </div>
+ <div id="orange-background">
+  <transition-group tag="div" appear @before-enter="beforeEnter" @enter="enter">
+    <h1 key="1" data-delay="0.5">404</h1>
+    <h4 key="2" data-delay="0.5">Not Found</h4>
+    <h5 key="3" data-delay="1">Sorry, that page is not available</h5>
+    <router-link data-delay="1" key="4" class="button-style1" to="/">Go to Homepage</router-link>
+  </transition-group>
+ </div>
 </template>
 
 <script>
+import gsap from 'gsap'
+
 export default {
     mounted(){
         this.$root.getBasket(true)
+    },
+    setup(){
+        const beforeEnter = (el) => {
+            console.log("before enter");
+            el.style.transform = 'translateY(60px)'
+            el.style.opacity = 0
+            el.style.pointerEvents = "none"
+        }
+        const enter = (el) => {
+            console.log("enter")
+            gsap.to(el, {
+                y: 0,
+                opacity: 1,
+                delay: el.dataset.delay,
+                onComplete: () => {
+                    el.style.pointerEvents = "all"
+                }
+            })
+        }
+        return {beforeEnter, enter}
     }
 }
 </script>

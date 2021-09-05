@@ -66,6 +66,7 @@
         console.log("Set Initial State")
         el.style.transform = 'translateY(60px)'
         el.style.opacity = 0
+        el.style.pointerEvents = "none"
       }
       const enter = (el) => {
         console.log("enter")
@@ -73,7 +74,10 @@
           y: 0,
           opacity: 1,
           duration: 1,
-          delay: el.dataset.delay
+          delay: el.dataset.delay,
+          onComplete: function(){
+            el.style.pointerEvents = "all"
+          }
         })
       }
       return { beforeEnter, enter }
