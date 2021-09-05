@@ -44,6 +44,7 @@ body.dark{
   --basketAmountColour: var(--white);
   --borderlinecolour: var(--gray2);
   --alert: var(--orange1dark);
+  --navFadeInDivider: var(--orange1dark2);
 
   --button1colour: var(--gray);
   --button1hover: white;
@@ -132,6 +133,8 @@ body.dark{
   --warningMenuButtonBackgroundHover: var(--orange1dark2);
   --warningMenuButtonText: white;
   --warningMenuButtonTextHover: white;
+
+  --footerBackground: var(--gray)
 
 
 }

@@ -53,8 +53,18 @@ body{
   top: 0;
   left: 0;
   z-index: 10;
-
+  transition: 0.3s ease-in-out;
+  transition-property: border-bottom;
+  border-bottom: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  padding-bottom: 5px;
 }
+
+#nav.scrolledDown{
+  border-bottom: 3px solid rgb(167, 56, 26);
+  border-bottom: 3px solid var(--navFadeInDivider);
+}
+
 
 #nav .nav-link{
   color: white;
@@ -110,11 +120,14 @@ body{
   content: ' ';
   position: absolute;
   width: 100%;
-  height: 10px;
+  height: 0px;
+  bottom: 0;
   background: rgb(241, 80, 37);
   background: var(--gradientP1);
   background: var(--gradientP2);
-  left: 0; bottom: -10px;
+  transition: 0.5s ease-in-out;
+  transition-property: border,opacity;
+  border-bottom: 0px solid background;
 }
 
 #nav .basketLink span{
@@ -324,6 +337,8 @@ body{
 #basketToggle circle{
   fill: var(--gray);
 }
+
+
 
 #basketToggle #priceDisplay{
   z-index: 5;
@@ -543,6 +558,42 @@ body{
   fill: white;
   fill: var(--navSVGColour)
 }
+
+.custom-shape-divider-top-1630828487 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: transparent;
+}
+
+.custom-shape-divider-top-1630828487 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+  background: rgb(15,15,15);
+  background: var(--pagebackground)
+}
+
+.custom-shape-divider-top-1630828487 .shape-fill {
+  fill: rgb(25,25,25);
+  fill: var(--gray)
+}
+
+
+#footer{
+  background: rgb(50,50,50);
+  background: var(--footerBackground);
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+}
+
+
+
 
 
 

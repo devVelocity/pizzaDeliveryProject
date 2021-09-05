@@ -1,7 +1,7 @@
 <template>
   <!-- <teleport to="#navWrapper"> -->
   <teleport to="body">
-    <div id="nav">
+    <div id="nav" :class="{ scrolledDown: scrolledDown }">
       <router-link to="/">
         <svg id="navLogo" viewBox="0 0 924 423" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="logo-full">
@@ -97,13 +97,22 @@
   <span class="navigation-bar-relative-spacing"></span>
   <router-view/>
   <footer>
+    <div class="custom-shape-divider-top-1630828487">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+    </div>
+   <div id="footer">
 
+   </div>
   </footer>
 </template>
 
 <script>
 import { onMounted } from '@vue/runtime-core'
 import itemAlert from '../src/components/itemBought.vue'
+import gsap from 'gsap'
+
 export default{
   components:{ itemAlert },
   data(){
@@ -120,6 +129,9 @@ export default{
 
       finalPrice: null,
       finalItems: [],
+
+      scrolledDown: false,
+      userAgent: false,
       
     }
   },
@@ -195,11 +207,25 @@ export default{
         document.body.classList.add(this.darkMode);
       }
     },
+    handleScroll(event){
+      if(window.pageYOffset > 20 || document.documentElement.scrollTop > 20){
+        this.scrolledDown = true;
+      }else{
+        this.scrolledDown = false;
+      }
+    }
+  },
+  created(){
+    window.addEventListener('scroll',this.handleScroll)
+  },
+  destroyed(){
+    window.removeEventListener('scroll',this.handleScroll)
   },
   mounted(){
     var self = this;
     self.getBasket(true);
     self.getDarkMode();
+
   },
 }
 </script>
