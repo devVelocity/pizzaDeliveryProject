@@ -205,6 +205,7 @@ export default{
 
       finalPrice: null,
       finalItems: [],
+      finalPaymentMethod: null,
 
       scrolledDown: false,
       userAgent: false,

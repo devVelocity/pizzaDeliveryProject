@@ -259,6 +259,29 @@
     margin-top: 0px;
 }
 
+.stickyItem .button-style4.disabled{
+    background: rgb(50,50,50);
+    background: var(--gray2);
+    opacity: 0.5;
+}
+
+.stickyItem .button-style4.disabled{
+    pointer-events: none;
+}
+
+.tooltipContainer:hover .toolTip{
+    opacity: 1;
+}
+
+.tooltipContainer .toolTip{
+    z-index: 6;
+    background: rgba(0,0,0,1);
+}
+
+.tooltipContainer .toolTip::before{
+    border-top: 20px solid rgba(0,0,0,1)
+}
+
 .stickyItem input{
     background: rgb(50,50,50);
     background: var(--gray2);
@@ -694,6 +717,14 @@
 .terms{
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+.tooltipContainer:hover h2{
+    opacity: 0;
+}
+
+.mobileH4{
+    margin: 0;
 }
 
 
