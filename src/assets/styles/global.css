@@ -74,7 +74,7 @@ body.dark{
   --MFGHoverBG: rgb(50,50,50);
   --MFGHoverBGText: white;
 
-  --basketItemBG: var(--orange1dark);
+  --basketItemBG: var(--gray2);
   --basketItemText: white;
 
   --basketPayWindowBG: var(--gray);
@@ -140,7 +140,7 @@ body.dark{
   --footerHR: var(--gray2);
   --footerText: var(--gray3);
   --hyperlinkDisabled: var(--gray27);
-  --toolTipBg: rgba(0,0,0,0.3);
+  --toolTipBg: rgba(0,0,0,1);
   --toolTipText: white;
 
   --pageButtonBackground: var(--pagebackground);
@@ -152,6 +152,9 @@ body.dark{
   --pageButtonDisabledBackground: var(--pagebackground);
   --pageButtonDisabledBorder: var(--gray);
   --pageButtonDisabledText: var(--gray);
+
+  --paymentStrongBackground: var(--gray2);
+  --paymentStrongText: white;
 
 
 }
@@ -249,6 +252,7 @@ body.dark{
 }
 
 .button-style4{
+  background: rgb(167, 56, 26);
   background: var(--orange1dark);
   text-decoration: none;
   color: white;
@@ -262,6 +266,7 @@ body.dark{
 }
 
 .button-style4:hover{
+  background: rgb(128, 42, 18);
   background: var(--orange1dark2);
 
 }
@@ -463,21 +468,25 @@ h1,h2,h3,h4,h5,h6,p{
   padding-top: 5px; padding-bottom: 5px;
   padding-left: 10px; padding-right: 10px;
   border-radius: 10px;
+  max-width: 300px;
+  z-index: 6;
 }
 
 .toolTip::before{
   content: ' ';
   width: 0; 
-  height: 0; 
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   
   border-top: 20px solid black;
   border-top: 20px solid var(--toolTipBg);
-  bottom: calc(-50% - 0.1em);
+  bottom: calc(-50% + 0.5em);
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
+  margin-top: auto;
+  z-index: 2;
+  bottom: -1em;
 
 }
 

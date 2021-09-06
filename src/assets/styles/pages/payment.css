@@ -1,0 +1,28 @@
+#paymentContainer{
+    width: calc(100% - 100px);
+    margin-left: clamp(10px,5vw,70px)
+}
+
+#paymentContainer h1{
+    font-size: clamp(40px,5vw,70px);
+}
+
+#paymentContainer h4{
+    font-size: clamp(20px,1.5vw,24px);
+    font-weight: 400;
+}
+
+#paymentContainer strong{
+    background: grey;
+    background: var(--paymentStrongBackground);
+    padding: 10px;
+    border-radius: 40px;
+    padding-left: 20px; padding-right: 20px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    font-weight: 300;
+    display: inline-block;
+    margin-top: 10px;
+    color:white;
+    color: var(--paymentStrongText);
+}

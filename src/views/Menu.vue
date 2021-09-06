@@ -28,11 +28,11 @@
           </div>
         </div>
         <div id="pageWrapper2">
-          <div class="page-box">
+          <!-- <div class="page-box">
             <h2>Page: <strong>{{ currentPage }}</strong></h2>
             <a :disabled="currentPage == 0" :class="{disabled: currentPage == 0}" @click="currentPage -= 1">Previous Page</a>
             <a :disabled="currentPage == totalPages" :class="{disabled: currentPage == totalPages}" @click="currentPage += 1">Next Page</a>
-          </div>
+          </div> -->
           <div class="menu-grid" v-if="allMenuActive">
             <div v-for="item in getParsedArray().splice((currentPage * itemsPerPage), ((currentPage * itemsPerPage) + itemsPerPage))" class="menu-item">
               <div class="inYourBasket" v-if="getQuantity(item.itemId) > 0">
@@ -50,14 +50,22 @@
             <!-- Pizza Filter -->
             <template v-for="item in getParsedArray().splice((currentPage * itemsPerPage), ((currentPage * itemsPerPage) + itemsPerPage))">
               <div class="menu-item" v-if="item.type==this.filterCriteria">
-              <div class="cover-background"></div>
-              <img :src="tryImage(item.itemId)" :alt="item.name">
-              <h1>{{ item.name }}</h1>
-              <h3>{{ item.shortDetails }}</h3>
-              <span style="margin-bottom: 30px"></span>
-              <router-link class="button-style3" :to="'/menu/'+ item.itemId ">More Information</router-link>
+                <div class="inYourBasket" v-if="getQuantity(item.itemId) > 0">
+                <h2>{{getQuantity(item.itemId)}} in your basket</h2>
+                </div>
+                <div class="cover-background"></div>
+                <img :src="tryImage(item.itemId)" :alt="item.name">
+                <h1>{{ item.name }}</h1>
+                <h3>{{ item.shortDetails }}</h3>
+                <span style="margin-bottom: 30px"></span>
+                <router-link class="button-style3" :to="'/menu/'+ item.itemId ">More Information</router-link>
               </div>
             </template>
+          </div>
+          <div class="page-box">
+            <h2>Page: <strong>{{ currentPage }}</strong></h2>
+            <a :disabled="currentPage == 0" :class="{disabled: currentPage == 0}" @click="goToTop(),currentPage -= 1">Previous Page</a>
+            <a :disabled="currentPage == totalPages" :class="{disabled: currentPage == totalPages}" @click="goToTop(),currentPage += 1">Next Page</a>
           </div>
         </div>
       </div>
@@ -85,6 +93,7 @@ export default {
       totalPages: null,
       currentPage: 0,
       counter: 0,
+      mobileUser: false,
 
     }
   },
@@ -192,6 +201,9 @@ export default {
           return getQuantity;
         }
     },
+    goToTop(){
+      window.scroll(0,0)
+    },
 
   },
   mounted(){
@@ -199,7 +211,12 @@ export default {
     this.runFilterCheck();
     this.getParsedArray();
     this.getPages();
-    this.$root.getBasket(true)
+    this.$root.getBasket(true);
+    if(this.$root.mobileUserCheck() === true){
+      this.mobileUser = true;
+    }else{
+      this.mobileUser = false;
+    }
   },
   computed:{
     // tryImageComputed(){

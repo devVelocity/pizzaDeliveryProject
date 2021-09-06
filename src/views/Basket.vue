@@ -77,7 +77,7 @@
                                 </div>
                                 <hr class="spacing-hr" style="margin-bottom: 13px">
                                 <h2>Payment Method</h2>
-                                <select v-model="paymentMethod">
+                                <select v-model="paymentMethod" @change="changePaymentMethod($event)">
                                     <option>Cash</option>
                                     <option>Card</option>
                                     <option>Paypal</option>
@@ -119,7 +119,11 @@
                                 <hr class="spacing-hr">
                                 <hr class="spacing-hr">
                                 <h4 class="terms">By continuing,  you agree to the <span><a class="orangeHyperLink">Terms and Conditions</a></span></h4>
-                                <button @click="checkoutCommenced()" class="button-style4" form="form1">Confirm and Pay</button>
+                                <h4 class="mobileH4" v-if="paymentButtonDisabled && mobileUser">{{paymentDisabledMessage}}</h4>
+                                <span class="tooltipContainer">
+                                    <h2 class="toolTip" v-if="paymentDisabledMessage != null && !mobileUser">{{paymentDisabledMesage}}</h2>
+                                    <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="checkoutCommenced()" class="button-style4" form="form1">Confirm and Pay</button>
+                                </span>
                             </div>
                         </div>
                     </form>
@@ -166,7 +170,11 @@
                                     <div id="word-limit-bar-notes"><span id="word-limit-bar-move" :style="{width: wordLimitBarPerc + '%'}"></span></div>
                                 </div>
                                 <hr class="spacing-hr">
-                                <button @click="checkoutCommenced()" class="button-style4" form="form1">Checkout</button>
+                                <h4 class="mobileH4" v-if="paymentButtonDisabled && mobileUser == true">{{paymentDisabledMessage}}</h4>
+                                <span class="tooltipContainer">
+                                    <h2 class="toolTip" v-if="paymentDisabledMessage != null && mobileUser == false">{{paymentDisabledMesage}}</h2>
+                                    <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="checkoutCommenced()" class="button-style4" form="form1">Confirm and Pay</button>
+                                </span>
                             </div>
                         </div>
                     </form>
@@ -225,6 +233,11 @@ export default {
             maxItems: 20,
 
             paymentMethod: "Card",
+            paymentButtonDisabled: false,
+            paymentDisabled: ['Cash'],
+            paymentDisabledMesage: null,
+            mobileUser: false,
+            paymentButtonHidden: false,
 
             warningArguments: [],
 
@@ -384,6 +397,7 @@ export default {
             //Lock Discount Code
             this.$root.finalPrice = null;
             this.$root.finalItems = null;
+            this.$root.finalPaymentMethod = null;
             var self = this;
             if(self.codeAppliedName != ""){
                 localStorage.setItem("code-" + self.codeAppliedName, "true")
@@ -396,6 +410,7 @@ export default {
             for(const item in this.includedItems){
                 console.log(this.includedItems[item].name)
             }
+            this.$root.finalPaymentMethod = this.paymentMethod
             this.$router.push('/basket/payment');
             console.log("Final Price " + this.$root.finalPrice)
             console.log(this.$root.finalItems)
@@ -457,6 +472,22 @@ export default {
                 self.warningPromptOpen = false;
             }
         },
+        changePaymentMethod(){
+            var value = this.paymentMethod
+            if(this.paymentDisabled.includes(value)){
+                this.paymentButtonDisabled = true;
+                this.paymentDisabledMessage = "Sorry! Cash is not currently accepted due to the COVID-19 Pandemic"
+                if(this.mobileUser){
+                    this.paymentButtonHidden = true
+                }
+            }else{
+                this.paymentButtonDisabled = false;
+                if(this.mobileUser){
+                    this.paymentButtonHidden = false;
+                }
+            }
+            
+        },
         // basketCheck(parametersToGet){
         //     var self = this;
         //     //First Part
@@ -507,6 +538,11 @@ export default {
         self.basketCheckArray();
         self.getTotal();
         this.maxItems = this.$root.maxAmountItems
+        if(this.$root.mobileUserCheck() === true){
+            this.mobileUser = true;
+        }else{
+            this.mobileUser = false;
+        }
     },
 }
 </script>
