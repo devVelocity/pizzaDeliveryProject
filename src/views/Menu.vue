@@ -28,11 +28,11 @@
           </div>
         </div>
         <div id="pageWrapper2">
-          <div class="page-box">
+          <!-- <div class="page-box">
             <h2>Page: <strong>{{ currentPage }}</strong></h2>
             <a :disabled="currentPage == 0" :class="{disabled: currentPage == 0}" @click="currentPage -= 1">Previous Page</a>
             <a :disabled="currentPage == totalPages" :class="{disabled: currentPage == totalPages}" @click="currentPage += 1">Next Page</a>
-          </div>
+          </div> -->
           <div class="menu-grid" v-if="allMenuActive">
             <div v-for="item in getParsedArray().splice((currentPage * itemsPerPage), ((currentPage * itemsPerPage) + itemsPerPage))" class="menu-item">
               <div class="inYourBasket" v-if="getQuantity(item.itemId) > 0">
@@ -62,6 +62,11 @@
               </div>
             </template>
           </div>
+          <div class="page-box">
+            <h2>Page: <strong>{{ currentPage }}</strong></h2>
+            <a :disabled="currentPage == 0" :class="{disabled: currentPage == 0}" @click="goToTop(),currentPage -= 1">Previous Page</a>
+            <a :disabled="currentPage == totalPages" :class="{disabled: currentPage == totalPages}" @click="goToTop(),currentPage += 1">Next Page</a>
+          </div>
         </div>
       </div>
       <br style="margin-bottom: 100px">
@@ -88,6 +93,7 @@ export default {
       totalPages: null,
       currentPage: 0,
       counter: 0,
+      mobileUser: false,
 
     }
   },
@@ -195,6 +201,9 @@ export default {
           return getQuantity;
         }
     },
+    goToTop(){
+      window.scroll(0,0)
+    },
 
   },
   mounted(){
@@ -202,7 +211,12 @@ export default {
     this.runFilterCheck();
     this.getParsedArray();
     this.getPages();
-    this.$root.getBasket(true)
+    this.$root.getBasket(true);
+    if(this.$root.mobileUserCheck() === true){
+      this.mobileUser = true;
+    }else{
+      this.mobileUser = false;
+    }
   },
   computed:{
     // tryImageComputed(){
