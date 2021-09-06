@@ -5,6 +5,7 @@ import Menu from '../views/Menu.vue'
 import MenuItem from '../views/MenuItem.vue'
 import Basket from '../views/Basket.vue'
 import Payment from '../views/Payment.vue'
+import Stores from '../views/Stores-and-Delivery.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -32,6 +33,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/basket/payment',
     name: 'Payment',
     component: Payment,
+  },
+  {
+    path:'/stores-and-delivery',
+    name:'stores-and-delivery',
+    component: Stores,
   },
   {
     path: '/:catchAll(.*)',

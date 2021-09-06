@@ -29,7 +29,8 @@
 
 #pageWrapper2{
     display: flex;
-    width: auto;
+    width: 100%;
+    margin-right: 30px;
     height: auto;
     position: relative;
     flex-direction: column;

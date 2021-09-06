@@ -340,6 +340,7 @@
     width: auto;
 }
 
+
 .stickyItem #word-limit-wrap h2{
     font-size: clamp(12px,3vw,14px);
     margin-top: 2px;
