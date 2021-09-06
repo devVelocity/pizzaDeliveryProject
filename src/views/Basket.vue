@@ -445,6 +445,7 @@ export default {
                     this.$root.getBasket()
                     this.getTotal()
                     this.workoutDiscount(this.codeAppliedName);
+                    this.pingBasket()
                 }
             }
         },
