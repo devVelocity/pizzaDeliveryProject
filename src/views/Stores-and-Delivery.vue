@@ -1,5 +1,9 @@
 <template>
-    <div id="page-background"></div>
+    <div id="page-background">
+        <div id="stores-container">
+            <h1>Insert Google Maps Javascript API Here / Google Maps with Store Markers</h1>
+        </div>
+    </div>
 </template>
 
 <script>

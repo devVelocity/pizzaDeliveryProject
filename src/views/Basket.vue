@@ -52,21 +52,21 @@
                     </div>
                 </div>
                 <div v-if="confirmOrderDetails" class="stickyContainer">
-                    <form @submit.prevent="" id="form1">
+                    <form @submit.prevent="checkoutCommenced()" id="form1">
                         <div class="stickyItem">
                             <div class="stickyItemFlex2">
                                 <hr class="spacing-hr">
                                 <h2>Your Details</h2>
-                                <input v-model="fullName" placeholder="Full Name">
+                                <input required v-model="fullName" placeholder="Full Name*">
                                 <hr class="spacing-hr">
-                                <input v-model="contactNumber" placeholder="Contact Number">
+                                <input required v-model="contactNumber" placeholder="Contact Number*">
                                 <hr class="spacing-hr">
-                                <input v-model="emailAddress" placeholder="Email Address">
+                                <input required v-model="emailAddress" placeholder="Email Address*">
                                 <hr class="spacing-hr">
                                 
-                                <input v-model="Address" placeholder="Address">
+                                <input required v-model="Address" placeholder="Address*">
                                 <hr class="spacing-hr">
-                                <input v-model="postCode" placeholder="Postcode">
+                                <input required v-model="postCode" placeholder="Postcode*">
                                 <hr class="spacing-hr">
                                 <hr class="spacing-hr">
                                 <h2>Delivery Details</h2>
@@ -122,14 +122,14 @@
                                 <h4 class="mobileH4" v-if="paymentButtonDisabled && mobileUser">{{paymentDisabledMessage}}</h4>
                                 <span class="tooltipContainer">
                                     <h2 class="toolTip" v-if="paymentDisabledMessage != null && !mobileUser">{{paymentDisabledMessage}}</h2>
-                                    <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="checkoutCommenced()" class="button-style4" form="form1">Confirm and Pay</button>
+                                    <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="document.getElementById('form1').submit()" class="button-style4" form="form1">Confirm and Pay</button>
                                 </span>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div v-if="confirmOrderPayment" class="stickyContainer">
-                    <form @submit.prevent="checkoutCommenced()" id="form1">
+                    <form @submit.prevent="checkoutCommenced()" id="form2">
                         <div class="stickyItem">
                             <div class="stickyItemFlex2">
                                 <hr class="spacing-hr">
@@ -138,7 +138,7 @@
                             <div class="stickyItemFlex1">
                                 <hr>
                                 <h2>Discount Codes</h2>
-                                <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                                <input required v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
                                 <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                                 <transition name="fade">
                                     <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
@@ -173,7 +173,7 @@
                                 <h4 class="mobileH4" v-if="paymentButtonDisabled && mobileUser == true">{{paymentDisabledMessage}}</h4>
                                 <span class="tooltipContainer">
                                     <h2 class="toolTip" v-if="paymentDisabledMessage != null && mobileUser == false">{{paymentDisabledMessage}}</h2>
-                                    <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="checkoutCommenced()" class="button-style4" form="form1">Confirm and Pay</button>
+                                    <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="document.getElementById('form2').submit()" class="button-style4" form="form1">Confirm and Pay</button>
                                 </span>
                             </div>
                         </div>
