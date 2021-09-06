@@ -53,6 +53,18 @@
             </defs>       
         </svg>
     </div>
+    <hr class="spacingHR1">
+    <div class="section-container">
+      <div class="section-element">
+        <div class="section-1">
+            <h1 class="pg-title">Welcome to The Pizza Company!</h1>
+            <p>We are a chain of high-quality, small Pizza Shops in and around the North West of the UK</p>
+        </div>
+        <div class="section-2">
+          <img src="../assets/images/content-images/menu-pizzas/itemId-1.jpg">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
