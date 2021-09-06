@@ -1,0 +1,15 @@
+h1{
+    margin: 0;
+    padding: 15vw;
+    border: 10px dotted var(--orange1dark);
+    margin: 15px;
+}
+
+#stores-container{
+    padding-top: 25px;
+    height: auto;
+    min-height: 80vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
