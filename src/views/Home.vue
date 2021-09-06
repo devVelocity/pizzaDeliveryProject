@@ -61,7 +61,7 @@
             <p>We are a chain of high-quality, small Pizza Shops in and around the North West of the UK</p>
         </div>
         <div class="section-2">
-          <img src="../assets/images/content-images/menu-pizzas/itemId-1.jpg">
+          <img src="../assets/images/content-images/menu-pizzas/itemId-1.jpg" alt="Pizza Image">
         </div>
       </div>
     </div>
@@ -72,6 +72,9 @@
 <script>
   import gsap from 'gsap'
   import { Vue, setup } from 'vue-class-component'
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger)
+
   export default{
     setup(){
       const beforeEnter = (el) => {
@@ -91,12 +94,17 @@
             el.style.pointerEvents = "all"
           }
         })
+
       }
+
+
       return { beforeEnter, enter }
     },
     data(){
       return{
         isDesktopDevice: false,
+        scrollSetup: "top center",
+        scrollSetup2: "center center"
       }
     },
     methods:{
@@ -108,12 +116,76 @@
           this.isDesktopDevice = true;
         };
       },
+      scrollTimeline(){
+        // let tl = gsap.timeline({
+        //   scrollTrigger: {
+        //     trigger: ".section-container",
+        //     toggleActions:"play",
+        //     start:"center center",
+        //     markers: true,
+        //   }
+        // });
+
+        // tl.from(".section-element img", {x: 200, opacity: 0, duration: 1.5})
+        //   .from(".section-element h1",{y:100,opacity: 0, duration: 1}, "-=1")
+        //    .from(".section-element p",{y:100,opacity: 0, duration: 1}, "+=0")
+      
+        gsap.to(".section-element img",{
+          scrollTrigger:{
+            trigger: ".section-container",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+            toggleActions:"play reverse none none",
+            pin: "true",
+            scrub: "true",
+          },
+          x:0,
+          opacity: 1,
+          duration: 1
+        })
+
+        gsap.to(".section-element h1",{
+          scrollTrigger:{
+            trigger: ".section-container",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+
+            toggleActions:"play reverse none none",
+            pin: "true",
+            scrub: "true",
+          },
+          y:0,
+          opacity: 1,
+          duration: 0.5
+        })
+
+        gsap.to(".section-element p",{
+          scrollTrigger:{
+            trigger: ".section-container",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+            toggleActions:"play reverse none none",
+            pin: "true",
+            scrub: "true",
+          },
+          y:0,
+          opacity: 1,
+          duration: 1
+        })
+      }
     },
     beforeMount() {
       window.addEventListener("load", this.testFunction());
     },
     mounted(){
-      this.$root.getBasket(true)
+      this.$root.getBasket(true);
+      this.scrollTimeline()
+      if(this.$root.mobileUserCheck() === true){
+        this.scrollSetup = "top top"
+      }
     },
   }
 </script>

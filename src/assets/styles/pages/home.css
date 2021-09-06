@@ -154,12 +154,12 @@
 .spacingHR1{
     background: transparent;
     color: transparent;
-    padding-top: 100px;
+    padding-top: 125px;
 }
 
 .section-container{
     width: 100%;
-    height: 200vh;
+    height: 250vh;
     position: relative;
 }
 .section-container .section-element{
@@ -170,6 +170,7 @@
     padding-bottom: 50px;
     display: flex;
     gap: 100px;
+    overflow: hidden;
 }
 
 .section-element .section-1{
@@ -189,6 +190,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: blur(0px);
+    opacity: 0;
+    transform: translateX(200px);
 }
 
 .pg-title{
@@ -198,8 +202,15 @@
 }
 
 .section-element p{
-    margin-top:  70px;
-    font-size: clamp(16px,1.2vw,20px)
+    margin-top:  80px;
+    font-size: clamp(18px,1.2vw,20px);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.section-element h1{
+    opacity: 0;
+    transform: translateY(200px);
 }
 
 .pg-title::after{
@@ -207,8 +218,8 @@
     position: absolute;
     bottom: -30px;
     left: 0px;
-    width: 10%;
-    height: 8px;
+    width: 25%;
+    height: 5px;
     background: rgb(241,80,37);
     background: var(--headingTitleColour);
     border-radius: 40px;
