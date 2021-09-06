@@ -231,6 +231,7 @@ export default{
         if(this.tempMobile = true){
           this.scrolledDown = true;
           this.tempMobile = false;
+          this.handleScroll(window.offsetY)
         }
       }
     },
