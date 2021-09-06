@@ -1,6 +1,9 @@
 <template>
-    <div id="page-background" style="padding-bottom: 5px">
-        <h4>Please Pay <strong>{{ pricetoPay }}</strong></h4>
+    <div id="page-background" style="padding-top: 25px">
+        <div id="paymentContainer">
+            <h1>Payment</h1>
+            <h4>Please Pay <strong>{{ pricetoPay }}</strong></h4>
+        </div>
     </div>
 </template>
 

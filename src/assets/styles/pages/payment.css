@@ -1,0 +1,12 @@
+#paymentContainer{
+    width: calc(100% - 200px);
+    margin-left: clamp(20px,10vw,100px)
+}
+
+#paymentContainer h1{
+    font-size: clamp(40px,5vw,90px);
+}
+
+#paymentContainer h4{
+    font-size: clamp(30px,2vw,50px);
+}
