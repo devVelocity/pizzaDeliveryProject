@@ -50,12 +50,15 @@
             <!-- Pizza Filter -->
             <template v-for="item in getParsedArray().splice((currentPage * itemsPerPage), ((currentPage * itemsPerPage) + itemsPerPage))">
               <div class="menu-item" v-if="item.type==this.filterCriteria">
-              <div class="cover-background"></div>
-              <img :src="tryImage(item.itemId)" :alt="item.name">
-              <h1>{{ item.name }}</h1>
-              <h3>{{ item.shortDetails }}</h3>
-              <span style="margin-bottom: 30px"></span>
-              <router-link class="button-style3" :to="'/menu/'+ item.itemId ">More Information</router-link>
+                <div class="inYourBasket" v-if="getQuantity(item.itemId) > 0">
+                <h2>{{getQuantity(item.itemId)}} in your basket</h2>
+                </div>
+                <div class="cover-background"></div>
+                <img :src="tryImage(item.itemId)" :alt="item.name">
+                <h1>{{ item.name }}</h1>
+                <h3>{{ item.shortDetails }}</h3>
+                <span style="margin-bottom: 30px"></span>
+                <router-link class="button-style3" :to="'/menu/'+ item.itemId ">More Information</router-link>
               </div>
             </template>
           </div>
