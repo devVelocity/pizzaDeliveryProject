@@ -12,7 +12,6 @@
     padding-top: 120px;
     gap: 20px;
     width: auto;
-    max-width: 1500px;
     width: 100%;
 }
 
@@ -30,7 +29,7 @@
 
 #pageWrapper2{
     display: flex;
-    width: 70%;
+    width: auto;
     height: auto;
     position: relative;
     flex-direction: column;
@@ -235,31 +234,6 @@
 }
 
 
-@media screen and (max-width: 1215px){
-    #pageWrapper1{
-        flex-direction: column;
-        padding-top: 20px;
-    }
-    .menu-filter-grid{
-        position: relative;
-        top: 0;
-    }
-    .menu-list-wrapper{
-        padding-top: 50px;
-        display: none;
-    }
-    .menu-filter-grid{
-        margin-left: 0px;
-        min-width: 300px;
-    }
-    #pageWrapper2{
-        width: 100%;
-        flex-wrap: wrap;
-    }
-    #mobileFilterButtons{
-        display: flex;
-    }
-}
 
 
 /* .menu-filter-grid .button-style2.active{
@@ -280,7 +254,7 @@
 
 .menu-grid{
     display: flex;
-    width: 100%;
+    width: calc(100% - 10px);
     height: auto;
     margin-right: 25px;
     flex-wrap: wrap;
@@ -293,14 +267,14 @@
 }
 
 .menu-item{
-    width: 50%;
+    width: 40%;
     min-width: 225px;
     min-height: 300px;
     height: auto;
     background: var(--pagebackground);
     border-radius: 10px;
     padding: 20px;
-    max-width: 400px;
+    min-width: 200px;
     outline: 2px solid var(--packbackground);
     margin: 20px;
     position: relative;
@@ -382,7 +356,7 @@
 }
 
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1200px){
     #pageWrapper1{
         width: calc(100% - 60px);
         margin-left: 30px;
@@ -391,6 +365,7 @@
         flex-direction: column;
         margin-right: 0px;
         align-items: center;
+        width: 100%;
     }
     .menu-item{
         width: calc(100% - 80px);
@@ -407,16 +382,17 @@
 }
 
 .page-box{
-    width: calc(100% - 100px);
+    width: 80%;
     height: auto;
     min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: stretch;
     flex-direction: row;
-    margin-left: 50px;
     background: rgb(25,25,25);
     background: var(--pagebackground);
+    padding-top: 50px;
+    margin-left: 10%;
 }
 
 
@@ -451,7 +427,7 @@
 }
 
 .page-box h2{
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 .page-box a:hover{
@@ -462,6 +438,10 @@
     border: 3px solid white;
     border: 3px solid var(--pageButtonHoverBorder);
     cursor: pointer;
+}
+
+.page-box a:last-of-type{
+    margin-right: 40px;
 }
 
 .page-box a.disabled{
@@ -485,8 +465,40 @@
         padding-bottom: 10px;
     }
     .page-box a{
-        width: 100%;
+        width: calc(100% - 40px);
         margin-top: 10px;
         margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    #pageWrapper1{
+        flex-direction: column;
+        padding-top: 20px;
+    }
+    .menu-filter-grid{
+        position: relative;
+        top: 0;
+    }
+    .menu-list-wrapper{
+        padding-top: 50px;
+        display: none;
+    }
+    .menu-filter-grid{
+        margin-left: 0px;
+        min-width: 300px;
+    }
+    #pageWrapper2{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    #mobileFilterButtons{
+        display: flex;
+    }
+    .page-box a{
+        width: calc(100% - 45px);
+    }
+    .page-box a:last-of-type{
+        margin-right: 10px;
     }
 }
