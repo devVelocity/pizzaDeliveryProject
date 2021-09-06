@@ -2,7 +2,7 @@
   <!-- <teleport to="#navWrapper"> -->
   <teleport to="body">
     <div id="nav" :class="{ scrolledDown: scrolledDown }">
-      <router-link to="/">
+      <router-link to="/" @click="goToTop()">
         <svg id="navLogo" viewBox="0 0 924 423" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="logo-full">
         <g id="Text">
@@ -40,9 +40,9 @@
         </svg>
         <img aria-label="logo" id="navPizza" src="./assets/images/svg-elements/logo-pizza.svg">
       </router-link>
-      <router-link aria-label="Home" class="nav-link" to="/">Home</router-link>
-      <router-link aria-label="Our Menu" class="nav-link" to="/menu">Our Menu</router-link>
-      <router-link aria-label="Basket" class="nav-link basketLink" to="/basket">Basket <span v-if="this.basketItems > 9">9+</span><span v-if="this.basketItems < 9">{{ basketItems }}</span></router-link>
+      <router-link @click="goToTop()" aria-label="Home" class="nav-link" to="/">Home</router-link>
+      <router-link @click="goToTop()" aria-label="Our Menu" class="nav-link" to="/menu">Our Menu</router-link>
+      <router-link @click="goToTop()" aria-label="Basket" class="nav-link basketLink" to="/basket">Basket <span v-if="this.basketItems > 9">9+</span><span v-if="this.basketItems < 9">{{ basketItems }}</span></router-link>
       <a href="#" id="mobileNavToggle" @click.prevent="handleMobile()">
         <span id="mobileNavOpen" v-if="!isMobileNavOpen">
           <svg aria-label="Mobile Navigation Button Open" width="50" height="80" viewBox="0 0 320 271" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,10 +84,10 @@
     <transition name="bounce">
       <div v-if="isMobileNavOpen" id="mobileNav">
         <div class="buttonContainer">
-          <router-link v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons" aria-label="Home" to="/">Home</router-link>
-          <router-link v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons" aria-label="Menu" to="/menu">Menu</router-link>
-          <router-link v-if="basketItems < 9" v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons containsBasket" aria-label="Menu" to="/basket">Basket<span class="basketItem">{{ basketItems }}</span></router-link>
-          <router-link v-if="basketItems > 9" v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons containsBasket" aria-label="Menu" to="/basket">Basket<span class="basketItem">9+</span></router-link>
+          <router-link @click="goToTop()"  v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons" aria-label="Home" to="/">Home</router-link>
+          <router-link @click="goToTop()" v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons" aria-label="Menu" to="/menu">Menu</router-link>
+          <router-link @click="goToTop()" v-if="basketItems < 9" v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons containsBasket" aria-label="Menu" to="/basket">Basket<span class="basketItem">{{ basketItems }}</span></router-link>
+          <router-link @click="goToTop()" v-if="basketItems > 9" v-on:click="isMobileNavOpen = !isMobileNavOpen" class="mNavButtons containsBasket" aria-label="Menu" to="/basket">Basket<span class="basketItem">9+</span></router-link>
         </div>
       </div>
     </transition> 
