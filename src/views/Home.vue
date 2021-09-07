@@ -54,17 +54,32 @@
         </svg>
     </div>
     <hr class="spacingHR1">
-    <div class="section-container">
+    <div class="section-container rightFade">
       <div class="section-element">
         <div class="section-1">
             <h1 class="pg-title">Welcome to The Pizza Company!</h1>
-            <p>We are a chain of high-quality, small Pizza Shops in and around the North West of the UK</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad in ducimus accusantium nihil sapiente saepe ex. Dignissimos esse, aliquam laudantium ratione ad architecto numquam, suscipit nisi nostrum asperiores assumenda consequuntur?
+            Alias reprehenderit vitae libero repellat nostrum omnis numquam suscipit dolorum. Neque saepe molestiae eum explicabo, voluptate recusandae atque itaque error cumque vero eius ea accusantium? Maiores veritatis quasi culpa sit!</p>
         </div>
         <div class="section-2">
           <img src="../assets/images/content-images/menu-pizzas/itemId-1.jpg" alt="Pizza Image">
         </div>
       </div>
     </div>
+    <div class="section-container leftFade">
+      <div class="section-element">
+        <div class="section-2">
+          <img src="../assets/images/content-images/menu-pizzas/itemId-2.jpg" alt="Pizza Image">
+        </div>
+        <div class="section-1">
+            <h1 class="pg-title">Our Menu</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad in ducimus accusantium nihil sapiente saepe ex. Dignissimos esse, aliquam laudantium ratione ad architecto numquam, suscipit nisi nostrum asperiores assumenda consequuntur?
+            Alias reprehenderit vitae libero repellat nostrum omnis numquam suscipit dolorum. Neque saepe molestiae eum explicabo, voluptate recusandae atque itaque error cumque vero eius ea accusantium? Maiores veritatis quasi culpa sit!</p>
+            <router-link @click="gotoTop()" class="button-style4" to="/menu">See Our Menu</router-link>
+        </div>
+      </div>
+    </div>
+    <hr class="spacingHR1">
   </div>
 </template>
 
@@ -130,9 +145,9 @@
         //   .from(".section-element h1",{y:100,opacity: 0, duration: 1}, "-=1")
         //    .from(".section-element p",{y:100,opacity: 0, duration: 1}, "+=0")
       
-        gsap.to(".section-element img",{
+        gsap.to(".rightFade img",{
           scrollTrigger:{
-            trigger: ".section-container",
+            trigger: ".rightFade",
             start: this.scrollSetup,
             end: this.scrollSetup2,
 
@@ -145,9 +160,9 @@
           duration: 1
         })
 
-        gsap.to(".section-element h1",{
+        gsap.to(".rightFade h1",{
           scrollTrigger:{
-            trigger: ".section-container",
+            trigger: ".rightFade",
             start: this.scrollSetup,
             end: this.scrollSetup2,
 
@@ -161,9 +176,9 @@
           duration: 0.5
         })
 
-        gsap.to(".section-element p",{
+        gsap.to(".rightFade p",{
           scrollTrigger:{
-            trigger: ".section-container",
+            trigger: ".rightFade",
             start: this.scrollSetup,
             end: this.scrollSetup2,
 
@@ -175,6 +190,71 @@
           opacity: 1,
           duration: 1
         })
+
+        gsap.to(".leftFade h1",{
+          scrollTrigger:{
+            trigger: ".leftFade",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+            toggleActions:"play reverse none none",
+            pin: "true",
+            scrub: "true",
+          },
+          y:0,
+          opacity: 1,
+          duration: 1
+        })
+
+        gsap.to(".leftFade p",{
+          scrollTrigger:{
+            trigger: ".leftFade",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+            toggleActions:"play reverse none none",
+            pin: "true",
+            scrub: "true",
+          },
+          y:0,
+          opacity: 1,
+          duration: 1
+        })
+
+        gsap.to(".leftFade img",{
+          scrollTrigger:{
+            trigger: ".leftFade",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+            toggleActions:"play play none none",
+            pin: "true",
+            scrub: "true",
+          },
+          x:0,
+          y:0,
+          opacity: 1,
+          duration: 1
+        })
+
+        gsap.to(".leftFade a",{
+          scrollTrigger:{
+            trigger: ".leftFade",
+            start: this.scrollSetup,
+            end: this.scrollSetup2,
+
+            toggleActions:"play play none none",
+            pin: "true",
+            scrub: "true",
+          },
+          x:0,
+          y:0,
+          opacity: 1,
+          duration: 1
+        })
+      },
+      gotoTop(){
+        window.scroll(0,0)
       }
     },
     beforeMount() {

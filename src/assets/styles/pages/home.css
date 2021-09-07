@@ -192,7 +192,21 @@
     object-fit: cover;
     filter: blur(0px);
     opacity: 0;
-    transform: translateX(200px);
+}
+
+.rightFade img{
+    transform: translate(200px,0px);
+}
+
+.leftFade img{
+    transform: translate(-200px,0px);
+}
+
+.leftFade a{
+    margin-left: 0px;
+    font-size: clamp(16px,3vw,22px);
+    transform: translateY(100px);
+    opacity: 0;
 }
 
 .pg-title{
@@ -223,6 +237,12 @@
     background: rgb(241,80,37);
     background: var(--headingTitleColour);
     border-radius: 40px;
+}
+
+
+.leftFade .section-1{
+    margin-left: 0;
+    margin-right: 60px;
 }
 
 @media screen and (max-width: 600px){
