@@ -156,6 +156,8 @@ body.dark{
   --paymentStrongBackground: var(--gray2);
   --paymentStrongText: white;
 
+  --headingTitleColour: var(--orange1dark)
+
 
 }
 
@@ -279,6 +281,7 @@ body.dark{
   height: auto;
   min-height: calc(100vh - 100px);
   position: relative;
+  padding-bottom: 30px;
 }
 
 

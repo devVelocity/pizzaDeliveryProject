@@ -151,4 +151,116 @@
     }
 }
 
+.spacingHR1{
+    background: transparent;
+    color: transparent;
+    padding-top: 125px;
+}
+
+.section-container{
+    width: 100%;
+    height: 250vh;
+    position: relative;
+}
+.section-container .section-element{
+    width: 100%;
+    height: calc(100vh - 50px);
+    position: sticky;
+    top: 100px;
+    padding-bottom: 50px;
+    display: flex;
+    gap: 100px;
+    overflow: hidden;
+}
+
+.section-element .section-1{
+    width: calc(100% - 100px);
+    margin-top: 50px;
+    margin-left: 50px
+}
+
+.section-element .section-2{
+    width: calc(100% - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-element img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(0px);
+    opacity: 0;
+}
+
+.rightFade img{
+    transform: translate(200px,0px);
+}
+
+.leftFade img{
+    transform: translate(-200px,0px);
+}
+
+.leftFade a{
+    margin-left: 0px;
+    font-size: clamp(16px,3vw,22px);
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.pg-title{
+    width: auto;
+    font-size: clamp(20px,5vw,50px);
+    position: relative;
+}
+
+.section-element p{
+    margin-top:  80px;
+    font-size: clamp(18px,1.2vw,20px);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.section-element h1{
+    opacity: 0;
+    transform: translateY(200px);
+}
+
+.pg-title::after{
+    content: ' ';
+    position: absolute;
+    bottom: -30px;
+    left: 0px;
+    width: 25%;
+    height: 5px;
+    background: rgb(241,80,37);
+    background: var(--headingTitleColour);
+    border-radius: 40px;
+}
+
+
+.leftFade .section-1{
+    margin-left: 0;
+    margin-right: 60px;
+}
+
+@media screen and (max-width: 600px){
+    .section-element{
+        flex-direction: column;
+        align-items: center;
+    } 
+    .section-element .section-1{
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .section-element .section-2{
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
 
