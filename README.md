@@ -15,5 +15,9 @@ npm run serve
 npm run build
 ```
 
+### Add / Edit / Remove Menu Items
+
+Go to JSON files to configure
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
