@@ -121,7 +121,7 @@
                                 <h4 class="terms">By continuing,  you agree to the <span><a class="orangeHyperLink">Terms and Conditions</a></span></h4>
                                 <h4 class="mobileH4" v-if="paymentButtonDisabled && mobileUser">{{paymentDisabledMessage}}</h4>
                                 <span class="tooltipContainer">
-                                    <h2 class="toolTip" v-if="paymentButtonHidden">{{paymentDisabledMessage}}</h2>
+                                    <h2 class="toolTip" v-if="paymentButtonDisabled">{{paymentDisabledMessage}}</h2>
                                     <button v-if="!paymentButtonHidden" :disabled="paymentButtonDisabled" :class="{disabled: paymentButtonDisabled}" @click="document.getElementById('form1').submit()" class="button-style4" form="form1">Confirm and Pay</button>
                                 </span>
                             </div>
