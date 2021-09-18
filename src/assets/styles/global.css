@@ -114,6 +114,9 @@ body.dark{
   --discountAppliedBG2: rgb(16, 116, 46);
   --discountAppliedBGText: white;
   --discountAppliedClose: crimson;
+  --discountHoverBG: var(--gray2);
+  --discountHoverText: var(--white1);
+  --discountAppliedText: var(--white1);
 
   --additionalNumbersBackground: var(--gray2);
   --additionalNumbersText: white;
