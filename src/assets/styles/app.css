@@ -8,7 +8,7 @@ html{
 .navigation-bar-relative-spacing{
     display:inline-block;
     width: 100%;
-    height: 105px;
+    height: 80px;
   }
   
 body{
@@ -45,7 +45,7 @@ body{
 #nav {
   position: fixed;
   width: 100vw;
-  height: 100px;
+  height: 75px;
   background: rgb(241, 80, 37);
   background: var(--gradientP1);
   background: var(--gradientP2);
@@ -58,6 +58,7 @@ body{
   transition-property: border-bottom;
   border-bottom: 3px solid transparent;
   border-bottom: 3px solid transparent;
+  padding-top: 5px;
   padding-bottom: 5px;
 }
 
