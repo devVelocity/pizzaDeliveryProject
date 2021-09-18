@@ -356,11 +356,11 @@ export default {
         tryDiscountCode(){
             var self = this;
             var found = false;
-            var enteredCode = self.discountCodes;
+            var enteredCode = self.discountCodes.toLowerCase()
             self.parsedDiscountArray = JSON.parse(JSON.stringify(discountCodesJson));
             for(const item in self.parsedDiscountArray){
                 // console.log(self.parsedDiscountArray[item]);
-                if(self.parsedDiscountArray[item].name == enteredCode){
+                if(self.parsedDiscountArray[item].name.toLowerCase() == enteredCode){
                     if(localStorage.getItem("code-" + enteredCode)){
                         if(localStorage.getItem("code-" + enteredCode) === "true"){
                             self.codeApplied = 2;
