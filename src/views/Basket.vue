@@ -86,7 +86,7 @@
                             <div class="stickyItemFlex1">
                                 <hr class="spacing-hr">
                                 <h2>Discount Codes</h2>
-                                <input v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied != 0">
+                                <input formnovalidate v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied != 0">
                                 <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                                 <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
                                 <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
@@ -138,7 +138,7 @@
                             <div class="stickyItemFlex1">
                                 <hr>
                                 <h2>Discount Codes</h2>
-                                <input required v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" @keyup.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                                <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied === 1">
                                 <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                                 <transition name="fade">
                                     <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
