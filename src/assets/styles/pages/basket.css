@@ -368,42 +368,69 @@
     border-radius: 40px;
 }
 
-.stickyItem .hover{
-    background: black;
-    background: var(--discountAppliedBG);
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    border-radius: 100%;
-    color: var(--discountAppliedBG);
-    width: 20px; height: auto;
-    text-align: center;;
-    cursor: pointer;
-}
-
-.stickyItem .discountAppliedSpan:hover > .hover{
-    color: white;
-    color: var(--discountAppliedBGText);
-}
 
 .stickyItem .discountAppliedSpan:hover{
     cursor: pointer;
 }
 
-.stickyItem .discountAppliedSpan:hover{
-    background: var(--discountAppliedClose);
-}
 
 .stickyItem .discountAppliedSpan{
     display: flex;
     gap: 10px;
-    background: rgb(20,195,79);
-    background: var(--discountAppliedBG2);
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 40px;
+    background: transparent;
+    border: 1px solid green;
+    border: 1px solid var(--discountAppliedBG2);
+    border-radius: 10px;
+    padding-left: 10px; padding-right: 10px;
+    /* border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; */
     align-items: center;
+    height: 68px;
+    justify-content: space-between;
+}
+
+.stickyItem .discountAppliedSpan h4{
+    font-weight: 500;
+    color: green;
+    color: var(--discountAppliedText);
+    filter: brightness(200%);
+}
+
+.stickyItem .discountAppliedSpan:hover > h4{
+    color: crimson;
+    color: var(--discountHoverText);
+}
+
+.stickyItem .discountAppliedSpan:hover{
+    border-color: crimson;
+    border-color: var(--discountAppliedClose);
+}
+
+.stickyItem .check{padding-right: 5px;}
+
+.stickyItem .discountAppliedSpan .check{
+    color: green;
+    color: var(--discountAppliedBG2);
+    filter: brightness(200%);
+}
+
+.stickyItem .discountAppliedSpan .hover{
+    width: 15px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 10px;
+    display: none;
+    color: crimson;
+    color: var(--discountAppliedClose);
+    filter: brightness(200%);
+}
+
+.stickyItem .discountAppliedSpan:hover > .hover{
+    display: block;
+}
+
+.stickyItem .discountAppliedSpan:hover > .check{
+    display: none;
 }
 
 .stickyItem .discountAppliedSpan h3, .stickyItem .discountAppliedSpan h4{

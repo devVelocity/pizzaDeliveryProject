@@ -87,7 +87,11 @@
                                 <hr class="spacing-hr">
                                 <h2>Discount Codes</h2>
                                 <input formnovalidate v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied != 0">
-                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan">
+                                    <h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4>
+                                    <h3 class="check">✔</h3>
+                                    <h3 class="hover">x</h3>
+                                </span>
                                 <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
                                 <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
                                 <hr class="spacing-hr">
