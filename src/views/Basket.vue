@@ -404,7 +404,8 @@ export default {
             this.$root.finalPaymentMethod = null;
             var self = this;
             if(self.codeAppliedName != ""){
-                localStorage.setItem("code-" + self.codeAppliedName, "true")
+                this.$root.finalCodeApplied = self.codeAppliedName
+                // localStorage.setItem("code-" + self.codeAppliedName, "true")
             }
             if(self.codeAppliedName == ""){
                 this.$root.finalPrice = this.totalPrice.toFixed(2)

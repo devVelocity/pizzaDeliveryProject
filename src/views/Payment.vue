@@ -22,12 +22,23 @@ export default {
 
             pricetoPay: null,
             paymentMethod: null,
+            codeApplied: null,
+        }
+    },
+    methods:{
+        finalPaymentConfirmed(){
+            if(this.codeApplied != ""){
+                localStorage.setItem("code-" + this.codeApplied, "true")
+            }
         }
     },
     mounted(){
+        var self = this;
         this.pricetoPay = this.$root.finalPrice
         this.paymentMethod = this.$root.finalPaymentMethod
-    }
+        this.codeApplied = this.$root.finalCodeApplied
+        this.finalPaymentConfirmed()
+    },
 }
 </script>
 
