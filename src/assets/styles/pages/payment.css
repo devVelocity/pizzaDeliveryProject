@@ -26,3 +26,12 @@
     color:white;
     color: var(--paymentStrongText);
 }
+
+#paymentInfoWrapper{
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+}
