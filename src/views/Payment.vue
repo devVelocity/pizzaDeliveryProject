@@ -5,7 +5,7 @@
             <h1 v-if="paymentMethod == 'Cash'">Confirm Order</h1>
             <div id="paymentInfoWrapper">
                 <h4>Estimated Delivery Time: <br><strong>20-50 Minutes</strong></h4>
-                <h4>Payment Method: <br><strong>20-50 Minutes</strong></h4>
+                <h4>Payment Method: <br><strong>{{paymentMethod}}</strong></h4>
                 <h4>Please Pay: <br><strong>£{{ pricetoPay }}</strong></h4>
             </div>
             <div id="paymentOptionsContainer">
