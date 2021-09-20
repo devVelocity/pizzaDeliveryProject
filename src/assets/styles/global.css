@@ -159,7 +159,9 @@ body.dark{
   --paymentStrongBackground: var(--gray2);
   --paymentStrongText: white;
 
-  --headingTitleColour: var(--orange1dark)
+  --headingTitleColour: var(--orange1dark);
+
+  --paymentOptionsContainer:  var(--gray)
 
 
 }

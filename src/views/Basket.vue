@@ -415,6 +415,7 @@ export default {
                 console.log(this.includedItems[item].name)
             }
             this.$root.finalPaymentMethod = this.paymentMethod
+            this.$root.goToTop()
             this.$router.push('/basket/payment');
             console.log("Final Price " + this.$root.finalPrice)
             console.log(this.$root.finalItems)

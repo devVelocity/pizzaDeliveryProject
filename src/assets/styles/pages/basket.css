@@ -387,6 +387,7 @@
     align-items: center;
     height: 68px;
     justify-content: space-between;
+    transition: 0.15s border ease-in-out
 }
 
 .stickyItem .discountAppliedSpan h4{
