@@ -86,14 +86,15 @@
                             <div class="stickyItemFlex1">
                                 <hr class="spacing-hr">
                                 <h2>Discount Codes</h2>
-                                <input formnovalidate v-if="codeApplied === 0 || codeApplied === 2" :placeholder="discountCodePlaceholder" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied != 0">
-                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan">
+                                <input formnovalidate v-if="codeApplied === 0 || codeApplied === 2 || codeApplied === 3" :placeholder="discountCodePlaceholder" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied != 0">
+                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2 && codeApplied != 3" class="discountAppliedSpan">
                                     <h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4>
                                     <h3 class="check">✔</h3>
                                     <h3 class="hover">x</h3>
                                 </span>
                                 <h4 class="h4codeRecognised" v-if="codeApplied === 0">Waiting for Code..</h4>
-                                <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not Valid</h4>
+                                <h4 class="h4codeRecognised error" v-if="codeApplied === 2">Code not valid</h4>
+                                <h4 class="h4codeRecognised error" v-if="codeApplied === 3">Code already used</h4>
                                 <hr class="spacing-hr">
                                 <h2>Total</h2>
                                 <div class="total-wrapper">
@@ -142,8 +143,8 @@
                             <div class="stickyItemFlex1">
                                 <hr>
                                 <h2>Discount Codes</h2>
-                                <input v-if="codeApplied === 0 || codeApplied === 2" placeholder="Type code and press Enter" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied === 1">
-                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
+                                <input v-if="codeApplied === 0 || codeApplied === 2 || codeApplied === 3" placeholder="Type code and press Enter" v-model="discountCodes" v-on:keydown.prevent.enter="tryDiscountCode()" :disabled="codeApplied === 1">
+                                <span @click="removeDiscountCodes" v-if="codeApplied != 0 && codeApplied != 2 && codeApplied != 3" class="discountAppliedSpan"><h3 class="hover">x</h3><h4 class="discountApplied">Discount {{ this.codeAppliedName }} Applied</h4></span>
                                 <transition name="fade">
                                     <h4 class="h4codeRecognised" v-if="codeApplied === 2">Code unavailable</h4>
                                 </transition>
@@ -305,17 +306,17 @@ export default {
             self.wordLimitBarPerc2 = ((self.wordCount2 / self.maxWords2) * 100);
             
         },
-        tryDiscountCodeLocalStorage(argumentId){
-            if(localStorage.getItem("code-" + argumentId)){
-                if(localStorage.getItem("code-" + argumentId) === true){
-                    return true;
-                }else{
-                    return false
-                }
-            }else{
-                return false
-            }
-        },
+        // tryDiscountCodeLocalStorage(argumentId){
+        //     if(localStorage.getItem("code-" + argumentId)){
+        //         if(localStorage.getItem("code-" + argumentId) === true){
+        //             return [true,true];
+        //         }else{
+        //             return [false,null]
+        //         }
+        //     }else{
+        //         return [false,null]
+        //     }
+        // },
         resetCodeApplied(){
             var self = this;
             self.codeApplied = 0;
@@ -363,7 +364,8 @@ export default {
                 if(self.parsedDiscountArray[item].name.toLowerCase() == enteredCode){
                     if(localStorage.getItem("code-" + enteredCode)){
                         if(localStorage.getItem("code-" + enteredCode) === "true"){
-                            self.codeApplied = 2;
+                            self.codeApplied = 3;
+                            found = true;
                             self.discountCodes = ""
                             this.discountCodePlaceholder = ""
                             setTimeout(this.resetCodeApplied, 3000)
