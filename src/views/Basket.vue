@@ -458,11 +458,11 @@ export default {
             }
         },
         removeItemFromBasket(itemIdArguement){
-            this.warningPromptOpen = true;
             this.warningDescriptionItems = this.getQuantity(parseInt(itemIdArguement))
             console.log(this.warningDescriptionItems);
             this.warningPromptId = itemIdArguement;
             this.$root.warningPromptOpen = true;
+            this.warningPromptOpen = true;
         },
         removeItemFromBasketFinal(itemIdArguement){
             if(sessionStorage.getItem("itemId-" + itemIdArguement)){

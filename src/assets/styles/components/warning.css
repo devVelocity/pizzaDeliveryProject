@@ -8,6 +8,8 @@
     align-items: center;
     justify-content: center;
     margin-top: -105px;
+    left: 0;
+    top: 105px;
 }
 
 #semiOpaqueBackground #warningItem{
