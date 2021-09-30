@@ -407,7 +407,6 @@ export default {
             var self = this;
             if(self.codeAppliedName != ""){
                 this.$root.finalCodeApplied = self.codeAppliedName
-                // localStorage.setItem("code-" + self.codeAppliedName, "true")
             }
             if(self.codeAppliedName == ""){
                 this.$root.finalPrice = this.totalPrice.toFixed(2)
@@ -462,7 +461,7 @@ export default {
             console.log(this.warningDescriptionItems);
             this.warningPromptId = itemIdArguement;
             this.$root.warningPromptOpen = true;
-            this.warningPromptOpen = true;
+                        this.warningPromptOpen = true;
         },
         removeItemFromBasketFinal(itemIdArguement){
             if(sessionStorage.getItem("itemId-" + itemIdArguement)){
@@ -479,6 +478,9 @@ export default {
                 self.getTotal();
                 self.maxItems = self.$root.maxAmountItems;
                 self.warningPromptOpen = false;
+            }
+            if(this.finalBasketArray.length == 0){
+                this.$root.goToTop()
             }
         },
         changePaymentMethod(){
@@ -552,6 +554,7 @@ export default {
         }else{
             this.mobileUser = false;
         }
+        this.$root.goToTop()
     },
 }
 </script>

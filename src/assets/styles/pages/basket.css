@@ -48,7 +48,7 @@
     border-radius: 40px;
     color: white;
     color: var(--basketItemText);
-    font-size: clamp(14px,1.5vw,20px);
+    font-size: clamp(18px,1.5vw,20px);
 }
 
 #shoppingContainer{

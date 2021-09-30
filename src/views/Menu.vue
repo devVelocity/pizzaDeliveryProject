@@ -217,6 +217,7 @@ export default {
     }else{
       this.mobileUser = false;
     }
+    this.$root.goToTop()
   },
   computed:{
     // tryImageComputed(){

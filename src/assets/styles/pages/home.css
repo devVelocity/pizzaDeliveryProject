@@ -166,7 +166,7 @@
     width: 100%;
     height: calc(100vh - 50px);
     position: sticky;
-    top: 100px;
+    top: 88px;
     padding-bottom: 50px;
     display: flex;
     gap: 100px;
@@ -246,19 +246,26 @@
 }
 
 @media screen and (max-width: 600px){
+    .section-container .section-element{
+        gap: 10px;
+    }
     .section-element{
         flex-direction: column;
         align-items: center;
+        justify-items: center;
     } 
     .section-element .section-1{
         width: calc(100% - 40px);
         margin-left: 20px;
         margin-right: 20px;
+        margin-top: 0px;
+        padding-top: 15px;
     }
     .section-element .section-2{
         width: calc(100% - 40px);
         margin-left: 20px;
         margin-right: 20px;
+        padding-top: 20px;
     }
 }
 
