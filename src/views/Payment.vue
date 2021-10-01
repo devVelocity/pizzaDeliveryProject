@@ -37,7 +37,6 @@ export default {
         this.pricetoPay = this.$root.finalPrice
         this.paymentMethod = this.$root.finalPaymentMethod
         this.codeApplied = this.$root.finalCodeApplied
-        this.finalPaymentConfirmed()
     },
 }
 </script>
